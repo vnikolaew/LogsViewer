@@ -3,7 +3,7 @@ import { LogsUpdate, ServiceLogTree } from "@/providers/types";
 import { produce, enableMapSet } from "immer";
 import { devtools } from "zustand/middleware";
 
-enableMapSet()
+enableMapSet();
 
 export interface ServiceLogEntries {
 
@@ -12,11 +12,15 @@ export interface ServiceLogEntries {
 
    selectedServiceName: string;
    setSelectedServiceName: (service: string) => void;
+
    subscribedServices: Set<string>,
    subscribeToService: (service: string) => void;
    unsubscribeFromService: (service: string) => void;
 
    entries: Record<string, LogsUpdate>;
+   services: string[],
+   setServices: (services: string[]) => void,
+
    insertLogs: (newLogs: LogsUpdate) => void;
    deleteAllLogs: (serviceName: string) => void;
    changeLogFilePosition: (serviceName: string, newPosition: number) => void;
@@ -25,17 +29,23 @@ export interface ServiceLogEntries {
 
 export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    entries: {},
+   services: [],
+   setServices: services => set((state) =>
+      produce(state, draft => {
+         draft.services = services;
+         return draft;
+      })),
    serviceLogsTree: { tree: [] },
    selectedServiceName: ``,
    subscribedServices: new Set<string>(),
    subscribeToService: (service: string) => set((state) =>
       produce(state, draft => {
-         draft.subscribedServices.add(service)
+         draft.subscribedServices.add(service);
          return draft;
       })),
    unsubscribeFromService: (service: string) => set((state) =>
       produce(state, draft => {
-         draft.subscribedServices.delete(service)
+         draft.subscribedServices.delete(service);
          return draft;
       })),
    setSelectedServiceName: (service: string) => set((state) =>

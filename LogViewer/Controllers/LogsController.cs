@@ -38,6 +38,19 @@ public sealed class LogsController : ControllerBase
         public DateTime LastWriteTime { get; set; }
     }
 
+
+    [HttpGet("services")]
+    public async Task<IActionResult> GetServices()
+    {
+        var serviceNames = new DirectoryInfo(_rootLogsFolder)
+            .GetDirectories("*")
+            .Where(di => di.GetDirectories().Any(d => d.Name.Trim() == "Logs"))
+            .Select(di => di.Name.Trim())
+            .ToList();
+
+        return Ok(new { Services = serviceNames });
+    }
+
     [HttpGet("tree")]
     public async Task<IActionResult> GetLogsTree()
     {

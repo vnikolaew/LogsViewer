@@ -85,6 +85,17 @@ const Home = ({}: HomeProps) => {
          insertLogs(value);
       });
 
+      // Retrieve available services:
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/services`, {
+         headers: {
+            Accept: `application/json`,
+         },
+         credentials: `include`,
+         mode: `cors`,
+      }).then(res => res.json())
+         .then(res => {
+            console.log({ res });
+         });
    }, []);
 
 
@@ -203,7 +214,8 @@ const Home = ({}: HomeProps) => {
                   ))}
                   {showScrollDownButton && (
                      <div className={`sticky text-right text-white bottom-8 right-12 z-10 mr-8`}>
-                        <div data-tip={`Scroll to bottom`} className={`tooltip tooltip-top before:!text-xxs before:!py-0`}>
+                        <div data-tip={`Scroll to bottom`}
+                             className={`tooltip tooltip-top before:!text-xxs before:!py-0`}>
                            <button onClick={handleScrollDown} className={`btn btn-sm btn-circle btn-neutral`}>
                               <UilArrowDown />
                            </button>
