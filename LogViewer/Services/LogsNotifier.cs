@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using LogViewer.Hubs;
 using LogViewer.Hubs.Models;
+using LogViewer.Models;
 using Microsoft.AspNetCore.SignalR;
 
 namespace LogViewer.Services;
@@ -67,43 +68,90 @@ internal sealed class LogsNotifier : BackgroundService
                 .MinBy(s => s.CurrentFilePosition)!
                 .CurrentFilePosition;
 
-            stream.Seek(minFilePosition, SeekOrigin.Begin);
-            var buffer = new byte[fileInfo.Length - minFilePosition];
-            var bytesRead = await stream.ReadAsync(buffer);
+            LogLine[] logs = [];
+            if (minFilePosition < stream.Length)
+            {
+                stream.Seek(minFilePosition, SeekOrigin.Begin);
 
-            var logLines = Encoding.UTF8.GetString(buffer)
-                .Trim()
-                .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-            var logs = _logsParser.Parse(logLines).ToArray();
+                var buffer = new byte[fileInfo.Length - minFilePosition];
+                var bytesRead = await stream.ReadAsync(buffer);
+
+                var logLines = Encoding.UTF8.GetString(buffer)
+                    .Trim()
+                    .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
+                logs = _logsParser.Parse(logLines).ToArray();
+            }
 
             foreach (var fileLogsSubscription in subscriptions!)
             {
                 var connectionId = fileLogsSubscription.ConnectionId;
                 var connectionFilePosition = fileLogsSubscription.CurrentFilePosition;
+                var subscriptionId = fileLogsSubscription.SubscriptionId;
 
-                if (connectionFilePosition >= fileInfo.Length) continue;
-
-                // Send lines to client using the already read buffer:
-                var logIndex = 0;
-                var currentLogPosition = minFilePosition;
-                while (logIndex < logs.Length && currentLogPosition < connectionFilePosition)
+                if (connectionFilePosition == fileInfo.Length)
                 {
-                    currentLogPosition += logs[logIndex++].ContentLength;
+                    await _hubContext
+                        .Clients
+                        .Client(connectionId)
+                        .SendUpdates(
+                            LogsUpdate.NoChange(
+                                subscriptionId,
+                                serviceName,
+                                fileInfo.Name,
+                                logs,
+                                connectionFilePosition,
+                                stream.Length
+                            ),
+                            CancellationToken.None);
+                }
+                else if (connectionFilePosition > fileInfo.Length)
+                {
+                    // Notify client they have to delete some logs by sending all file logs:
+                    logs = _logsParser.Parse(Encoding.UTF8.GetString(await File.ReadAllBytesAsync(fileInfo.FullName))
+                            .Trim()
+                            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
+                        .ToArray();
+
+                    await _hubContext
+                        .Clients
+                        .Client(connectionId)
+                        .SendUpdates(
+                            LogsUpdate.Truncate(
+                                subscriptionId,
+                                serviceName,
+                                fileInfo.Name,
+                                logs,
+                                connectionFilePosition,
+                                stream.Length
+                            ),
+                            CancellationToken.None);
+                }
+                else
+                {
+                    // Send lines to client using the already read buffer:
+                    var logIndex = 0;
+                    var currentLogPosition = minFilePosition;
+                    while (logIndex < logs.Length && currentLogPosition < connectionFilePosition)
+                    {
+                        currentLogPosition += logs[logIndex++].ContentLength;
+                    }
+
+                    await _hubContext
+                        .Clients
+                        .Client(connectionId)
+                        .SendUpdates(
+                            LogsUpdate.New(
+                                subscriptionId,
+                                serviceName,
+                                fileInfo.Name,
+                                logs[logIndex..],
+                                connectionFilePosition,
+                                stream.Length),
+                            CancellationToken.None);
                 }
 
-                await _hubContext.Clients
-                    .Client(connectionId)
-                    .SendUpdates(
-                        new LogsUpdate(
-                            serviceName,
-                            fileInfo.Name,
-                            logs[logIndex..],
-                            connectionFilePosition,
-                            stream.Position),
-                        CancellationToken.None);
-
                 // Set new position for the current connection:
-                fileLogsSubscription.CurrentFilePosition = stream.Position;
+                fileLogsSubscription.CurrentFilePosition = fileInfo.Length;
             }
         }
 

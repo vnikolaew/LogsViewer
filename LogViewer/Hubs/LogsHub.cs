@@ -89,7 +89,10 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
         Subscriptions.TryAdd(serviceName, new HashSet<FileLogsSubscription>());
         if (Subscriptions[serviceName].Contains(new FileLogsSubscription { ConnectionId = Context.ConnectionId }))
         {
+            var subscription = Subscriptions[serviceName].FirstOrDefault(s => s.ConnectionId == Context.ConnectionId)!;
+
             return new SubscribeToLogsResponse(
+                subscription.SubscriptionId,
                 false,
                 "You are already subscribed",
                 serviceName,
@@ -103,6 +106,7 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
         var logsSubscription = new FileLogsSubscription
         {
             ConnectionId = Context.ConnectionId,
+            SubscriptionId = Guid.NewGuid(),
             CurrentFilePosition = logFileName.GetFileSize()
         };
         Subscriptions[serviceName].Add(logsSubscription);
@@ -115,7 +119,8 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
             .Trim()
             .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries));
 
-        await Clients.Caller.SendUpdates(new LogsUpdate(
+        await Clients.Caller.SendUpdates(LogsUpdate.New(
+            logsSubscription.SubscriptionId,
             serviceName,
             logFileName,
             logs,
@@ -123,6 +128,7 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
         ), CancellationToken.None);
 
         return new SubscribeToLogsResponse(
+            logsSubscription.SubscriptionId,
             true,
             "Successfully subscribed",
             serviceName,
@@ -136,15 +142,47 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
         if (!Subscriptions[serviceName].Contains(new FileLogsSubscription { ConnectionId = Context.ConnectionId }))
         {
             return new UnsubscribeToLogsResponse(
+                Guid.Empty,
                 false,
                 "Could not unsubscribe", serviceName, Context.ConnectionId);
         }
 
-        Subscriptions[serviceName].Remove(new FileLogsSubscription { ConnectionId = Context.ConnectionId });
+        var existingSubscription =
+            Subscriptions[serviceName].FirstOrDefault(s => s.ConnectionId == Context.ConnectionId)!;
+        Subscriptions[serviceName].Remove(existingSubscription);
+
         await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"{serviceName}_logs", CancellationToken.None);
+
         return new UnsubscribeToLogsResponse(
+            existingSubscription.SubscriptionId,
             true,
             "Successfully unsubscribed", serviceName, Context.ConnectionId);
+    }
+
+    [HubMethodName("GetAllLogs")]
+    public async Task<ServiceLogsResponse> GetAllLogsAsync(string serviceName)
+    {
+        var serviceExists = new DirectoryInfo(
+                Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder))
+            .GetDirectories()
+            .Any(di => di.Name.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
+            
+        if (serviceExists)
+        {
+            var lastWrittenLogFile = new DirectoryInfo(
+                    Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder, serviceName, "Logs"))
+                .GetLastWrittenFileName("*.log");
+
+            var serviceLogs = logsParser.Parse(
+                Encoding.UTF8.GetString(await File.ReadAllBytesAsync(lastWrittenLogFile))
+                    .Trim()
+                    .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+            ).ToList();
+
+            return ServiceLogsResponse.Success("Success", serviceName, serviceLogs);
+        }
+        
+        return ServiceLogsResponse.Failure("Failure", serviceName, []);
     }
 
     [HubMethodName(nameof(TestMethod))]
@@ -158,7 +196,7 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
     public override Task OnConnectedAsync()
     {
         var username = Context.User is null ? string.Empty : Context.User.Identity?.Name;
-        
+
         logger.LogInformation(
             "{HubName} new connection with Id '{ConnectionId}' and username '{Username}'",
             GetType().Name,

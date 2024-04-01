@@ -3,6 +3,8 @@
 public class FileLogsSubscription : IEquatable<FileLogsSubscription>
 {
     public string ConnectionId { get; init; } = default!;
+    
+    public Guid SubscriptionId { get; set; }
 
     public long CurrentFilePosition { get; set; }
 

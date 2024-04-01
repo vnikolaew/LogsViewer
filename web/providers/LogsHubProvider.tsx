@@ -45,6 +45,7 @@ export enum HUB_METHODS {
    TestMethod = `TestMethod`,
    UpdateFilePosition = `UpdateFilePosition`,
    SendUpdates = `SendUpdates`,
+   GetAllLogs = `GetAllLogs`
 }
 
 

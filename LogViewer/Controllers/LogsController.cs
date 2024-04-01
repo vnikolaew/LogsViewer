@@ -26,6 +26,8 @@ public sealed class LogsController : ControllerBase
         public string FolderRelativePath { get; set; } = default!;
 
         public List<LogFileInfo> LogFiles { get; set; } = [];
+
+        public long TotalLogFilesCount { get; set; }
     }
 
     public class LogFileInfo
@@ -51,6 +53,55 @@ public sealed class LogsController : ControllerBase
         return Ok(new { Services = serviceNames });
     }
 
+    [HttpGet("{serviceName}/{logFile}")]
+    public async Task<IActionResult> GetLogFile(string serviceName, string logFile)
+    {
+        var logFileInfo = new DirectoryInfo(
+                Path.Combine(_rootLogsFolder, serviceName, "Logs"))
+            .GetFiles("*.log")
+            .FirstOrDefault(fi => fi.Name == logFile);
+
+        if (logFileInfo is null) return BadRequest();
+        return Ok(new
+        {
+            FileInfo = new LogFileInfo
+            {
+                LastWriteTime = logFileInfo.LastWriteTimeUtc,
+                FileSize = logFileInfo.Length,
+                FileName = logFileInfo.FullName.Replace(Path.DirectorySeparatorChar, '/'),
+                FileRelativePath = Path.Combine("logs", serviceName, "Logs", logFileInfo.Name)
+                    .Replace(Path.DirectorySeparatorChar, '/')
+            },
+            Logs = _logsParser.Parse(
+                Encoding.UTF8.GetString(await System.IO.File.ReadAllBytesAsync(logFileInfo.FullName))
+                    .Trim()
+                    .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
+            ).ToList()
+        });
+    }
+
+    [HttpGet("{serviceName}/files")]
+    public async Task<IActionResult> GetLogFiles(string serviceName, [FromQuery] int offset, [FromQuery] int limit)
+    {
+        var allLogFiles = new DirectoryInfo(Path.Combine(_rootLogsFolder, serviceName, "Logs"))
+            .GetFiles("*.log");
+
+        var serviceLogFiles = allLogFiles
+            .OrderByDescending(fi => fi.LastWriteTimeUtc)
+            .Skip(offset)
+            .Take(limit)
+            .Select(fi => new LogFileInfo
+            {
+                LastWriteTime = fi.LastWriteTimeUtc,
+                FileSize = fi.Length,
+                FileName = fi.Name,
+                FileRelativePath = Path.Combine("logs", serviceName, "Logs", fi.Name)
+                    .Replace(Path.DirectorySeparatorChar, '/')
+            });
+
+        return Ok(new { Files = serviceLogFiles, HasMore = allLogFiles.Length > offset + limit });
+    }
+
     [HttpGet("tree")]
     public async Task<IActionResult> GetLogsTree()
     {
@@ -60,8 +111,11 @@ public sealed class LogsController : ControllerBase
             {
                 ServiceName = di.Name.Trim(),
                 FolderRelativePath = Path.Combine("logs", di.Name).Replace(Path.DirectorySeparatorChar, '/'),
+                TotalLogFilesCount = di.GetDirectories("Logs")[0].GetFiles("*.log").Length,
                 LogFiles = di.GetDirectories("Logs")[0]
                     .GetFiles("*.log")
+                    .OrderByDescending(fi => fi.LastWriteTimeUtc)
+                    .Take(10)
                     .Select(fi => new LogFileInfo
                     {
                         LastWriteTime = fi.LastWriteTimeUtc,

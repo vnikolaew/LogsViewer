@@ -1,23 +1,34 @@
 import { create } from "zustand";
-import { LogsUpdate, ServiceLogTree } from "@/providers/types";
-import { produce, enableMapSet } from "immer";
+import { LogFileInfo, LogsUpdate, LogUpdateType, ServiceLogTree } from "@/providers/types.d";
+import { enableMapSet, produce } from "immer";
 import { devtools } from "zustand/middleware";
 
 enableMapSet();
+
+export interface LogsEntry extends Omit<LogsUpdate, "updateType" | "oldFilePosition"> {
+}
+
+export interface SelectedLogFileInfo extends LogFileInfo {
+   serviceName: string;
+}
 
 export interface ServiceLogEntries {
 
    serviceLogsTree: { tree: ServiceLogTree[] };
    setTree: (tree: ServiceLogTree[]) => void;
+   addServiceLogFiles: (serviceName: string, files: LogFileInfo[]) => void;
 
    selectedServiceName: string;
    setSelectedServiceName: (service: string) => void;
+
+   selectedLogFile: SelectedLogFileInfo;
+   setSelectedLogFile: (logFile: SelectedLogFileInfo) => void;
 
    subscribedServices: Set<string>,
    subscribeToService: (service: string) => void;
    unsubscribeFromService: (service: string) => void;
 
-   entries: Record<string, LogsUpdate>;
+   entries: Record<string, LogsEntry>;
    services: string[],
    setServices: (services: string[]) => void,
 
@@ -30,6 +41,12 @@ export interface ServiceLogEntries {
 export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    entries: {},
    services: [],
+   selectedLogFile: null!,
+   setSelectedLogFile: (logFile:  SelectedLogFileInfo) => set((state) =>
+      produce(state, draft => {
+         draft.selectedLogFile = logFile;
+         return draft;
+      })),
    setServices: services => set((state) =>
       produce(state, draft => {
          draft.services = services;
@@ -59,15 +76,40 @@ export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
          return draft;
       });
    }),
-   insertLogs: ({ serviceName, logs, logFileName, newFilePosition }: LogsUpdate) => set((state) =>
+   addServiceLogFiles: (serviceName: string, files: LogFileInfo[]) => set((state) => {
+      return produce(state, draft => {
+         const tree = draft.serviceLogsTree.tree.find(t => t.serviceName === serviceName);
+         if (tree) {
+            tree.logFiles ??= [];
+            tree.logFiles.push(...files);
+         }
+         return draft;
+      });
+   }),
+   insertLogs: ({
+                   serviceName,
+                   logs,
+                   logFileName,
+                   newFilePosition,
+                   oldFilePosition,
+                   subscriptionId,
+                   updateType,
+                }: LogsUpdate) => set((state) =>
       produce(state, (draft) => {
-         draft.entries[serviceName] ??= { serviceName, logs: [], logFileName, newFilePosition };
+         draft.entries[serviceName] ??= { serviceName, logs: [], logFileName, newFilePosition, subscriptionId };
 
          draft.entries[serviceName].logs ??= [];
-         draft.entries[serviceName].logs.push(...logs);
+         if (updateType === LogUpdateType.New) {
+            draft.entries[serviceName].logs.push(...logs);
+         } else if (updateType === LogUpdateType.Truncate) {
+            draft.entries[serviceName].logs = logs;
+         } else if (updateType === LogUpdateType.NoChange) {
+            // Pass (NO-OP)
+         }
 
          draft.entries[serviceName].logFileName = logFileName;
          draft.entries[serviceName].newFilePosition = newFilePosition;
+
          return draft;
       })),
 

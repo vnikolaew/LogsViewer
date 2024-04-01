@@ -17,7 +17,10 @@ builder.Services
 builder.Services.Configure<JsonOptions>(opts =>
     opts.JsonSerializerOptions.Converters.Insert(0, new JsonStringEnumConverter()));
 
-builder.Services.AddSignalR();
+builder.Services.AddSignalR().AddJsonProtocol(opts =>
+{
+    opts.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+});
 
 var app = builder.Build();
 

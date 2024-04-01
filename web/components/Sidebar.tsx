@@ -2,8 +2,9 @@
 import React, { Fragment } from "react";
 import { useLogsStore } from "@/stores/logsStore";
 import { LogFileInfo, ServiceLogTree, SubscribeToLogsResponse } from "@/providers/types";
-import { UilListUl } from "@iconscout/react-unicons";
+import { UilListUl, UilPlus } from "@iconscout/react-unicons";
 import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
+import { cn } from "@/utils/cn";
 
 export interface SidebarProps {
 
@@ -14,7 +15,7 @@ const Sidebar = ({}: SidebarProps) => {
       state => state.serviceLogsTree);
 
    return (
-      <div className={` border-r-[1px] border-primary shadow-md rounded-md`}>
+      <div className={` border-r-[1px] border-neutral-500 shadow-md rounded-md`}>
          {serviceLogsTree?.tree && serviceLogsTree.tree.map((tree, i) => (
             <Fragment key={i}>
                <LogsTreeEntry key={i} tree={tree} />
@@ -33,17 +34,39 @@ export interface LogsTreeEntryProps {
 }
 
 const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
-   const { setSelectedServiceName, subscribeToService, subscribedServices } = useLogsStore(state => ({
+   const {
+      setSelectedServiceName,
+      selectedLogFile,
+      subscribeToService,
+      subscribedServices,
+      addServiceLogFiles,
+      setSelectedLogFile,
+   } = useLogsStore(state => ({
       setSelectedServiceName: state.setSelectedServiceName,
       subscribedServices: state.subscribedServices,
       subscribeToService: state.subscribeToService,
+      addServiceLogFiles: state.addServiceLogFiles,
+      setSelectedLogFile: state.setSelectedLogFile,
+      selectedLogFile: state.selectedLogFile,
    }));
    const hubConnection = useHubConnection();
 
    function handleClickLogFile(file: LogFileInfo) {
-      const {serviceName} = tree;
-      console.log({ file, serviceName });
+      const { serviceName } = tree;
       setSelectedServiceName(serviceName);
+
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/${tree.serviceName}/${file.fileName}`, {
+         headers: {
+            Accept: `application/json`,
+         },
+         credentials: `include`,
+         mode: `cors`,
+      }).then(res => res.json())
+         .then(res => {
+            console.log(res);
+            setSelectedLogFile({ ...res.fileInfo, serviceName, logs: res.logs });
+         })
+         .catch(console.error);
 
       if (!subscribedServices.has(serviceName)) {
          hubConnection
@@ -51,14 +74,29 @@ const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
             .then(console.log)
             .catch(console.error);
 
-         subscribeToService(serviceName)
+         subscribeToService(serviceName);
       }
 
    }
 
+   async function handleGetMoreFiles() {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/${tree.serviceName}/files?offset=${tree.logFiles.length}&limit=10`, {
+         headers: {
+            Accept: `application/json`,
+         },
+         credentials: `include`,
+         mode: `cors`,
+      }).then(res => res.json())
+         .then(res => {
+            console.log(res);
+            addServiceLogFiles(tree.serviceName, res.files);
+         })
+         .catch(console.error);
+   }
+
    return (
-      <div className="collapse !outline-none collapse-arrow bg-primary-content/90  !max-h-fit !min-h-fit !h-fit">
-         <input className={`!h-[2rem] !min-h-[2rem]`} type="checkbox" />
+      <div className="collapse !outline-none collapse-arrow bg-primary-content/30  !max-h-fit !min-h-fit !h-fit">
+         <input name={`item-accordion`} className={`!h-[2rem] !min-h-[2rem]`} type="radio" />
          <div
             className="collapse-title after:!top-[1rem] !h-[2rem] !min-h-[2rem] flex items-center justify-start text-md text-left py-2 px-2 font-medium ">
             {tree.serviceName}
@@ -66,17 +104,32 @@ const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
          <div className="collapse-content flex flex-col items-start !text-sm !text-gray-300 !pb-2 !pt-2">
             {tree?.logFiles?.map((file, i) => (
                <div data-tip={`Inspect`}
-                    className={`tooltip tooltip-right before:!text-xxs before:!py-[.15rem] !before:!z-10`}
+                    className={`tooltip tooltip-right before:!text-xxs before:!py-[.15rem] before:!bg-gray-900 before:!z-10`}
                     key={`${file.fileName}-${i}`}>
                   <div
                      onClick={_ => handleClickLogFile(file)}
-                     className={`rounded-md cursor-pointer text-xs py-1 px-2 flex items-center justify-start gap-2 transition-colors duration-200 hover:bg-gray-800`}
+                     className={cn(
+                        `rounded-md cursor-pointer text-xs py-1 px-2 flex items-center justify-start gap-2 transition-colors duration-200 hover:bg-gray-900`,
+                        selectedLogFile?.fileName?.endsWith(file.fileName) && `bg-red-500 hover:bg-red-400`,
+                     )}
                      key={`${file.fileName}-${i}`}>
                      <UilListUl color={`#ffffff`} size={12} />
                      {file.fileName}
                   </div>
                </div>
             ))}
+            {tree?.totalLogFilesCount > tree?.logFiles?.length && (
+               <div data-tip={``}
+                    className={`tooltip tooltip-right before:!text-xxs before:!py-[.15rem] before:!bg-gray-900 before:!z-10 mt-2`}
+                    key={`see-more`}>
+                  <div
+                     onClick={_ => handleGetMoreFiles()}
+                     className={`rounded-md cursor-pointer text-xs py-1 px-2 flex items-center justify-start gap-2 transition-colors duration-200 hover:bg-gray-900 `}>
+                     <UilPlus color={`#ffffff`} size={12} />
+                     Load more
+                  </div>
+               </div>
+            )}
          </div>
       </div>
    );

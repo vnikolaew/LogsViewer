@@ -12,14 +12,18 @@
     "@iconscout/react-unicons": "^2.0.2",
     "@microsoft/signalr": "^8.0.0",
     "@types/signalr": "^2.4.3",
+    "@uidotdev/usehooks": "^2.4.1",
+    "clsx": "^2.1.0",
     "immer": "^10.0.4",
     "next": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "tailwind-merge": "^2.2.2",
     "zukeeper": "^1.0.2",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
+    "@types/mark.js": "^8.11.12",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
@@ -27,6 +31,7 @@
     "daisyui": "^4.9.0",
     "eslint": "latest",
     "eslint-config-next": "latest",
+    "mark.js": "^8.11.1",
     "postcss": "latest",
     "tailwindcss": "latest",
     "typescript": "latest"

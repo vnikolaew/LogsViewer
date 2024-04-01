@@ -10,23 +10,47 @@ export interface LogLine {
    timestamp: string,
    processId: number,
    threadId: number,
-   logLevel: number,
+   logLevel: LogLevel,
    message: string;
    rawContent: string;
 }
 
 
 export interface LogsUpdate {
+   subscriptionId: string;
    serviceName: string,
    logFileName: string,
    logs: LogLine[],
    newFilePosition: number
+   oldFilePosition: number
+   updateType: LogUpdateType;
+}
+
+export interface ServiceLogsResponse {
+   logs: LogLine[],
+   isSuccess: boolean
+   serviceName: string;
+   message: string;
+}
+
+export enum LogUpdateType {
+   New = `New`,
+   Truncate = `Truncate`,
+   NoChange = `NoChange`,
+}
+
+export enum LogLevel {
+   Info = `Info`,
+   Debug = `Debug`,
+   Error = `Error`,
+   Warn = `Warn`
 }
 
 export interface ServiceLogTree {
    serviceName: string;
    folderRelativePath: string;
    logFiles: LogFileInfo[];
+   totalLogFilesCount: number;
 }
 
 export interface LogFileInfo {
@@ -34,4 +58,5 @@ export interface LogFileInfo {
    fileRelativePath: string;
    fileSize: number;
    lastWriteTime: string;
+   logs?: LogLine[];
 }
