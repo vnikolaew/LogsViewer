@@ -1,0 +1,15 @@
+2024-03-12 14:44:59.4987 [580-1] INFO |  =========== New log started at: 3/12/2024 2:44:59 PM ===========  
+2024-03-12 14:44:59.5139 [580-1] DEBUG | Command line arguments: -w, -ml, 54c87179-3bc7-46bf-afe6-fdb1dfab5163, -pt, 6600a9a4-b2df-49f7-9751-b07006d9c610 
+2024-03-12 14:44:59.5583 [580-1] INFO |  ===== ancoraDocs OCR Client - version 1.9.33.11220 =====  
+2024-03-12 14:44:59.5583 [580-1] INFO | Worker Mode 
+2024-03-12 14:44:59.5583 [580-1] INFO | Loading settings 
+2024-03-12 14:44:59.5583 [580-1] INFO | Connecting to server: Ip = 127.0.0.1, Port = 12543 
+2024-03-12 14:45:00.7005 [580-1] INFO | Connected to the server. Starting the client... 
+2024-03-12 14:45:00.7005 [580-1] INFO | Client successfully started 
+2024-03-12 14:45:00.7005 [580-4] INFO | Performing authentication as user: admin 
+2024-03-12 14:45:00.9483 [580-4] INFO | User Session ID: 338acf29-05b1-4c12-851e-a4ab90e4d71f 
+2024-03-12 14:45:00.9483 [580-4] INFO | Waiting for next image... 
+2024-03-12 14:45:20.9547 [580-4] INFO | No image available, perform retry. 
+2024-03-12 14:45:25.9665 [580-4] INFO | Waiting for next image... 
+2024-03-12 14:45:45.9852 [580-4] INFO | No image available, perform retry. 
+2024-03-12 14:45:50.9879 [580-4] INFO | Waiting for next image... 

@@ -1,0 +1,9 @@
+1.9.22.6160
+2022-07-04 14:18:52.7864 [2604-4] INFO |  =========== New log started at: 7/4/2022 2:18:52 PM ===========  
+2022-07-04 14:18:52.7864 [2604-4] INFO | Starting the service..... 
+2022-07-04 14:18:52.7864 [2604-4] INFO | Started. 
+2022-07-04 14:18:52.8333 [2604-6] INFO | Creating RabbitMQ connection... 
+2022-07-04 14:18:52.8333 [2604-6] INFO | Creating connection with localhost and trying to authenticate with username guest and password guest... 
+2022-07-04 14:18:53.0537 [2604-6] DEBUG | RabbitMQ connection created:SdkService to WebClient connection. ChannelsMax: 2047; LocalPort:49688; 
+2022-07-04 14:18:53.0537 [2604-6] DEBUG | RabbitMQ channel created for connection: SdkService to WebClient connection. ChannelNumber:1; Timeout:00:00:20; 
+2022-07-04 14:18:53.0692 [2604-6] INFO | Start waiting for messages. 

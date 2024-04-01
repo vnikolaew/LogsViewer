@@ -1,0 +1,52 @@
+1.9.22.6160
+2022-10-13 14:15:12.7708 [1824-1] INFO |  =========== New log started at: 10/13/2022 2:15:12 PM ===========  
+2022-10-13 14:15:12.7868 [1824-1] DEBUG | Command line arguments: 05a95468-32a2-47bc-acd0-a9ed2e0c7c87, 600000000 
+2022-10-13 14:15:12.7868 [1824-1] INFO | Start init 
+2022-10-13 14:15:12.8298 [1824-1] INFO | RabbitMQ connection created:SdkWrapper to WebClient connection. ChannelsMax: 2047; LocalPort:53099; 
+2022-10-13 14:15:13.1470 [1824-1] DEBUG | SDK: Smart OCR SDK - Version: 9.2.22.06160, Branch: version-9.2, User: Nuri, Compiled at: Jun 16 2022, 13:29:34 
+2022-10-13 14:15:13.1470 [1824-1] DEBUG | SDK: Calling OCR Document init for language: English 
+2022-10-13 14:15:13.1470 [1824-1] DEBUG | SDK: Loading external primary recognition engine... 
+2022-10-13 14:15:13.1650 [1824-1] DEBUG | SDK: Failed loading of requested primary external engine: 1, Engine name: LT, Fail reason: External engine plugin not initialized. 
+2022-10-13 14:15:13.1650 [1824-1] DEBUG | SDK: Initiated fall back to other external engines... 
+2022-10-13 14:15:13.4260 [1824-1] DEBUG | SDK: Successful fall back to engine: 5, Engine name: TESS LSTM 
+2022-10-13 14:15:13.4270 [1824-1] DEBUG | SDK: External primary engine loaded. Engine code: 5, Engine name: TESS LSTM 
+2022-10-13 14:15:13.4591 [1824-1] DEBUG | SDK: Init Success 
+2022-10-13 14:15:13.7611 [1824-1] DEBUG | SDK: Loading user dictionary... 
+2022-10-13 14:15:13.7741 [1824-1] DEBUG | SDK: Init PDF loader 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Register PDF loader events 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Init secondary external recognizer 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Try to init advanced secondary recognition engine plugin... 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Loading external secondary recognition engine... 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Failed loading of requested secondary external engine: 2, Engine name: TESS, Fail reason: External engine plugin not initialized. 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Initiated fall back to other external secondary engines... 
+2022-10-13 14:15:13.8761 [1824-1] DEBUG | SDK: Try to init basic secondary recognition engine plugin... 
+2022-10-13 14:15:13.8981 [1824-1] DEBUG | SDK: Secondary OCR language: eng 
+2022-10-13 14:15:13.8981 [1824-1] DEBUG | SDK: Secondary external recognizer successfully initialized 
+2022-10-13 14:15:13.8981 [1824-1] DEBUG | SDK: Init barcode recognizer... 
+2022-10-13 14:15:13.8981 [1824-1] DEBUG | SDK: Requested barcode engine type: 1000, Barcode Engine Name: AUTO 
+2022-10-13 14:15:14.1303 [1824-1] DEBUG | SDK: Barcode recognizer successfully initialized 
+2022-10-13 14:15:14.1303 [1824-1] DEBUG | SDK: Selected barcode engine: 1, Barcode Engine Name: ZBAR 
+2022-10-13 14:15:14.1303 [1824-1] DEBUG | SDK: Init ICR engine... 
+2022-10-13 14:15:14.1573 [1824-1] DEBUG | SDK: ICR engine successfully initialized 
+2022-10-13 14:15:14.1573 [1824-1] INFO | Start setting handlers. 
+2022-10-13 14:15:14.1573 [1824-1] INFO | Finished setting handlers. 
+2022-10-13 14:15:14.1613 [1824-1] DEBUG | Creating new loading thread... 
+2022-10-13 14:15:14.1613 [1824-1] DEBUG | Loading thread created. 
+2022-10-13 14:15:14.1613 [1824-1] DEBUG | Starting loading thread... 
+2022-10-13 14:15:14.1613 [1824-1] DEBUG | Loading thread started. 
+2022-10-13 14:15:14.1613 [1824-11] INFO | Start loading thread. 
+2022-10-13 14:15:14.1613 [1824-1] INFO | Init main (opetration) thread connection 
+2022-10-13 14:15:14.1613 [1824-11] INFO | Init connection started for queue: 05a95468-32a2-47bc-acd0-a9ed2e0c7c87Loading 
+2022-10-13 14:15:14.1613 [1824-1] INFO | Init connection started for queue: 05a95468-32a2-47bc-acd0-a9ed2e0c7c87Operation 
+2022-10-13 14:15:14.1613 [1824-1] INFO | Start working for queue: 05a95468-32a2-47bc-acd0-a9ed2e0c7c87Operation 
+2022-10-13 14:15:14.1613 [1824-11] INFO | Start working for queue: 05a95468-32a2-47bc-acd0-a9ed2e0c7c87Loading 
+2022-10-13 14:15:14.2467 [1824-11] INFO | Got into SetFieldTemplates 
+2022-10-13 14:15:14.2467 [1824-11] DEBUG | FTF Id set: 012cedb8-42fb-4343-801c-5bec3fcf34ca 
+2022-10-13 14:15:14.2467 [1824-11] DEBUG | FTF Id set: c48cab38-468d-44e9-8702-60e1598b43d8 
+2022-10-13 14:15:14.2467 [1824-11] DEBUG | FTF Id set: 654acab0-807f-4530-92fe-ca77d64ee7d0 
+2022-10-13 14:15:14.2981 [1824-11] DEBUG | Got into SetFieldTemplateMappings 
+2022-10-13 14:15:14.3161 [1824-11] DEBUG | Set mappings database for ftf id: 012cedb8-42fb-4343-801c-5bec3fcf34ca 
+2022-10-13 14:15:14.3946 [1824-11] DEBUG | Got into SetFieldTemplateMappings 
+2022-10-13 14:15:14.3946 [1824-11] DEBUG | Set mappings database for ftf id: c48cab38-468d-44e9-8702-60e1598b43d8 
+2022-10-13 14:15:14.4006 [1824-11] DEBUG | Got into SetFieldTemplateMappings 
+2022-10-13 14:15:14.4006 [1824-11] DEBUG | Set mappings database for ftf id: 654acab0-807f-4530-92fe-ca77d64ee7d0 

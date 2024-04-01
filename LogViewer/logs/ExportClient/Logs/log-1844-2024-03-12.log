@@ -1,0 +1,115 @@
+2024-03-12 14:55:15.4772 [1844-1] INFO |  =========== New log started at: 3/12/2024 2:55:15 PM ===========  
+2024-03-12 14:55:15.4921 [1844-1] DEBUG | Command line arguments: -w, -ml, 5b83f37f-b323-4b0a-9ee6-12a8f39814ab, -pt, cd10c33b-9474-44b5-b8c6-ba94a4b45f5f 
+2024-03-12 14:55:15.5359 [1844-1] INFO |  ===== ancoraDocs Export Client - version 1.9.33.11220 =====  
+2024-03-12 14:55:15.5359 [1844-1] INFO | Worker Mode 
+2024-03-12 14:55:15.5359 [1844-1] INFO | Loading settings 
+2024-03-12 14:55:15.5359 [1844-1] INFO | Connecting to server: Ip = 127.0.0.1, Port = 12543 
+2024-03-12 14:55:17.1293 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\Contracts.dll 
+2024-03-12 14:55:17.1293 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\DataCapturePlugin.dll 
+2024-03-12 14:55:17.1293 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\DocFormDataParser.dll 
+2024-03-12 14:55:17.1293 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\FTFParse.dll 
+2024-03-12 14:55:17.1293 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\Microsoft.Bcl.AsyncInterfaces.dll 
+2024-03-12 14:55:17.1424 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\SsiDataCapturePluginContracts.dll 
+2024-03-12 14:55:17.1424 [1844-1] ERROR | Exception in loading plugin C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\SsiDataCapturePluginContracts.dll. Exception details: System.NotSupportedException: An attempt was made to load an assembly from a network location which would have caused the assembly to be sandboxed in previous versions of the .NET Framework. This release of the .NET Framework does not enable CAS policy by default, so this load may be dangerous. If this load is not intended to sandbox the assembly, please enable the loadFromRemoteSources switch. See http://go.microsoft.com/fwlink/?LinkId=155569 for more information.
+   at System.Reflection.RuntimeAssembly.nLoadFile(String path, Evidence evidence)
+   at System.Reflection.Assembly.LoadFile(String path)
+   at SsiExportClient.PluginSupport.PluginLoader.LoadPlugins(String pluginDirectory) 
+2024-03-12 14:55:17.1424 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\SsiServerDto.dll 
+2024-03-12 14:55:17.1424 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Buffers.dll 
+2024-03-12 14:55:17.1584 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Memory.Data.dll 
+2024-03-12 14:55:17.1584 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Memory.dll 
+2024-03-12 14:55:17.1584 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Numerics.Vectors.dll 
+2024-03-12 14:55:17.1584 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Runtime.CompilerServices.Unsafe.dll 
+2024-03-12 14:55:17.1584 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Text.Encodings.Web.dll 
+2024-03-12 14:55:17.1584 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Text.Json.dll 
+2024-03-12 14:55:17.1734 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.Threading.Tasks.Extensions.dll 
+2024-03-12 14:55:17.1734 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\System.ValueTuple.dll 
+2024-03-12 14:55:17.1734 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Azure.AI.FormRecognizer.dll 
+2024-03-12 14:55:17.1914 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Azure.Core.dll 
+2024-03-12 14:55:17.1914 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Contracts.dll 
+2024-03-12 14:55:17.1914 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\DocFormDataParser.dll 
+2024-03-12 14:55:17.1914 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.AspNetCore.Hosting.Abstractions.dll 
+2024-03-12 14:55:17.1914 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.AspNetCore.Hosting.Server.Abstractions.dll 
+2024-03-12 14:55:17.1914 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.AspNetCore.Http.Abstractions.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.AspNetCore.Http.Extensions.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.AspNetCore.Http.Features.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.AspNetCore.StaticFiles.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Bcl.AsyncInterfaces.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.Configuration.Abstractions.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.DependencyInjection.Abstractions.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.FileProviders.Abstractions.dll 
+2024-03-12 14:55:17.2044 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.Hosting.Abstractions.dll 
+2024-03-12 14:55:17.2214 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.Logging.Abstractions.dll 
+2024-03-12 14:55:17.2214 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.Options.dll 
+2024-03-12 14:55:17.2214 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.Primitives.dll 
+2024-03-12 14:55:17.2214 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Extensions.WebEncoders.dll 
+2024-03-12 14:55:17.2214 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Microsoft.Net.Http.Headers.dll 
+2024-03-12 14:55:17.2214 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Polly.Core.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\Polly.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\SsiDataCapturePluginContracts.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\SsiServerDto.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Buffers.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.ClientModel.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.ComponentModel.Annotations.dll 
+2024-03-12 14:55:17.2374 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Diagnostics.DiagnosticSource.dll 
+2024-03-12 14:55:17.2524 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Memory.Data.dll 
+2024-03-12 14:55:17.2524 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Memory.dll 
+2024-03-12 14:55:17.2524 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Numerics.Vectors.dll 
+2024-03-12 14:55:17.2524 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Runtime.CompilerServices.Unsafe.dll 
+2024-03-12 14:55:17.2524 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Text.Encodings.Web.dll 
+2024-03-12 14:55:17.2524 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Text.Json.dll 
+2024-03-12 14:55:17.2675 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.Threading.Tasks.Extensions.dll 
+2024-03-12 14:55:17.2675 [1844-1] INFO | Loading plugin: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\Plugins\AzureFormRecognizerService\System.ValueTuple.dll 
+2024-03-12 14:55:17.2905 [1844-1] ERROR | Error on loading plugins. Exception details System.IO.FileNotFoundException: Could not load file or assembly 'Azure.Core, Version=1.34.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8' or one of its dependencies. The system cannot find the file specified.
+File name: 'Azure.Core, Version=1.34.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8'
+   at System.Reflection.RuntimeAssembly.GetExportedTypes(RuntimeAssembly assembly, ObjectHandleOnStack retTypes)
+   at System.Reflection.RuntimeAssembly.GetExportedTypes()
+   at SsiExportClient.PluginSupport.PluginLoader.<>c.<LoadPlugins>b__1_0(Assembly a)
+   at System.Linq.Enumerable.<SelectManyIterator>d__17`2.MoveNext()
+   at System.Linq.Enumerable.WhereEnumerableIterator`1.MoveNext()
+   at System.Linq.Buffer`1..ctor(IEnumerable`1 source)
+   at System.Linq.Enumerable.ToArray[TSource](IEnumerable`1 source)
+   at SsiExportClient.PluginSupport.PluginLoader.LoadPlugins(String pluginDirectory)
+   at SsiExportClient.PluginSupport.PluginManager.Init()
+
+=== Pre-bind state information ===
+LOG: DisplayName = Azure.Core, Version=1.34.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8
+ (Fully-specified)
+LOG: Appbase = file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/
+LOG: Initial PrivatePath = NULL
+Calling assembly : (Unknown).
+===
+LOG: This bind starts in default load context.
+LOG: Using application configuration file: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\SsiExportClient.exe.Config
+LOG: Using host configuration file: 
+LOG: Using machine configuration file from C:\Windows\Microsoft.NET\Framework\v4.0.30319\config\machine.config.
+LOG: Post-policy reference: Azure.Core, Version=1.34.0.0, Culture=neutral, PublicKeyToken=92742159e12e44c8
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Azure.Core.DLL.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Azure.Core/Azure.Core.DLL.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Plugins/Azure.Core.DLL.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Plugins/Azure.Core/Azure.Core.DLL.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Azure.Core.EXE.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Azure.Core/Azure.Core.EXE.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Plugins/Azure.Core.EXE.
+LOG: Attempting download of new URL file:///C:/Program Files (x86)/Ancora/ancoraDocs Automated Clients/Plugins/Azure.Core/Azure.Core.EXE.
+ 
+2024-03-12 14:55:17.2905 [1844-1] INFO | Connected to the server. Starting the client... 
+2024-03-12 14:55:17.2905 [1844-1] INFO | Client successfully started 
+2024-03-12 14:55:17.2975 [1844-4] INFO | Performing authentication as user: admin 
+2024-03-12 14:55:18.4998 [1844-4] INFO | User Session ID: 21b636dd-4f7f-435c-9df9-e135208ea000 
+2024-03-12 14:55:18.4998 [1844-4] INFO | Waiting for next batch... 
+2024-03-12 14:55:38.5192 [1844-4] INFO | No batch available for export, perform retry. 
+2024-03-12 14:55:43.5320 [1844-4] INFO | Waiting for next batch... 
+2024-03-12 14:56:03.5537 [1844-4] INFO | No batch available for export, perform retry. 
+2024-03-12 14:56:08.5672 [1844-4] INFO | Waiting for next batch... 
+2024-03-12 14:56:28.5915 [1844-4] INFO | No batch available for export, perform retry. 
+2024-03-12 14:56:33.5917 [1844-4] INFO | Waiting for next batch... 
+2024-03-12 14:56:53.6154 [1844-4] ERROR | Exception occurred while signaling process heartbeat : System.IO.FileNotFoundException: Unable to find the specified file.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.MemoryMappedFiles.MemoryMappedFile.OpenCore(String mapName, HandleInheritability inheritability, Int32 desiredAccessRights, Boolean createOrOpen)
+   at System.IO.MemoryMappedFiles.MemoryMappedFile.OpenExisting(String mapName, MemoryMappedFileRights desiredAccessRights, HandleInheritability inheritability)
+   at SsiServerCommonUtils.IpcLockTracker.SignalProcessHeartBeat()
+   at SsiExportClient.ExportClient.DoClientWork() 
+2024-03-12 14:56:53.6154 [1844-4] INFO | No batch available for export, perform retry. 
+2024-03-12 14:56:53.6154 [1844-1] INFO | Client finished 
+2024-03-12 14:56:53.6154 [1844-1] INFO | There will be a connection retry in 120 seconds... 

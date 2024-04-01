@@ -1,0 +1,74 @@
+2024-03-12 14:50:39.9798 [3304-1] INFO |  =========== New log started at: 3/12/2024 2:50:39 PM ===========  
+2024-03-12 14:50:40.0078 [3304-1] DEBUG | Command line arguments:  
+2024-03-12 14:50:40.0158 [3304-1] INFO |  ===== ancoraDocs Automated Client Manager - version 1.9.33.11220 =====  
+2024-03-12 14:50:40.0158 [3304-1] INFO | Init configuration 
+2024-03-12 14:50:40.0528 [3304-1] INFO | Prepare instance lock 
+2024-03-12 14:50:40.0528 [3304-1] INFO | Calculate worker clients 
+2024-03-12 14:50:40.0528 [3304-4] INFO | Begin client startup... 
+2024-03-12 14:50:40.0528 [3304-4] INFO | Starting 6 Image Processing Clients... 
+2024-03-12 14:50:41.6913 [3304-4] INFO | Starting 12 OCR Clients... 
+2024-03-12 14:50:46.5035 [3304-4] INFO | Starting 1 Data Capture Clients... 
+2024-03-12 14:50:46.7705 [3304-4] INFO | Starting 4 Export Clients... 
+2024-03-12 14:50:47.8454 [3304-4] INFO | Client startup finished 
+2024-03-12 14:50:47.9814 [3304-4] DEBUG | ============== System Info ==============
+
+------------ OS Info ------------
+- OS Name: Microsoft Windows 11 Pro
+- OS Version: 10.0.22631
+
+------------ Memory Info ------------
+- Total Physical: 32375 MB
+- Avail Physical: 8155 MB
+- Total Virtual: 134217727 MB
+- Avail Virtual: 134213028 MB
+- Total PageFile: 73217 MB
+- Avail PageFile: 27712 MB
+
+------------ CPU Info ------------
+- Total CPU Count: 1
+-- CPU 1: 
+--- Name: 11th Gen Intel(R) Core(TM) i9-11900K @ 3.50GHz
+--- Caption: Intel64 Family 6 Model 167 Stepping 1
+--- Description: Intel64 Family 6 Model 167 Stepping 1
+--- Manufacturer: GenuineIntel
+--- Clock Speed: 3504 MHz
+--- Max Clock Speed: 3504 MHz
+--- Cores: 8
+--- Logical Cores: 16
+--- L2 Cache: 4096 KB
+--- L3 Cache: 16384 KB
+
+------------ Disk Drive Info ------------
+- Total Disk Drive Count: 1
+-- Drive 1: 
+--- Name: \\.\PHYSICALDRIVE0
+--- Caption: Samsung SSD 980 PRO 1TB
+--- Description: Disk drive
+--- Model: Samsung SSD 980 PRO 1TB
+--- Manufacturer: (Standard disk drives)
+--- Firmware: 3B2QGXA7 
+--- Serial: 0025_38BA_11B9_55B1.
+--- Index: 0
+--- Partitions: 4
+--- Total Size: 931 GB
+--- Logical Disk Count: 2
+----- Logical Disk 1: 
+------ Name: C:
+------ Caption: C:
+------ Volume Name: 
+------ Description: Local Fixed Disk
+------ File System: NTFS
+------ Is Compressed: False 
+------ Free Space: 135 GB
+------ Total Size: 779 GB
+----- Logical Disk 2: 
+------ Name: D:
+------ Caption: D:
+------ Volume Name: New Volume
+------ Description: Local Fixed Disk
+------ File System: NTFS
+------ Is Compressed: False 
+------ Free Space: 150 GB
+------ Total Size: 150 GB
+
+ 

@@ -1,0 +1,11 @@
+@LogViewer_HostAddress = http://localhost:5083
+@Folder = DataCaptureClient
+
+GET {{LogViewer_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+
+GET {{LogViewer_HostAddress}}/api/Logs/{{Folder}}
+Accept: application/json

@@ -1,0 +1,1522 @@
+Verison: 1.9.22.6160, Culture: 'en-US'
+2022-06-22 16:14:11.1125 INFO [1] Web client started. Configuration started ...
+2022-06-22 16:14:11.1307 INFO [1] Creating connection with localhost and trying to authenticate with username guest and password guest...
+2022-06-22 16:14:11.1606 INFO [1] RabbitMQ connection created:WebClient to SdkService connection. ChannelsMax: 2047; LocalPort:61031;
+2022-06-22 16:14:11.1606 INFO [1] RabbitMQ channel created for connection: WebClient to SdkService connection. ChannelNumber:1; Timeout:00:00:20;
+2022-06-22 16:14:11.3258 INFO [1] Configuration complete
+2022-06-22 16:14:11.3833 DEBUG [9] SessionID: jzemtc4wkh0op0v1uxxmsy2c Session_Start
+2022-06-22 16:14:11.4623 DEBUG [12] SessionID: jzemtc4wkh0op0v1uxxmsy2c Login page requested by: ::1;  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+2022-06-22 16:15:07.2161 INFO [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c Starting Login...
+2022-06-22 16:15:07.2161 INFO [25] Session: jzemtc4wkh0op0v1uxxmsy2c Logging in to the server...
+2022-06-22 16:15:07.2161 INFO [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c trying to log in to the server...
+2022-06-22 16:15:09.2612 INFO [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c ManagerCommunication.Logout
+2022-06-22 16:15:09.2612 INFO [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c, ManagerCommunication.Logout - TCP session exists
+2022-06-22 16:15:09.2612 DEBUG [25]   Only TCP session exists.
+2022-06-22 16:15:11.2989 ERROR [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c, Exception occured when logging out from SsiServer: System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it 127.0.0.1:12543
+   at System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   at SsiServerCommunication.Clients.SsiTcpClientSession..ctor(String ip, Int32 port, SsiTcpClientSettings settings)
+   at SsiServerCommunication.SsiSessionFactory.CreateTcpClientSession(String serverIp, Int32 serverPort, SsiTcpClientSettings settings)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.<>c__DisplayClass5_0.<.ctor>b__0()
+   at Ssi.Common.ObjectPool.ThreadSafeObjectPool`1.GetObject()
+   at Ssi.Communication.SessionPool.GetObject()
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.Logout()
+   at Ssi.Communication.TCPCommunication.TCPCommunication.Logout()
+   at Ssi.Communication.ManagerCommunication.ManagerCommunication.Logout(String sessionId)
+2022-06-22 16:15:11.2998 INFO [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c, ManagerCommunication.Logout - Logged out!
+2022-06-22 16:15:11.2998 ERROR [25] SessionID: jzemtc4wkh0op0v1uxxmsy2c, Exception: System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it 127.0.0.1:12543
+   at System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   at SsiServerCommunication.Clients.SsiTcpClientSession..ctor(String ip, Int32 port, SsiTcpClientSettings settings)
+   at SsiServerCommunication.SsiSessionFactory.CreateTcpClientSession(String serverIp, Int32 serverPort, SsiTcpClientSettings settings)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.<>c__DisplayClass5_0.<.ctor>b__0()
+   at Ssi.Common.ObjectPool.ThreadSafeObjectPool`1.GetObject()
+   at Ssi.Communication.SessionPool.GetObject()
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.Login(String userName, String password)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.Login(String userName, String password)
+   at Ssi.Communication.ManagerCommunication.ManagerCommunication.Login(String sessionId, String userName, String password, String ssiIpAddress, Int32 ssiPortNumber, Boolean trusted)
+   at Ssi.Logic.Communication.AccountLogic.LoginWithResult(String sessionId, String userName, String password, String subdomain, Boolean trusted)
+   at Ssi.Web.Controllers.AccountController.<Login>d__10.MoveNext()
+2022-06-22 16:16:07.5051 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Starting Login...
+2022-06-22 16:16:07.5051 INFO [33] Session: jzemtc4wkh0op0v1uxxmsy2c Logging in to the server...
+2022-06-22 16:16:07.5051 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c trying to log in to the server...
+2022-06-22 16:16:07.7167 DEBUG [33]   Logged in to the server, sessionId:3f20f0ba-4fe4-4f05-acd7-1167ab539390
+2022-06-22 16:16:07.7167 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c finished log in to the server
+2022-06-22 16:16:07.7167 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c trying to start SDKWrapper - guid:25d81a74-536d-4008-b590-e62ee5c08a28...
+2022-06-22 16:16:07.7167 DEBUG [33] Declaring a new reply queue.
+2022-06-22 16:16:07.7220 DEBUG [33] Reply queue declared:SdkServiceResponse-25d81a74-536d-4008-b590-e62ee5c08a28
+2022-06-22 16:16:09.0492 INFO [33] SDK Wrapper started for guid:25d81a74-536d-4008-b590-e62ee5c08a28. Response for corrId:0e3cacaf-528b-4ebf-afc9-cbd93b50df84, expecting:0e3cacaf-528b-4ebf-afc9-cbd93b50df84
+2022-06-22 16:16:09.0492 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c finished trying to start SDKWrapper - 25d81a74-536d-4008-b590-e62ee5c08a28
+2022-06-22 16:16:09.0492 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Started SDKWrapper successfully
+2022-06-22 16:16:09.0492 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Start setting up SDKWrapper Communication session
+2022-06-22 16:16:09.0671 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Finished setting up SDKWrapper Communication session
+2022-06-22 16:16:09.0671 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Start getting field templates from SSI Server
+2022-06-22 16:16:09.0671 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Finished getting field templates from SSI Server
+2022-06-22 16:16:09.0671 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Start setting field templates in SDKWrapper
+2022-06-22 16:16:09.0874 INFO [33] SessionID: jzemtc4wkh0op0v1uxxmsy2c Finished setting field templates in SDKWrapper!
+2022-06-22 16:16:09.1837 INFO [33] Session: jzemtc4wkh0op0v1uxxmsy2c Logging in to the server result: 0
+2022-06-22 16:16:09.1837 INFO [33] Session: jzemtc4wkh0op0v1uxxmsy2c logged in successfully.
+2022-06-22 16:16:12.6729 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:17:58.2918 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:02.8171 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:18:03.4563 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:09.1057 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:18:09.2054 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:18:10.3759 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:18:10.4338 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:18:10.4418 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:18:10.4418 DEBUG [32] Registered document load event listener:1
+2022-06-22 16:18:10.4606 DEBUG [26] Registered document load event listener:1
+2022-06-22 16:18:10.4736 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:10.5374 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:18:10.5866 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:18:10.6209 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:18:10.6209 DEBUG [39] Registered document load event listener:1
+2022-06-22 16:18:11.1733 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:18:14.9487 DEBUG [32] Registered document load event listener:1
+2022-06-22 16:18:14.9591 DEBUG [26] Registered document load event listener:1
+2022-06-22 16:18:14.9591 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:14.9796 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:18:26.8733 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:18:28.0407 DEBUG [9] Registered document load event listener:1
+2022-06-22 16:18:28.1535 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:18:28.2392 DEBUG [32] Registered document load event listener:1
+2022-06-22 16:18:30.8840 DEBUG [39] Registered document load event listener:1
+2022-06-22 16:18:30.9209 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:18:32.2015 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:18:32.2404 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:18:33.0353 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:18:33.0802 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:18:33.7554 DEBUG [38] Registered document load event listener:1
+2022-06-22 16:18:33.7923 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:18:34.3917 DEBUG [32] Registered document load event listener:1
+2022-06-22 16:18:34.4277 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:18:35.1976 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:18:35.2455 DEBUG [38] Registered document load event listener:1
+2022-06-22 16:18:38.1294 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:18:38.1683 DEBUG [32] Registered document load event listener:1
+2022-06-22 16:18:38.6929 DEBUG [39] Registered document load event listener:1
+2022-06-22 16:18:38.7318 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:38.8655 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:18:38.9014 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:18:39.0151 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:18:39.0530 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:18:39.1716 DEBUG [9] Registered document load event listener:1
+2022-06-22 16:18:39.2065 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:18:46.7271 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:46.7755 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:18:47.2433 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:18:47.2881 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:18:47.4198 DEBUG [9] Registered document load event listener:1
+2022-06-22 16:18:47.4607 DEBUG [39] Registered document load event listener:1
+2022-06-22 16:18:47.5873 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:18:47.6262 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:18:47.7559 DEBUG [38] Registered document load event listener:1
+2022-06-22 16:18:47.7918 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:18:47.9115 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:18:47.9424 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:18:48.0750 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:18:48.1109 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:18:48.2316 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:18:48.2655 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:18:48.3792 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:18:48.4121 DEBUG [38] Registered document load event listener:1
+2022-06-22 16:18:48.5139 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:18:48.5587 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:19:16.7552 DEBUG [34] Registered document load event listener:1
+2022-06-22 16:19:16.8009 DEBUG [24] Registered document load event listener:1
+2022-06-22 16:19:17.0111 DEBUG [35] Registered document load event listener:1
+2022-06-22 16:19:17.0576 DEBUG [28] Registered document load event listener:1
+2022-06-22 16:19:28.8811 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:19:28.9214 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:19:42.5392 DEBUG [34] Registered document load event listener:1
+2022-06-22 16:19:42.6238 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:19:42.6611 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:19:44.6695 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:19:45.1791 DEBUG [28] Registered document load event listener:1
+2022-06-22 16:19:45.1791 DEBUG [52] Registered document load event listener:1
+2022-06-22 16:19:45.2141 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:19:51.6700 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:19:52.5907 DEBUG [28] Registered document load event listener:1
+2022-06-22 16:19:52.6984 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:19:53.2749 DEBUG [38] Registered document load event listener:1
+2022-06-22 16:19:55.3135 DEBUG [31] Registered document load event listener:1
+2022-06-22 16:19:55.3492 DEBUG [24] Registered document load event listener:1
+2022-06-22 16:19:58.4397 DEBUG [9] Registered document load event listener:1
+2022-06-22 16:19:58.4831 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:19:59.3952 DEBUG [36] Registered document load event listener:1
+2022-06-22 16:19:59.4400 DEBUG [52] Registered document load event listener:1
+2022-06-22 16:19:59.9153 DEBUG [32] Registered document load event listener:1
+2022-06-22 16:19:59.9512 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:20:00.2133 DEBUG [29] Registered document load event listener:1
+2022-06-22 16:20:00.2499 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:20:00.4611 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:20:00.4954 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:20:00.6653 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:20:00.7070 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:20:04.5625 DEBUG [14] Registered document load event listener:1
+2022-06-22 16:20:04.9771 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:20:05.6953 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:20:05.7405 DEBUG [28] Registered document load event listener:1
+2022-06-22 16:20:08.4003 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:20:08.4424 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:20:08.9493 DEBUG [24] Registered document load event listener:1
+2022-06-22 16:20:08.9953 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:20:09.1493 DEBUG [36] Registered document load event listener:1
+2022-06-22 16:20:09.1834 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:20:09.3170 DEBUG [14] Registered document load event listener:1
+2022-06-22 16:20:09.3555 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:20:09.4893 DEBUG [33] Registered document load event listener:1
+2022-06-22 16:20:09.5263 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:20:24.0362 DEBUG [16] Registered document load event listener:1
+2022-06-22 16:20:24.0546 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:20:24.0932 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:20:41.1607 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:20:41.1607 DEBUG [30] Registered document load event listener:1
+2022-06-22 16:20:41.1779 DEBUG [33] Registered document load event listener:1
+2022-06-22 16:20:41.1779 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:22:34.3992 DEBUG [9] Registered document load event listener:1
+2022-06-22 16:22:34.4860 DEBUG [33] SessionID: 3f20f0ba-4fe4-4f05-acd7-1167ab539390 Session dropped by the server: System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.FixedSizeReader.ReadPacket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Net.Security._SslStream.StartFrameHeader(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.StartReading(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.PerformRequest(Stream stream, BinaryCommand request)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.IsSessionActive()
+2022-06-22 16:22:35.6349 INFO [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c Controller.Logout - called from: 
+2022-06-22 16:22:35.6349 INFO [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c LogOff
+2022-06-22 16:22:35.6349 INFO [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c   manual or view redirection?
+2022-06-22 16:22:35.6349 INFO [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c ManagerCommunication.Logout
+2022-06-22 16:22:35.6349 INFO [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c, ManagerCommunication.Logout - TCP session exists
+2022-06-22 16:22:35.6349 DEBUG [17]   Both SDK and TCP sessions exist.
+2022-06-22 16:22:35.6349 DEBUG [17] SessionID: 3f20f0ba-4fe4-4f05-acd7-1167ab539390 Session dropped by the server: System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.FixedSizeReader.ReadPacket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Net.Security._SslStream.StartFrameHeader(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.StartReading(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.PerformRequest(Stream stream, BinaryCommand request)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.IsSessionActive()
+2022-06-22 16:22:35.6349 DEBUG [17]     TCP session NOT active.
+2022-06-22 16:22:35.6762 INFO [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c, ManagerCommunication.Logout - Logged out!
+2022-06-22 16:22:35.6762 DEBUG [17] SessionID: jzemtc4wkh0op0v1uxxmsy2c Controller.LogOff exit, redirecting to Login
+2022-06-22 16:22:35.6762 DEBUG [16] SessionID: jzemtc4wkh0op0v1uxxmsy2c Session_End
+2022-06-22 16:22:35.6762 INFO [16] SessionID: jzemtc4wkh0op0v1uxxmsy2c LogOff
+2022-06-22 16:22:35.6762 INFO [16] SessionID: jzemtc4wkh0op0v1uxxmsy2c   from Session_End or Redirect
+2022-06-22 16:22:35.6762 INFO [16] SessionID: jzemtc4wkh0op0v1uxxmsy2c ManagerCommunication.Logout
+2022-06-22 16:22:35.6762 DEBUG [16] SessionID: jzemtc4wkh0op0v1uxxmsy2c ManagerCommunication.Logout - TCP session does not exist or locked.
+2022-06-22 16:22:35.6762 DEBUG [16] SessionID: jzemtc4wkh0op0v1uxxmsy2c Controller.LogOff exit, redirecting to Login
+2022-06-22 16:22:35.6762 DEBUG [25] SessionID: x00fot1zyz0bbre3kkfdjkhh Session_Start
+2022-06-22 16:22:35.6762 DEBUG [25] SessionID: x00fot1zyz0bbre3kkfdjkhh Login page requested by: ::1;  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+2022-06-22 16:22:36.4732 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Starting Login...
+2022-06-22 16:22:36.4732 INFO [14] Session: x00fot1zyz0bbre3kkfdjkhh Logging in to the server...
+2022-06-22 16:22:36.4732 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh trying to log in to the server...
+2022-06-22 16:22:36.6239 DEBUG [14]   Logged in to the server, sessionId:9145217f-3abe-4a5b-9b10-63972d20b6cc
+2022-06-22 16:22:36.6239 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh finished log in to the server
+2022-06-22 16:22:36.6239 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh trying to start SDKWrapper - guid:6a0222e8-f671-40e0-8467-abe6979c98e4...
+2022-06-22 16:22:36.6239 DEBUG [14] Declaring a new reply queue.
+2022-06-22 16:22:36.6239 DEBUG [14] Reply queue declared:SdkServiceResponse-6a0222e8-f671-40e0-8467-abe6979c98e4
+2022-06-22 16:22:37.2347 INFO [14] SDK Wrapper started for guid:6a0222e8-f671-40e0-8467-abe6979c98e4. Response for corrId:0d21606f-5635-4054-8d5e-1de0f8fc9404, expecting:0d21606f-5635-4054-8d5e-1de0f8fc9404
+2022-06-22 16:22:37.2456 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh finished trying to start SDKWrapper - 6a0222e8-f671-40e0-8467-abe6979c98e4
+2022-06-22 16:22:37.2456 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Started SDKWrapper successfully
+2022-06-22 16:22:37.2456 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Start setting up SDKWrapper Communication session
+2022-06-22 16:22:37.2456 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Finished setting up SDKWrapper Communication session
+2022-06-22 16:22:37.2456 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Start getting field templates from SSI Server
+2022-06-22 16:22:37.2571 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Finished getting field templates from SSI Server
+2022-06-22 16:22:37.2571 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Start setting field templates in SDKWrapper
+2022-06-22 16:22:37.2571 INFO [14] SessionID: x00fot1zyz0bbre3kkfdjkhh Finished setting field templates in SDKWrapper!
+2022-06-22 16:22:37.2919 INFO [14] Session: x00fot1zyz0bbre3kkfdjkhh Logging in to the server result: 0
+2022-06-22 16:22:37.2919 INFO [14] Session: x00fot1zyz0bbre3kkfdjkhh logged in successfully.
+2022-06-22 16:22:38.3123 DEBUG [22] Registered document load event listener:1
+2022-06-22 16:22:40.7982 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:22:42.0263 DEBUG [25] Registered document load event listener:1
+2022-06-22 16:22:42.1181 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:22:42.1918 DEBUG [20] Registered document load event listener:1
+2022-06-22 16:22:48.6928 DEBUG [17] Registered document load event listener:1
+2022-06-22 16:22:48.7549 DEBUG [5] Registered document load event listener:1
+2022-06-22 16:22:48.7953 DEBUG [28] Registered document load event listener:1
+2022-06-22 16:22:49.6502 DEBUG [36] Registered document load event listener:1
+2022-06-22 16:22:49.6663 DEBUG [18] Registered document load event listener:1
+2022-06-22 16:22:49.6802 DEBUG [23] Registered document load event listener:1
+2022-06-22 16:22:49.7079 DEBUG [19] Registered document load event listener:1
+2022-06-22 16:44:50.2859 DEBUG [123] SessionID: 9145217f-3abe-4a5b-9b10-63972d20b6cc Session dropped by the server: System.IO.IOException: Unable to write data to the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Send(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Security._SslStream.StartWriting(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessWrite(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.PerformRequest(Stream stream, BinaryCommand request)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.IsSessionActive()
+2022-06-22 16:44:50.2859 DEBUG [128] Registered document load event listener:1
+2022-06-22 16:44:50.2859 ERROR [128] SessionID: x00fot1zyz0bbre3kkfdjkhh, Exception: System.IO.IOException: Unable to write data to the transport connection: An existing connection was forcibly closed by the remote host. ---> System.Net.Sockets.SocketException: An existing connection was forcibly closed by the remote host
+   at System.Net.Sockets.Socket.Send(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Write(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.Security._SslStream.StartWriting(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessWrite(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.Write(Byte[] buffer, Int32 offset, Int32 count)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.PerformRequest(Stream stream, BinaryCommand request)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.GetPermissions()
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.GetPermissions()
+   at Ssi.Communication.TCPCommunication.TCPCommunication.GetPermissions()
+   at Ssi.Communication.ManagerCommunication.ManagerCommunication.GetPermissionListFromTcp(String sessionId)
+   at Ssi.Logic.Communication.AdminPanelLogic.GetPermissions(String sessionId)
+2022-06-22 16:44:51.2346 INFO [86] SessionID: x00fot1zyz0bbre3kkfdjkhh Controller.Logout - called from: 
+2022-06-22 16:44:51.2346 INFO [86] SessionID: x00fot1zyz0bbre3kkfdjkhh LogOff
+2022-06-22 16:44:51.2346 INFO [86] SessionID: x00fot1zyz0bbre3kkfdjkhh   manual or view redirection?
+2022-06-22 16:44:51.2346 INFO [86] SessionID: x00fot1zyz0bbre3kkfdjkhh ManagerCommunication.Logout
+2022-06-22 16:44:51.2346 INFO [86] SessionID: x00fot1zyz0bbre3kkfdjkhh, ManagerCommunication.Logout - TCP session exists
+2022-06-22 16:44:51.2346 DEBUG [86]   Both SDK and TCP sessions exist.
+2022-06-22 16:44:51.2396 DEBUG [86]     TCP sessions is active.
+2022-06-22 16:44:51.2396 INFO [86] Closing SDK Wrapper...
+2022-06-22 16:44:51.3017 INFO [86] Closed SDK Wrapper; result: 0
+2022-06-22 16:44:51.3241 INFO [86] SessionID: x00fot1zyz0bbre3kkfdjkhh, ManagerCommunication.Logout - Logged out!
+2022-06-22 16:44:51.3241 DEBUG [86] SessionID: x00fot1zyz0bbre3kkfdjkhh Controller.LogOff exit, redirecting to Login
+2022-06-22 16:44:51.3241 DEBUG [108] SessionID: x00fot1zyz0bbre3kkfdjkhh Session_End
+2022-06-22 16:44:51.3241 INFO [108] SessionID: x00fot1zyz0bbre3kkfdjkhh LogOff
+2022-06-22 16:44:51.3241 INFO [108] SessionID: x00fot1zyz0bbre3kkfdjkhh   from Session_End or Redirect
+2022-06-22 16:44:51.3241 INFO [108] SessionID: x00fot1zyz0bbre3kkfdjkhh ManagerCommunication.Logout
+2022-06-22 16:44:51.3241 DEBUG [108] SessionID: x00fot1zyz0bbre3kkfdjkhh ManagerCommunication.Logout - TCP session does not exist or locked.
+2022-06-22 16:44:51.3241 DEBUG [108] SessionID: x00fot1zyz0bbre3kkfdjkhh Controller.LogOff exit, redirecting to Login
+2022-06-22 16:44:51.3241 DEBUG [119] SessionID: eoauncvmiw3plodkt3qt0uye Session_Start
+2022-06-22 16:44:51.3241 DEBUG [119] SessionID: eoauncvmiw3plodkt3qt0uye Login page requested by: ::1;  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+2022-06-22 16:44:51.7484 DEBUG [88] SessionID: x00fot1zyz0bbre3kkfdjkhh Session_Start
+2022-06-22 16:44:51.7484 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:44:52.1353 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Starting Login...
+2022-06-22 16:44:52.1353 INFO [127] Session: eoauncvmiw3plodkt3qt0uye Logging in to the server...
+2022-06-22 16:44:52.1353 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye trying to log in to the server...
+2022-06-22 16:44:52.2941 DEBUG [127]   Logged in to the server, sessionId:ef9f3ae0-0ace-47bd-a31b-077dae453c11
+2022-06-22 16:44:52.2941 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye finished log in to the server
+2022-06-22 16:44:52.2941 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye trying to start SDKWrapper - guid:4cc8015c-fab9-47e2-9858-8c132ab4b63f...
+2022-06-22 16:44:52.2941 DEBUG [127] Declaring a new reply queue.
+2022-06-22 16:44:52.2941 DEBUG [127] Reply queue declared:SdkServiceResponse-4cc8015c-fab9-47e2-9858-8c132ab4b63f
+2022-06-22 16:44:52.9019 INFO [127] SDK Wrapper started for guid:4cc8015c-fab9-47e2-9858-8c132ab4b63f. Response for corrId:9e2e22c9-4bae-4a51-8de7-6de83e24ae9e, expecting:9e2e22c9-4bae-4a51-8de7-6de83e24ae9e
+2022-06-22 16:44:52.9019 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye finished trying to start SDKWrapper - 4cc8015c-fab9-47e2-9858-8c132ab4b63f
+2022-06-22 16:44:52.9019 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Started SDKWrapper successfully
+2022-06-22 16:44:52.9019 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Start setting up SDKWrapper Communication session
+2022-06-22 16:44:52.9134 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Finished setting up SDKWrapper Communication session
+2022-06-22 16:44:52.9134 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Start getting field templates from SSI Server
+2022-06-22 16:44:52.9134 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Finished getting field templates from SSI Server
+2022-06-22 16:44:52.9134 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Start setting field templates in SDKWrapper
+2022-06-22 16:44:52.9294 INFO [127] SessionID: eoauncvmiw3plodkt3qt0uye Finished setting field templates in SDKWrapper!
+2022-06-22 16:44:52.9562 INFO [127] Session: eoauncvmiw3plodkt3qt0uye Logging in to the server result: 0
+2022-06-22 16:44:52.9562 INFO [127] Session: eoauncvmiw3plodkt3qt0uye logged in successfully.
+2022-06-22 16:44:53.9950 DEBUG [116] Registered document load event listener:1
+2022-06-22 16:44:57.1494 DEBUG [127] Registered document load event listener:1
+2022-06-22 16:44:57.1660 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:44:57.1660 DEBUG [130] Registered document load event listener:1
+2022-06-22 16:44:57.1938 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:45:03.1963 DEBUG [129] Registered document load event listener:1
+2022-06-22 16:45:04.1642 DEBUG [134] Registered document load event listener:1
+2022-06-22 16:45:04.2622 DEBUG [118] Registered document load event listener:1
+2022-06-22 16:45:04.8164 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:45:06.8923 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:45:06.9407 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:45:15.4793 DEBUG [131] Registered document load event listener:1
+2022-06-22 16:45:15.5195 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:45:16.2513 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:45:16.2959 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:45:16.6539 DEBUG [128] Registered document load event listener:1
+2022-06-22 16:45:16.6995 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:45:16.8092 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:45:16.8427 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:45:16.9657 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:45:17.0022 DEBUG [130] Registered document load event listener:1
+2022-06-22 16:45:17.1193 DEBUG [118] Registered document load event listener:1
+2022-06-22 16:45:17.1557 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:45:17.2757 DEBUG [131] Registered document load event listener:1
+2022-06-22 16:45:17.3133 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:45:17.3693 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:45:17.4058 DEBUG [135] Registered document load event listener:1
+2022-06-22 16:45:31.5073 DEBUG [127] Registered document load event listener:1
+2022-06-22 16:45:31.5542 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:45:32.0842 DEBUG [118] Registered document load event listener:1
+2022-06-22 16:45:32.1302 DEBUG [135] Registered document load event listener:1
+2022-06-22 16:45:32.2437 DEBUG [130] Registered document load event listener:1
+2022-06-22 16:45:32.2809 DEBUG [129] Registered document load event listener:1
+2022-06-22 16:45:32.3877 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:45:32.4221 DEBUG [132] Registered document load event listener:1
+2022-06-22 16:45:32.5253 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:45:32.5623 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:45:32.6692 DEBUG [133] Registered document load event listener:1
+2022-06-22 16:45:32.7039 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:45:32.8212 DEBUG [126] Registered document load event listener:1
+2022-06-22 16:45:32.8578 DEBUG [127] Registered document load event listener:1
+2022-06-22 16:45:32.9593 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:45:32.9958 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:45:33.1073 DEBUG [135] Registered document load event listener:1
+2022-06-22 16:45:33.1508 DEBUG [123] Registered document load event listener:1
+2022-06-22 16:45:33.2472 DEBUG [129] Registered document load event listener:1
+2022-06-22 16:45:33.2828 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:45:33.4162 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:45:33.4513 DEBUG [131] Registered document load event listener:1
+2022-06-22 16:45:33.5623 DEBUG [26] Registered document load event listener:1
+2022-06-22 16:45:33.6002 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:45:33.6932 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:45:33.7276 DEBUG [126] Registered document load event listener:1
+2022-06-22 16:45:33.8573 DEBUG [119] Registered document load event listener:1
+2022-06-22 16:45:33.8938 DEBUG [128] Registered document load event listener:1
+2022-06-22 16:45:33.9993 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:45:34.0369 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:45:34.1513 DEBUG [135] Registered document load event listener:1
+2022-06-22 16:45:34.1955 DEBUG [123] Registered document load event listener:1
+2022-06-22 16:45:34.3053 DEBUG [129] Registered document load event listener:1
+2022-06-22 16:45:34.3419 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:45:34.4533 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:45:34.4887 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:45:34.6133 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:45:34.6471 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:45:34.7932 DEBUG [26] Registered document load event listener:1
+2022-06-22 16:45:34.8281 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:45:34.9653 DEBUG [116] Registered document load event listener:1
+2022-06-22 16:45:35.0014 DEBUG [119] Registered document load event listener:1
+2022-06-22 16:45:35.1332 DEBUG [118] Registered document load event listener:1
+2022-06-22 16:45:35.1708 DEBUG [135] Registered document load event listener:1
+2022-06-22 16:45:35.2854 DEBUG [123] Registered document load event listener:1
+2022-06-22 16:45:35.3249 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:45:35.4532 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:45:35.4893 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:45:35.6298 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:45:35.6652 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:45:38.9172 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:45:38.9637 DEBUG [126] Registered document load event listener:1
+2022-06-22 16:45:39.3853 DEBUG [119] Registered document load event listener:1
+2022-06-22 16:45:39.4304 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:45:39.5322 DEBUG [128] Registered document load event listener:1
+2022-06-22 16:45:39.5672 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:45:39.6756 DEBUG [135] Registered document load event listener:1
+2022-06-22 16:45:39.7100 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:45:39.8311 DEBUG [132] Registered document load event listener:1
+2022-06-22 16:45:39.8706 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:45:39.9662 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:45:40.0010 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:45:57.8679 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:46:02.2936 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:46:03.4635 DEBUG [128] Registered document load event listener:1
+2022-06-22 16:46:03.5074 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:46:04.1527 DEBUG [88] Registered document load event listener:1
+2022-06-22 16:46:04.2001 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:46:04.6555 DEBUG [119] Registered document load event listener:1
+2022-06-22 16:46:04.6963 DEBUG [108] Registered document load event listener:1
+2022-06-22 16:46:05.2169 DEBUG [131] Registered document load event listener:1
+2022-06-22 16:46:05.2663 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:46:05.8199 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:46:05.8719 DEBUG [132] Registered document load event listener:1
+2022-06-22 16:46:07.0415 DEBUG [26] Registered document load event listener:1
+2022-06-22 16:46:07.0844 DEBUG [134] Registered document load event listener:1
+2022-06-22 16:46:08.1279 DEBUG [116] Registered document load event listener:1
+2022-06-22 16:46:08.1733 DEBUG [127] Registered document load event listener:1
+2022-06-22 16:46:08.8342 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:46:08.8701 DEBUG [131] Registered document load event listener:1
+2022-06-22 16:46:10.3972 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:46:10.4414 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:46:11.5173 DEBUG [86] Registered document load event listener:1
+2022-06-22 16:46:11.5193 INFO [86] SessionID: eoauncvmiw3plodkt3qt0uye Start getting field templates from SSI Server!
+2022-06-22 16:46:11.5193 INFO [86] SessionID: eoauncvmiw3plodkt3qt0uye Finished getting field templates from SSI Server!
+2022-06-22 16:46:11.5193 INFO [86] SessionID: eoauncvmiw3plodkt3qt0uye Start setting field templates in SDKWrapper!
+2022-06-22 16:46:11.5193 INFO [86] SessionID: eoauncvmiw3plodkt3qt0uye Finished setting field templates in SDKWrapper!
+2022-06-22 16:46:13.9967 DEBUG [116] SignalR connected: 167701b4-a849-4d28-964a-e58710d29560
+2022-06-22 16:46:14.0186 DEBUG [128] Adding SignalR connection SessionId:eoauncvmiw3plodkt3qt0uye ConnectionId:167701b4-a849-4d28-964a-e58710d29560
+2022-06-22 16:46:14.0186 DEBUG [128] ...added OK
+2022-06-22 16:46:14.8489 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:46:14.8778 DEBUG [116] Registered document load event listener:1
+2022-06-22 16:46:18.3622 DEBUG [133] Registered document load event listener:1
+2022-06-22 16:46:18.3622 INFO [133] PRF GetBatch #1 (Start batch loading)
+2022-06-22 16:46:18.3789 INFO [133] PRF LoadBatchInSdk #1
+2022-06-22 16:46:18.3789 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Started Loading batch with Id = 593c7077-12f7-4ce8-8277-0e664d1377ba.
+2022-06-22 16:46:18.3789 INFO [133] PRF LoadBatchInSdk #2
+2022-06-22 16:46:18.3789 INFO [133] PRF LoadBatchInSdk #3
+2022-06-22 16:46:18.3789 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye trying to get batch templates from SSI Server!
+2022-06-22 16:46:18.3789 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 16:46:18.3789 INFO [133] PRF LoadBatchInSdk #4
+2022-06-22 16:46:18.3789 INFO [133] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 16:46:18.3789 INFO [133] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 16:46:18.3789 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetBatchDetails.
+2022-06-22 16:46:18.3949 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetBatchDetails.
+2022-06-22 16:46:18.3949 INFO [133] PRF LoadBatchInSdk #6
+2022-06-22 16:46:18.3949 INFO [133] PRF LoadBatchInSdk #6a
+2022-06-22 16:46:18.4092 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start SetBatchInSdk.
+2022-06-22 16:46:18.8570 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End SetBatchInSdk.
+2022-06-22 16:46:18.8570 INFO [133] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 448.8468 ms
+2022-06-22 16:46:18.8570 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start  GetBatchMetadata from server.
+2022-06-22 16:46:18.8570 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Finish  GetBatchMetadata from server.
+2022-06-22 16:46:18.8570 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start  SetBatchMetadata in Wrapper.
+2022-06-22 16:46:18.8648 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 16:46:18.8648 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetBatchTypeSettings from server.
+2022-06-22 16:46:18.8648 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetBatchTypeSettings from server.
+2022-06-22 16:46:18.8648 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 16:46:19.0051 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End SetBatchTypeSettings in Wrapper.
+2022-06-22 16:46:19.0051 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetBatchTypeInfo from server.
+2022-06-22 16:46:19.0051 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetBatchTypeInfo from server.
+2022-06-22 16:46:19.0051 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 16:46:19.0051 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End SetBatchTypeInfo in Wrapper.
+2022-06-22 16:46:19.0051 INFO [133] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 159.6675 ms
+2022-06-22 16:46:19.0051 INFO [133] PRF LoadBatchFirstDocument #1
+2022-06-22 16:46:19.0051 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetDocumentFormData from server.
+2022-06-22 16:46:19.0242 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetDocumentFormData from server.
+2022-06-22 16:46:19.0242 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start SetDocumentFormData in Wrapper.
+2022-06-22 16:46:19.0776 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End SetDocumentFormData in Wrapper.
+2022-06-22 16:46:19.0776 INFO [133] PRF LoadBatchFirstDocument #2 (Set document form data) - 59.8427 ms
+2022-06-22 16:46:19.0776 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetPageImage from server.
+2022-06-22 16:46:19.0810 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetPageImage from server.
+2022-06-22 16:46:19.0810 INFO [133] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 115915) - 3.4148 ms
+2022-06-22 16:46:19.0810 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetPageOcrData from server.
+2022-06-22 16:46:19.0810 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetPageOcrData from server.
+2022-06-22 16:46:19.0810 INFO [133] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 70965) - 1.6605 ms
+2022-06-22 16:46:19.0810 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start SetPageImageAndData in Wrapper.
+2022-06-22 16:46:19.1921 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End SetPageImageAndData in Wrapper.
+2022-06-22 16:46:19.1921 INFO [133] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 108.4038 ms
+2022-06-22 16:46:19.1921 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetPageImage from server.
+2022-06-22 16:46:19.1921 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetPageImage from server.
+2022-06-22 16:46:19.1921 INFO [133] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 60537) - 2.9399 ms
+2022-06-22 16:46:19.1921 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start GetPageOcrData from server.
+2022-06-22 16:46:19.1921 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End GetPageOcrData from server.
+2022-06-22 16:46:19.1921 INFO [133] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 24419) - 2.023 ms
+2022-06-22 16:46:19.1921 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, Start SetPageImageAndData in Wrapper.
+2022-06-22 16:46:19.2617 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye, End SetPageImageAndData in Wrapper.
+2022-06-22 16:46:19.2617 INFO [133] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 63.7123 ms
+2022-06-22 16:46:19.2617 INFO [133] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 2 times) - 184.1743 ms
+2022-06-22 16:46:19.2617 INFO [133] PRF LoadBatchInSdk #9
+2022-06-22 16:46:19.2617 INFO [133] PRF LoadBatchInSdk #10
+2022-06-22 16:46:19.2617 INFO [119] SessionID: eoauncvmiw3plodkt3qt0uye, Finished Loading batch with Id = 593c7077-12f7-4ce8-8277-0e664d1377ba.
+2022-06-22 16:46:19.2617 INFO [133] PRF LoadBatchInSdk #11
+2022-06-22 16:46:19.2617 INFO [133] PRF GetBatch #2
+2022-06-22 16:46:19.2617 INFO [133] PRF GetBatch #3
+2022-06-22 16:46:19.2686 DEBUG [133] Into get document validity from sdk for document 62149c37-21db-4deb-8067-40770696ab76!
+2022-06-22 16:46:19.3314 DEBUG [133] Finished call from sdk to get document validity 62149c37-21db-4deb-8067-40770696ab76!
+2022-06-22 16:46:19.3582 INFO [133] PRF GetBatch #4 (End batch loading) - 991.0249 ms
+2022-06-22 16:46:19.3652 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:46:19.3652 DEBUG [126] Registered document load event listener:1
+2022-06-22 16:46:19.3915 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:46:19.3915 INFO [136] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page b0e64d4a-2f54-4589-8cc0-3cedc71f771c in SdkWrapper started!
+2022-06-22 16:46:19.3955 INFO [136] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page b0e64d4a-2f54-4589-8cc0-3cedc71f771c in SdkWrapper finished!
+2022-06-22 16:46:19.4390 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:46:19.4390 DEBUG [128] Registered document load event listener:1
+2022-06-22 16:46:19.4399 INFO [137] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page b0e64d4a-2f54-4589-8cc0-3cedc71f771c in SdkWrapper started!
+2022-06-22 16:46:19.4399 INFO [128] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page b0e64d4a-2f54-4589-8cc0-3cedc71f771c in SdkWrapper started!
+2022-06-22 16:46:19.4399 INFO [137] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page b0e64d4a-2f54-4589-8cc0-3cedc71f771c in SdkWrapper finished!
+2022-06-22 16:46:19.4399 INFO [128] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page b0e64d4a-2f54-4589-8cc0-3cedc71f771c in SdkWrapper finished!
+2022-06-22 16:46:19.5359 DEBUG [116] Registered document load event listener:1
+2022-06-22 16:46:19.5359 DEBUG [125] Registered document load event listener:1
+2022-06-22 16:46:19.5680 DEBUG [120] Registered document load event listener:1
+2022-06-22 16:46:19.6344 DEBUG [110] Registered document load event listener:1
+2022-06-22 16:46:19.6344 DEBUG [26] Registered document load event listener:1
+2022-06-22 16:46:19.6439 DEBUG [26] Into get document validity from sdk for document 62149c37-21db-4deb-8067-40770696ab76!
+2022-06-22 16:46:19.6439 DEBUG [26] Finished call from sdk to get document validity 62149c37-21db-4deb-8067-40770696ab76!
+2022-06-22 16:46:19.6439 DEBUG [133] Registered document load event listener:1
+2022-06-22 16:46:19.6439 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye Setting active document 62149c37-21db-4deb-8067-40770696ab76 in SdkWrapper started!
+2022-06-22 16:46:19.6708 INFO [133] SessionID: eoauncvmiw3plodkt3qt0uye Setting active document 62149c37-21db-4deb-8067-40770696ab76 in SdkWrapper finished!
+2022-06-22 16:46:20.8187 DEBUG [116] Registered document load event listener:1
+2022-06-22 16:46:20.8187 INFO [116] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page 0c9f3ae2-9196-47bc-9252-3e7288badd1a in SdkWrapper started!
+2022-06-22 16:46:20.8187 INFO [116] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page 0c9f3ae2-9196-47bc-9252-3e7288badd1a in SdkWrapper finished!
+2022-06-22 16:46:20.8387 DEBUG [136] Registered document load event listener:1
+2022-06-22 16:46:20.8387 DEBUG [113] Registered document load event listener:1
+2022-06-22 16:46:20.8387 INFO [136] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page 0c9f3ae2-9196-47bc-9252-3e7288badd1a in SdkWrapper started!
+2022-06-22 16:46:20.8387 INFO [113] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page 0c9f3ae2-9196-47bc-9252-3e7288badd1a in SdkWrapper started!
+2022-06-22 16:46:20.8387 INFO [136] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page 0c9f3ae2-9196-47bc-9252-3e7288badd1a in SdkWrapper finished!
+2022-06-22 16:46:20.8707 INFO [113] SessionID: eoauncvmiw3plodkt3qt0uye Setting active page 0c9f3ae2-9196-47bc-9252-3e7288badd1a in SdkWrapper finished!
+2022-06-22 16:46:20.9067 DEBUG [133] Registered document load event listener:1
+2022-06-22 16:46:20.9087 DEBUG [133] Into get document validity from sdk for document 62149c37-21db-4deb-8067-40770696ab76!
+2022-06-22 16:46:20.9087 DEBUG [133] Finished call from sdk to get document validity 62149c37-21db-4deb-8067-40770696ab76!
+2022-06-22 16:46:23.9215 DEBUG [127] Registered document load event listener:1
+2022-06-22 16:46:40.4449 INFO [120] SessionID: eoauncvmiw3plodkt3qt0uye Controller.Logout - called from: 
+2022-06-22 16:46:40.4449 INFO [120] SessionID: eoauncvmiw3plodkt3qt0uye LogOff
+2022-06-22 16:46:40.4449 INFO [120] SessionID: eoauncvmiw3plodkt3qt0uye   manual or view redirection?
+2022-06-22 16:46:40.4449 INFO [120] SessionID: eoauncvmiw3plodkt3qt0uye ManagerCommunication.Logout
+2022-06-22 16:46:40.4449 INFO [120] SessionID: eoauncvmiw3plodkt3qt0uye, ManagerCommunication.Logout - TCP session exists
+2022-06-22 16:46:40.4449 DEBUG [120]   Both SDK and TCP sessions exist.
+2022-06-22 16:46:40.4449 DEBUG [120]     TCP sessions is active.
+2022-06-22 16:46:40.4449 INFO [120] Closing SDK Wrapper...
+2022-06-22 16:46:40.4889 INFO [120] Closed SDK Wrapper; result: 0
+2022-06-22 16:46:40.4889 INFO [120] SessionID: eoauncvmiw3plodkt3qt0uye, ManagerCommunication.Logout - Logged out!
+2022-06-22 16:46:40.4889 DEBUG [120] SessionID: eoauncvmiw3plodkt3qt0uye Controller.LogOff exit, redirecting to Login
+2022-06-22 16:46:40.4889 DEBUG [113] SessionID: eoauncvmiw3plodkt3qt0uye Session_End
+2022-06-22 16:46:40.4889 INFO [113] SessionID: eoauncvmiw3plodkt3qt0uye LogOff
+2022-06-22 16:46:40.5030 INFO [113] SessionID: eoauncvmiw3plodkt3qt0uye   from Session_End or Redirect
+2022-06-22 16:46:40.5030 INFO [113] SessionID: eoauncvmiw3plodkt3qt0uye ManagerCommunication.Logout
+2022-06-22 16:46:40.5030 DEBUG [113] SessionID: eoauncvmiw3plodkt3qt0uye ManagerCommunication.Logout - TCP session does not exist or locked.
+2022-06-22 16:46:40.5030 DEBUG [113] SessionID: eoauncvmiw3plodkt3qt0uye Controller.LogOff exit, redirecting to Login
+2022-06-22 16:46:40.5030 DEBUG [136] SessionID: pzvnhpxwhta1xwwb41mqrh4q Session_Start
+2022-06-22 16:46:40.5030 DEBUG [136] SessionID: pzvnhpxwhta1xwwb41mqrh4q Login page requested by: ::1;  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+2022-06-22 16:46:40.5030 DEBUG [137] Registered document load event listener:1
+2022-06-22 16:47:14.0447 DEBUG [118] SignalR connection timed out: 167701b4-a849-4d28-964a-e58710d29560
+2022-06-22 17:02:32.6870 DEBUG [91] SessionID: 1dvqcczjwubv2mw1qfpddibx Session_Start
+2022-06-22 17:02:32.6930 DEBUG [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Login page requested by: ::1;  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+2022-06-22 17:02:34.2328 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Starting Login...
+2022-06-22 17:02:34.2328 INFO [115] Session: 1dvqcczjwubv2mw1qfpddibx Logging in to the server...
+2022-06-22 17:02:34.2328 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx trying to log in to the server...
+2022-06-22 17:02:36.2734 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx ManagerCommunication.Logout
+2022-06-22 17:02:36.2734 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx, ManagerCommunication.Logout - TCP session exists
+2022-06-22 17:02:36.2734 DEBUG [115]   Only TCP session exists.
+2022-06-22 17:02:38.3191 ERROR [115] SessionID: 1dvqcczjwubv2mw1qfpddibx, Exception occured when logging out from SsiServer: System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it 127.0.0.1:12543
+   at System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   at SsiServerCommunication.Clients.SsiTcpClientSession..ctor(String ip, Int32 port, SsiTcpClientSettings settings)
+   at SsiServerCommunication.SsiSessionFactory.CreateTcpClientSession(String serverIp, Int32 serverPort, SsiTcpClientSettings settings)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.<>c__DisplayClass5_0.<.ctor>b__0()
+   at Ssi.Common.ObjectPool.ThreadSafeObjectPool`1.GetObject()
+   at Ssi.Communication.SessionPool.GetObject()
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.Logout()
+   at Ssi.Communication.TCPCommunication.TCPCommunication.Logout()
+   at Ssi.Communication.ManagerCommunication.ManagerCommunication.Logout(String sessionId)
+2022-06-22 17:02:38.3191 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx, ManagerCommunication.Logout - Logged out!
+2022-06-22 17:02:38.3191 ERROR [115] SessionID: 1dvqcczjwubv2mw1qfpddibx, Exception: System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it 127.0.0.1:12543
+   at System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   at SsiServerCommunication.Clients.SsiTcpClientSession..ctor(String ip, Int32 port, SsiTcpClientSettings settings)
+   at SsiServerCommunication.SsiSessionFactory.CreateTcpClientSession(String serverIp, Int32 serverPort, SsiTcpClientSettings settings)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.<>c__DisplayClass5_0.<.ctor>b__0()
+   at Ssi.Common.ObjectPool.ThreadSafeObjectPool`1.GetObject()
+   at Ssi.Communication.SessionPool.GetObject()
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.Login(String userName, String password)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.Login(String userName, String password)
+   at Ssi.Communication.ManagerCommunication.ManagerCommunication.Login(String sessionId, String userName, String password, String ssiIpAddress, Int32 ssiPortNumber, Boolean trusted)
+   at Ssi.Logic.Communication.AccountLogic.LoginWithResult(String sessionId, String userName, String password, String subdomain, Boolean trusted)
+   at Ssi.Web.Controllers.AccountController.<Login>d__10.MoveNext()
+2022-06-22 17:02:49.8587 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Starting Login...
+2022-06-22 17:02:49.8587 INFO [111] Session: 1dvqcczjwubv2mw1qfpddibx Logging in to the server...
+2022-06-22 17:02:49.8587 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx trying to log in to the server...
+2022-06-22 17:02:50.2647 DEBUG [111]   Logged in to the server, sessionId:13441902-d9ca-4e30-a80a-7ed14570d826
+2022-06-22 17:02:50.2647 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx finished log in to the server
+2022-06-22 17:02:50.2647 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx trying to start SDKWrapper - guid:a87835cc-2d50-48e1-a3e3-fbec81400f82...
+2022-06-22 17:02:50.2647 DEBUG [111] Declaring a new reply queue.
+2022-06-22 17:02:50.2687 DEBUG [111] Reply queue declared:SdkServiceResponse-a87835cc-2d50-48e1-a3e3-fbec81400f82
+2022-06-22 17:02:50.8915 INFO [111] SDK Wrapper started for guid:a87835cc-2d50-48e1-a3e3-fbec81400f82. Response for corrId:f44dcfaf-dec7-415d-8b4f-1a7562fb14ad, expecting:f44dcfaf-dec7-415d-8b4f-1a7562fb14ad
+2022-06-22 17:02:50.8949 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx finished trying to start SDKWrapper - a87835cc-2d50-48e1-a3e3-fbec81400f82
+2022-06-22 17:02:50.8949 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Started SDKWrapper successfully
+2022-06-22 17:02:50.8949 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Start setting up SDKWrapper Communication session
+2022-06-22 17:02:50.8949 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished setting up SDKWrapper Communication session
+2022-06-22 17:02:50.8949 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Start getting field templates from SSI Server
+2022-06-22 17:02:50.9110 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished getting field templates from SSI Server
+2022-06-22 17:02:50.9110 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Start setting field templates in SDKWrapper
+2022-06-22 17:02:50.9110 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished setting field templates in SDKWrapper!
+2022-06-22 17:02:50.9495 INFO [111] Session: 1dvqcczjwubv2mw1qfpddibx Logging in to the server result: 0
+2022-06-22 17:02:50.9495 INFO [111] Session: 1dvqcczjwubv2mw1qfpddibx logged in successfully.
+2022-06-22 17:02:51.8670 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:02:55.2190 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:02:55.2405 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:02:55.2405 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:02:55.2858 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:03:19.9423 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:03:21.1264 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:03:21.7982 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:03:21.8575 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:03:36.5244 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:03:36.5748 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:03:37.6764 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:03:37.7249 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:03:38.2706 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:03:38.3132 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:03:38.5506 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:03:38.5941 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:03:38.8727 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:03:38.9206 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:03:39.0607 DEBUG [99] Registered document load event listener:1
+2022-06-22 17:03:39.1028 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:03:39.2002 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:03:39.2420 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:03:39.3667 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:03:39.4053 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:03:39.5091 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:03:39.5478 DEBUG [36] Registered document load event listener:1
+2022-06-22 17:03:39.6627 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:03:39.7090 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:03:39.7820 DEBUG [99] Registered document load event listener:1
+2022-06-22 17:03:39.8240 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:04:03.4546 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:04:03.5046 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:04:04.2907 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:04:04.3378 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:04:04.4699 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:04:04.5121 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:04:04.6264 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:04:04.6702 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:04:04.7613 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:04:04.8066 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:04:04.9303 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:04:04.9748 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:04:05.0864 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:04:05.1278 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:04:05.2384 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:04:05.2814 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:04:05.3886 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:04:05.4317 DEBUG [99] Registered document load event listener:1
+2022-06-22 17:04:15.5414 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:04:15.5887 DEBUG [36] Registered document load event listener:1
+2022-06-22 17:04:16.6562 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:04:16.7062 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:04:17.5484 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:04:17.6001 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:04:17.8145 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:04:17.8545 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:04:18.1138 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:04:18.3601 DEBUG [99] Registered document load event listener:1
+2022-06-22 17:04:25.9314 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:04:25.9314 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:04:51.1506 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:04:51.1990 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:04:53.5017 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:04:53.5017 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Start getting field templates from SSI Server!
+2022-06-22 17:04:53.5152 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished getting field templates from SSI Server!
+2022-06-22 17:04:53.5152 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Start setting field templates in SDKWrapper!
+2022-06-22 17:04:53.5230 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished setting field templates in SDKWrapper!
+2022-06-22 17:04:53.7976 DEBUG [99] SignalR connected: 584fc3f0-e38c-4b32-a0c4-bb5eee789d9a
+2022-06-22 17:04:53.8016 DEBUG [100] Adding SignalR connection SessionId:1dvqcczjwubv2mw1qfpddibx ConnectionId:584fc3f0-e38c-4b32-a0c4-bb5eee789d9a
+2022-06-22 17:04:53.8016 DEBUG [100] ...added OK
+2022-06-22 17:04:54.8688 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:04:54.9076 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:04:57.7312 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:04:57.7312 INFO [96] PRF GetBatch #1 (Start batch loading)
+2022-06-22 17:04:57.7412 INFO [96] PRF LoadBatchInSdk #1
+2022-06-22 17:04:57.7412 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Started Loading batch with Id = aef91e66-f5e8-411c-8b4e-0b5813639520.
+2022-06-22 17:04:57.7412 INFO [96] PRF LoadBatchInSdk #2
+2022-06-22 17:04:57.7412 INFO [96] PRF LoadBatchInSdk #3
+2022-06-22 17:04:57.7412 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx trying to get batch templates from SSI Server!
+2022-06-22 17:04:57.7412 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 17:04:57.7412 INFO [96] PRF LoadBatchInSdk #4
+2022-06-22 17:04:57.7412 INFO [96] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 17:04:57.7537 INFO [96] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 17:04:57.7537 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetBatchDetails.
+2022-06-22 17:04:57.7537 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetBatchDetails.
+2022-06-22 17:04:57.7537 INFO [96] PRF LoadBatchInSdk #6
+2022-06-22 17:04:57.7537 INFO [96] PRF LoadBatchInSdk #6a
+2022-06-22 17:04:57.7537 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetBatchInSdk.
+2022-06-22 17:04:58.0639 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetBatchInSdk.
+2022-06-22 17:04:58.0639 INFO [96] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 297.9298 ms
+2022-06-22 17:04:58.0639 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start  GetBatchMetadata from server.
+2022-06-22 17:04:58.0649 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Finish  GetBatchMetadata from server.
+2022-06-22 17:04:58.0649 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start  SetBatchMetadata in Wrapper.
+2022-06-22 17:04:58.0649 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 17:04:58.0649 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetBatchTypeSettings from server.
+2022-06-22 17:04:58.0649 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetBatchTypeSettings from server.
+2022-06-22 17:04:58.0649 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 17:04:58.1606 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetBatchTypeSettings in Wrapper.
+2022-06-22 17:04:58.1606 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetBatchTypeInfo from server.
+2022-06-22 17:04:58.1606 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetBatchTypeInfo from server.
+2022-06-22 17:04:58.1606 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 17:04:58.1606 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetBatchTypeInfo in Wrapper.
+2022-06-22 17:04:58.1606 INFO [96] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 106.5957 ms
+2022-06-22 17:04:58.1606 INFO [96] PRF LoadBatchFirstDocument #1
+2022-06-22 17:04:58.1606 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetDocumentFormData from server.
+2022-06-22 17:04:58.1770 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetDocumentFormData from server.
+2022-06-22 17:04:58.1770 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetDocumentFormData in Wrapper.
+2022-06-22 17:04:58.2131 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetDocumentFormData in Wrapper.
+2022-06-22 17:04:58.2131 INFO [96] PRF LoadBatchFirstDocument #2 (Set document form data) - 42.6669 ms
+2022-06-22 17:04:58.2131 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageImage from server.
+2022-06-22 17:04:58.2131 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageImage from server.
+2022-06-22 17:04:58.2131 INFO [96] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 115915) - 2.6848 ms
+2022-06-22 17:04:58.2131 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageOcrData from server.
+2022-06-22 17:04:58.2131 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageOcrData from server.
+2022-06-22 17:04:58.2131 INFO [96] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 70929) - 0.9689 ms
+2022-06-22 17:04:58.2131 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:04:58.3261 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetPageImageAndData in Wrapper.
+2022-06-22 17:04:58.3261 INFO [96] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 108.2735 ms
+2022-06-22 17:04:58.3261 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageImage from server.
+2022-06-22 17:04:58.3261 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageImage from server.
+2022-06-22 17:04:58.3261 INFO [96] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 60537) - 2.9584 ms
+2022-06-22 17:04:58.3261 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageOcrData from server.
+2022-06-22 17:04:58.3261 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageOcrData from server.
+2022-06-22 17:04:58.3310 INFO [96] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 24418) - 1.9934 ms
+2022-06-22 17:04:58.3310 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:04:58.3953 INFO [96] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetPageImageAndData in Wrapper.
+2022-06-22 17:04:58.3953 INFO [96] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 64.2453 ms
+2022-06-22 17:04:58.3953 INFO [96] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 2 times) - 182.1524 ms
+2022-06-22 17:04:58.3953 INFO [96] PRF LoadBatchInSdk #9
+2022-06-22 17:04:58.3953 INFO [96] PRF LoadBatchInSdk #10
+2022-06-22 17:04:58.3953 INFO [131] SessionID: 1dvqcczjwubv2mw1qfpddibx, Finished Loading batch with Id = aef91e66-f5e8-411c-8b4e-0b5813639520.
+2022-06-22 17:04:58.3953 INFO [96] PRF LoadBatchInSdk #11
+2022-06-22 17:04:58.3953 INFO [96] PRF GetBatch #2
+2022-06-22 17:04:58.3953 INFO [96] PRF GetBatch #3
+2022-06-22 17:04:58.3953 DEBUG [96] Into get document validity from sdk for document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:04:58.4638 DEBUG [96] Finished call from sdk to get document validity cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:04:58.4811 INFO [96] PRF GetBatch #4 (End batch loading) - 747.9313 ms
+2022-06-22 17:04:58.4877 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:04:58.4877 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:04:58.5162 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:04:58.5162 INFO [93] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper started!
+2022-06-22 17:04:58.5192 INFO [93] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper finished!
+2022-06-22 17:04:58.5601 DEBUG [95] Registered document load event listener:1
+2022-06-22 17:04:58.5601 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:04:58.5601 INFO [95] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper started!
+2022-06-22 17:04:58.5601 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper started!
+2022-06-22 17:04:58.5601 INFO [95] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper finished!
+2022-06-22 17:04:58.5670 INFO [111] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper finished!
+2022-06-22 17:04:58.6000 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:04:58.6000 DEBUG [99] Registered document load event listener:1
+2022-06-22 17:04:58.6370 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:04:58.7115 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:04:58.7115 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:04:58.7115 DEBUG [96] Into get document validity from sdk for document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:04:58.7213 DEBUG [96] Finished call from sdk to get document validity cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:04:58.7213 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:04:58.7213 INFO [102] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a in SdkWrapper started!
+2022-06-22 17:04:58.7452 INFO [102] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a in SdkWrapper finished!
+2022-06-22 17:05:00.0968 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:05:00.0968 INFO [134] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper started!
+2022-06-22 17:05:00.0968 INFO [134] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper finished!
+2022-06-22 17:05:00.1226 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:05:00.1226 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper started!
+2022-06-22 17:05:00.1226 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:05:00.1226 INFO [131] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper started!
+2022-06-22 17:05:00.1276 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper finished!
+2022-06-22 17:05:00.1276 INFO [131] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper finished!
+2022-06-22 17:05:00.1754 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:05:00.1754 DEBUG [115] Into get document validity from sdk for document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:00.1754 DEBUG [115] Finished call from sdk to get document validity cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:04.2846 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:05:21.0846 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:05:21.0846 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Entered state of returning batch!
+2022-06-22 17:05:21.0846 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Clearing data in SdkWrapper started!
+2022-06-22 17:05:21.0846 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Clearing data successfully in SdkWrapper finished!
+2022-06-22 17:05:21.0846 DEBUG [104] Documents validity collection changed - count:0. Notifying...
+2022-06-22 17:05:21.0846 DEBUG [104] Document count changed:
+2022-06-22 17:05:21.0846 ERROR [104] Document count handler:False  Count:0
+2022-06-22 17:05:21.0846 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Return batch in SSI Server started!
+2022-06-22 17:05:21.0999 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Clearing Field templates in SdkWrapper started!
+2022-06-22 17:05:21.0999 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Clearing Field templates in SdkWrapper finished!
+2022-06-22 17:05:21.0999 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Return batch in SSI Server finished!
+2022-06-22 17:05:22.3427 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:05:22.3636 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:05:22.3636 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:05:22.3950 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:05:30.7344 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:05:31.2139 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:05:31.2139 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Start getting field templates from SSI Server!
+2022-06-22 17:05:31.2139 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished getting field templates from SSI Server!
+2022-06-22 17:05:31.2218 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Start setting field templates in SDKWrapper!
+2022-06-22 17:05:31.2218 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Finished setting field templates in SDKWrapper!
+2022-06-22 17:05:31.4592 DEBUG [96] SignalR connected: 20fb0358-5500-42da-9988-59e7f11298c0
+2022-06-22 17:05:31.4592 DEBUG [110] Adding SignalR connection SessionId:1dvqcczjwubv2mw1qfpddibx ConnectionId:20fb0358-5500-42da-9988-59e7f11298c0
+2022-06-22 17:05:31.4592 DEBUG [110] ...session already exists, new connection mapped
+2022-06-22 17:05:31.9198 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:05:31.9468 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:05:34.4877 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:05:34.4877 INFO [97] PRF GetBatch #1 (Start batch loading)
+2022-06-22 17:05:34.4877 INFO [97] PRF LoadBatchInSdk #1
+2022-06-22 17:05:34.4877 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Started Loading batch with Id = aef91e66-f5e8-411c-8b4e-0b5813639520.
+2022-06-22 17:05:34.4877 INFO [97] PRF LoadBatchInSdk #2
+2022-06-22 17:05:34.5032 INFO [97] PRF LoadBatchInSdk #3
+2022-06-22 17:05:34.5032 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx trying to get batch templates from SSI Server!
+2022-06-22 17:05:34.5032 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 17:05:34.5032 INFO [97] PRF LoadBatchInSdk #4
+2022-06-22 17:05:34.5032 INFO [97] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 17:05:34.5032 INFO [97] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 17:05:34.5032 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetBatchDetails.
+2022-06-22 17:05:34.5032 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetBatchDetails.
+2022-06-22 17:05:34.5181 INFO [97] PRF LoadBatchInSdk #6
+2022-06-22 17:05:34.5181 INFO [97] PRF LoadBatchInSdk #6a
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetBatchInSdk.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetBatchInSdk.
+2022-06-22 17:05:34.5181 INFO [97] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 10.9706 ms
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start  GetBatchMetadata from server.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Finish  GetBatchMetadata from server.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start  SetBatchMetadata in Wrapper.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetBatchTypeSettings from server.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetBatchTypeSettings from server.
+2022-06-22 17:05:34.5181 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 17:05:34.5490 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetBatchTypeSettings in Wrapper.
+2022-06-22 17:05:34.5490 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetBatchTypeInfo from server.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetBatchTypeInfo from server.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetBatchTypeInfo in Wrapper.
+2022-06-22 17:05:34.5500 INFO [97] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 21.9413 ms
+2022-06-22 17:05:34.5500 INFO [97] PRF LoadBatchFirstDocument #1
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetDocumentFormData from server.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetDocumentFormData from server.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetDocumentFormData in Wrapper.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetDocumentFormData in Wrapper.
+2022-06-22 17:05:34.5500 INFO [97] PRF LoadBatchFirstDocument #2 (Set document form data) - 3.9892 ms
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageImage from server.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageImage from server.
+2022-06-22 17:05:34.5500 INFO [97] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 115915) - 0.9972 ms
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageOcrData from server.
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageOcrData from server.
+2022-06-22 17:05:34.5500 INFO [97] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 70929) - 1.9948 ms
+2022-06-22 17:05:34.5500 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:05:34.6567 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetPageImageAndData in Wrapper.
+2022-06-22 17:05:34.6567 INFO [97] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 97.7385 ms
+2022-06-22 17:05:34.6567 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageImage from server.
+2022-06-22 17:05:34.6597 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageImage from server.
+2022-06-22 17:05:34.6597 INFO [97] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 60537) - 1.9947 ms
+2022-06-22 17:05:34.6597 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start GetPageOcrData from server.
+2022-06-22 17:05:34.6597 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End GetPageOcrData from server.
+2022-06-22 17:05:34.6597 INFO [97] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 24418) - 0.9952 ms
+2022-06-22 17:05:34.6597 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:05:34.7256 INFO [97] SessionID: 1dvqcczjwubv2mw1qfpddibx, End SetPageImageAndData in Wrapper.
+2022-06-22 17:05:34.7256 INFO [97] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 63.8293 ms
+2022-06-22 17:05:34.7256 INFO [97] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 2 times) - 168.5493 ms
+2022-06-22 17:05:34.7256 INFO [97] PRF LoadBatchInSdk #9
+2022-06-22 17:05:34.7256 INFO [97] PRF LoadBatchInSdk #10
+2022-06-22 17:05:34.7256 INFO [107] SessionID: 1dvqcczjwubv2mw1qfpddibx, Finished Loading batch with Id = aef91e66-f5e8-411c-8b4e-0b5813639520.
+2022-06-22 17:05:34.7256 INFO [97] PRF LoadBatchInSdk #11
+2022-06-22 17:05:34.7256 INFO [97] PRF GetBatch #2
+2022-06-22 17:05:34.7256 INFO [97] PRF GetBatch #3
+2022-06-22 17:05:34.7256 DEBUG [97] Into get document validity from sdk for document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:34.7256 DEBUG [97] Finished call from sdk to get document validity cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:34.7256 INFO [97] PRF GetBatch #4 (End batch loading) - 246.8601 ms
+2022-06-22 17:05:34.7425 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:05:34.7425 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:05:34.7684 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:05:34.7684 INFO [102] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper started!
+2022-06-22 17:05:34.7684 INFO [102] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper finished!
+2022-06-22 17:05:34.8113 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:05:34.8113 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:05:34.8113 INFO [134] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper started!
+2022-06-22 17:05:34.8113 INFO [107] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper started!
+2022-06-22 17:05:34.8193 INFO [134] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper finished!
+2022-06-22 17:05:34.8193 INFO [107] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 7b8aafa6-69e0-4a26-b746-e0c466efbab4 in SdkWrapper finished!
+2022-06-22 17:05:34.8652 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:05:34.8801 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:05:34.9081 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:05:34.9579 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:05:34.9579 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:05:34.9579 DEBUG [107] Into get document validity from sdk for document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:34.9579 DEBUG [107] Finished call from sdk to get document validity cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:34.9769 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:05:34.9769 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a in SdkWrapper started!
+2022-06-22 17:05:34.9909 INFO [115] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a in SdkWrapper finished!
+2022-06-22 17:05:36.2378 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:05:36.2378 INFO [30] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper started!
+2022-06-22 17:05:36.2378 INFO [30] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper finished!
+2022-06-22 17:05:36.2657 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:05:36.2657 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:05:36.2657 INFO [131] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper started!
+2022-06-22 17:05:36.2657 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper started!
+2022-06-22 17:05:36.2687 INFO [131] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper finished!
+2022-06-22 17:05:36.2846 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Setting active page 355bc252-5eed-4250-b82f-6c4b6661dbad in SdkWrapper finished!
+2022-06-22 17:05:36.3275 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:05:36.3275 DEBUG [110] Into get document validity from sdk for document cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:36.3335 DEBUG [110] Finished call from sdk to get document validity cf32c3a2-4fa3-4ca9-a120-ef29f733d89a!
+2022-06-22 17:05:41.9448 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:05:56.3807 DEBUG [100] SignalR connection timed out: 584fc3f0-e38c-4b32-a0c4-bb5eee789d9a
+2022-06-22 17:07:11.4479 DEBUG [126] SessionID: 13441902-d9ca-4e30-a80a-7ed14570d826 Session dropped by the server: System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.FixedSizeReader.ReadPacket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Net.Security._SslStream.StartFrameHeader(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.StartReading(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.PerformRequest(Stream stream, BinaryCommand request)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.IsSessionActive()
+2022-06-22 17:07:21.9714 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Controller.Logout - called from: 
+2022-06-22 17:07:21.9714 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx LogOff
+2022-06-22 17:07:21.9714 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx   manual or view redirection?
+2022-06-22 17:07:21.9714 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx ManagerCommunication.Logout
+2022-06-22 17:07:21.9714 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx, ManagerCommunication.Logout - TCP session exists
+2022-06-22 17:07:21.9714 DEBUG [104]   Both SDK and TCP sessions exist.
+2022-06-22 17:07:21.9714 DEBUG [104] SessionID: 13441902-d9ca-4e30-a80a-7ed14570d826 Session dropped by the server: System.IO.IOException: Unable to read data from the transport connection: An established connection was aborted by the software in your host machine. ---> System.Net.Sockets.SocketException: An established connection was aborted by the software in your host machine
+   at System.Net.Sockets.Socket.Receive(Byte[] buffer, Int32 offset, Int32 size, SocketFlags socketFlags)
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   --- End of inner exception stack trace ---
+   at System.Net.Sockets.NetworkStream.Read(Byte[] buffer, Int32 offset, Int32 size)
+   at System.Net.FixedSizeReader.ReadPacket(Byte[] buffer, Int32 offset, Int32 count)
+   at System.Net.Security._SslStream.StartFrameHeader(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.StartReading(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security._SslStream.ProcessRead(Byte[] buffer, Int32 offset, Int32 count, AsyncProtocolRequest asyncRequest)
+   at System.Net.Security.SslStream.Read(Byte[] buffer, Int32 offset, Int32 count)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.PerformRequest(Stream stream, BinaryCommand request)
+   at SsiServerCommunication.Clients.SsiTcpClientSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.ThreadSafeSession.IsSessionActive(String sessionId)
+   at Ssi.Communication.TCPCommunication.TCPCommunication.IsSessionActive()
+2022-06-22 17:07:21.9714 DEBUG [104]     TCP session NOT active.
+2022-06-22 17:07:22.0138 INFO [104] SessionID: 1dvqcczjwubv2mw1qfpddibx, ManagerCommunication.Logout - Logged out!
+2022-06-22 17:07:22.0138 DEBUG [104] SessionID: 1dvqcczjwubv2mw1qfpddibx Controller.LogOff exit, redirecting to Login
+2022-06-22 17:07:22.0138 DEBUG [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Session_End
+2022-06-22 17:07:22.0138 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx LogOff
+2022-06-22 17:07:22.0138 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx   from Session_End or Redirect
+2022-06-22 17:07:22.0138 INFO [110] SessionID: 1dvqcczjwubv2mw1qfpddibx ManagerCommunication.Logout
+2022-06-22 17:07:22.0138 DEBUG [110] SessionID: 1dvqcczjwubv2mw1qfpddibx ManagerCommunication.Logout - TCP session does not exist or locked.
+2022-06-22 17:07:22.0138 DEBUG [110] SessionID: 1dvqcczjwubv2mw1qfpddibx Controller.LogOff exit, redirecting to Login
+2022-06-22 17:07:22.0188 DEBUG [136] SessionID: 30m1ofwrbt0z4waizkam35yg Session_Start
+2022-06-22 17:07:22.0188 DEBUG [136] SessionID: 30m1ofwrbt0z4waizkam35yg Login page requested by: ::1;  Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.0.0 Safari/537.36
+2022-06-22 17:07:22.0188 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:07:22.4813 DEBUG [98] SessionID: 1dvqcczjwubv2mw1qfpddibx Session_Start
+2022-06-22 17:07:22.8581 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Starting Login...
+2022-06-22 17:07:22.8581 INFO [134] Session: 30m1ofwrbt0z4waizkam35yg Logging in to the server...
+2022-06-22 17:07:22.8581 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg trying to log in to the server...
+2022-06-22 17:07:23.0608 DEBUG [134]   Logged in to the server, sessionId:2c512652-80db-43fe-9e88-7a8a0d6be36e
+2022-06-22 17:07:23.0608 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg finished log in to the server
+2022-06-22 17:07:23.0608 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg trying to start SDKWrapper - guid:4ec7488d-f8e5-4e8f-bc4d-ea9a19d9d827...
+2022-06-22 17:07:23.0608 DEBUG [134] Declaring a new reply queue.
+2022-06-22 17:07:23.0662 DEBUG [134] Reply queue declared:SdkServiceResponse-4ec7488d-f8e5-4e8f-bc4d-ea9a19d9d827
+2022-06-22 17:07:23.6704 INFO [134] SDK Wrapper started for guid:4ec7488d-f8e5-4e8f-bc4d-ea9a19d9d827. Response for corrId:34c39b7e-cc3f-48f6-a5c3-2a02339f678e, expecting:34c39b7e-cc3f-48f6-a5c3-2a02339f678e
+2022-06-22 17:07:23.6839 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg finished trying to start SDKWrapper - 4ec7488d-f8e5-4e8f-bc4d-ea9a19d9d827
+2022-06-22 17:07:23.6839 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Started SDKWrapper successfully
+2022-06-22 17:07:23.6839 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Start setting up SDKWrapper Communication session
+2022-06-22 17:07:23.6949 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Finished setting up SDKWrapper Communication session
+2022-06-22 17:07:23.6949 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Start getting field templates from SSI Server
+2022-06-22 17:07:23.7074 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Finished getting field templates from SSI Server
+2022-06-22 17:07:23.7074 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Start setting field templates in SDKWrapper
+2022-06-22 17:07:23.7074 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Finished setting field templates in SDKWrapper!
+2022-06-22 17:07:23.7473 INFO [134] Session: 30m1ofwrbt0z4waizkam35yg Logging in to the server result: 0
+2022-06-22 17:07:23.7473 INFO [134] Session: 30m1ofwrbt0z4waizkam35yg logged in successfully.
+2022-06-22 17:07:24.8216 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:07:27.4591 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:07:27.4829 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:07:27.4910 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:07:27.5200 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:07:38.8776 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:07:39.7562 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:07:39.8675 DEBUG [124] Registered document load event listener:1
+2022-06-22 17:07:39.9529 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:07:46.4338 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:07:46.4915 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:07:47.6944 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:07:47.7544 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:07:49.1444 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:07:49.1993 DEBUG [110] Registered document load event listener:1
+2022-06-22 17:07:49.5278 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:07:49.5812 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:07:49.6771 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:07:49.7270 DEBUG [124] Registered document load event listener:1
+2022-06-22 17:07:49.8060 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:07:49.8709 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:07:49.9661 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:07:50.0193 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:07:50.0985 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:07:50.1488 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:07:56.5858 DEBUG [104] SignalR connection timed out: 20fb0358-5500-42da-9988-59e7f11298c0
+2022-06-22 17:08:02.8111 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:08:02.8700 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:08:05.1409 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:08:05.1967 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:08:06.2938 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:08:09.0256 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:08:10.3023 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:08:11.7743 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:08:12.6678 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:08:12.7296 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:08:13.6871 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:08:13.7421 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:08:14.2633 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:08:14.3111 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:08:14.6949 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:08:14.7574 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:08:15.1254 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:08:15.1858 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:08:15.5490 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:08:15.6069 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:08:15.9529 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:08:16.0122 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:08:17.1058 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:08:17.1732 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:08:19.0460 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:08:19.1075 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:08:20.4180 DEBUG [111] Registered document load event listener:1
+2022-06-22 17:08:20.4180 INFO [111] SessionID: 30m1ofwrbt0z4waizkam35yg Start getting field templates from SSI Server!
+2022-06-22 17:08:20.4318 INFO [111] SessionID: 30m1ofwrbt0z4waizkam35yg Finished getting field templates from SSI Server!
+2022-06-22 17:08:20.4318 INFO [111] SessionID: 30m1ofwrbt0z4waizkam35yg Start setting field templates in SDKWrapper!
+2022-06-22 17:08:20.4318 INFO [111] SessionID: 30m1ofwrbt0z4waizkam35yg Finished setting field templates in SDKWrapper!
+2022-06-22 17:08:20.6315 DEBUG [90] SignalR connected: a8becc66-fa23-4b09-b962-7cc84c35f693
+2022-06-22 17:08:20.6315 DEBUG [134] Adding SignalR connection SessionId:30m1ofwrbt0z4waizkam35yg ConnectionId:a8becc66-fa23-4b09-b962-7cc84c35f693
+2022-06-22 17:08:20.6315 DEBUG [134] ...added OK
+2022-06-22 17:08:21.4349 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:08:21.4591 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:08:28.2051 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:08:28.2071 INFO [89] PRF GetBatch #1 (Start batch loading)
+2022-06-22 17:08:28.2215 INFO [89] PRF LoadBatchInSdk #1
+2022-06-22 17:08:28.2215 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Started Loading batch with Id = 0bab97e9-52d5-4298-8726-397c20dea738.
+2022-06-22 17:08:28.2215 INFO [89] PRF LoadBatchInSdk #2
+2022-06-22 17:08:28.2215 INFO [89] PRF LoadBatchInSdk #3
+2022-06-22 17:08:28.2215 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg trying to get batch templates from SSI Server!
+2022-06-22 17:08:28.2215 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 17:08:28.2215 INFO [89] PRF LoadBatchInSdk #4
+2022-06-22 17:08:28.2215 INFO [89] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 17:08:28.2368 INFO [89] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 17:08:28.2368 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchDetails.
+2022-06-22 17:08:28.2368 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchDetails.
+2022-06-22 17:08:28.2368 INFO [89] PRF LoadBatchInSdk #6
+2022-06-22 17:08:28.2368 INFO [89] PRF LoadBatchInSdk #6a
+2022-06-22 17:08:28.2368 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchInSdk.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchInSdk.
+2022-06-22 17:08:28.5511 INFO [89] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 302.3368 ms
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  GetBatchMetadata from server.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  GetBatchMetadata from server.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  SetBatchMetadata in Wrapper.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeSettings from server.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeSettings from server.
+2022-06-22 17:08:28.5511 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 17:08:28.6490 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeSettings in Wrapper.
+2022-06-22 17:08:28.6490 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeInfo from server.
+2022-06-22 17:08:28.6490 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeInfo from server.
+2022-06-22 17:08:28.6490 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 17:08:28.6596 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeInfo in Wrapper.
+2022-06-22 17:08:28.6596 INFO [89] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 108.4932 ms
+2022-06-22 17:08:28.6596 INFO [89] PRF LoadBatchFirstDocument #1
+2022-06-22 17:08:28.6596 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetDocumentFormData from server.
+2022-06-22 17:08:28.6596 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetDocumentFormData from server.
+2022-06-22 17:08:28.6596 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetDocumentFormData in Wrapper.
+2022-06-22 17:08:28.7019 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetDocumentFormData in Wrapper.
+2022-06-22 17:08:28.7019 INFO [89] PRF LoadBatchFirstDocument #2 (Set document form data) - 42.291 ms
+2022-06-22 17:08:28.7019 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageImage from server.
+2022-06-22 17:08:28.7019 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageImage from server.
+2022-06-22 17:08:28.7019 INFO [89] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 115915) - 3.3596 ms
+2022-06-22 17:08:28.7063 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageOcrData from server.
+2022-06-22 17:08:28.7063 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageOcrData from server.
+2022-06-22 17:08:28.7063 INFO [89] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 70989) - 2.271 ms
+2022-06-22 17:08:28.7063 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:08:28.8157 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetPageImageAndData in Wrapper.
+2022-06-22 17:08:28.8157 INFO [89] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 108.2092 ms
+2022-06-22 17:08:28.8157 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageImage from server.
+2022-06-22 17:08:28.8157 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageImage from server.
+2022-06-22 17:08:28.8157 INFO [89] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 60537) - 2.9599 ms
+2022-06-22 17:08:28.8157 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageOcrData from server.
+2022-06-22 17:08:28.8157 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageOcrData from server.
+2022-06-22 17:08:28.8157 INFO [89] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 24427) - 1.9947 ms
+2022-06-22 17:08:28.8157 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:08:28.8884 INFO [89] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetPageImageAndData in Wrapper.
+2022-06-22 17:08:28.8884 INFO [89] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 66.6926 ms
+2022-06-22 17:08:28.8884 INFO [89] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 2 times) - 186.516 ms
+2022-06-22 17:08:28.8884 INFO [89] PRF LoadBatchInSdk #9
+2022-06-22 17:08:28.8884 INFO [89] PRF LoadBatchInSdk #10
+2022-06-22 17:08:28.8884 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg, Finished Loading batch with Id = 0bab97e9-52d5-4298-8726-397c20dea738.
+2022-06-22 17:08:28.8932 INFO [89] PRF LoadBatchInSdk #11
+2022-06-22 17:08:28.8932 INFO [89] PRF GetBatch #2
+2022-06-22 17:08:28.8932 INFO [89] PRF GetBatch #3
+2022-06-22 17:08:28.8932 DEBUG [89] Into get document validity from sdk for document 51a874ad-98c0-47c6-97f2-c56db8861d76!
+2022-06-22 17:08:28.9579 DEBUG [89] Finished call from sdk to get document validity 51a874ad-98c0-47c6-97f2-c56db8861d76!
+2022-06-22 17:08:28.9746 INFO [89] PRF GetBatch #4 (End batch loading) - 767.5082 ms
+2022-06-22 17:08:28.9746 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:08:28.9746 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:08:29.0032 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:08:29.0032 INFO [136] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 5732bd75-7f58-47f1-b0b5-4618a7d6877a in SdkWrapper started!
+2022-06-22 17:08:29.0032 INFO [136] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 5732bd75-7f58-47f1-b0b5-4618a7d6877a in SdkWrapper finished!
+2022-06-22 17:08:29.0510 DEBUG [107] Registered document load event listener:1
+2022-06-22 17:08:29.0510 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:08:29.0510 INFO [107] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 5732bd75-7f58-47f1-b0b5-4618a7d6877a in SdkWrapper started!
+2022-06-22 17:08:29.0510 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 5732bd75-7f58-47f1-b0b5-4618a7d6877a in SdkWrapper started!
+2022-06-22 17:08:29.0510 INFO [107] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 5732bd75-7f58-47f1-b0b5-4618a7d6877a in SdkWrapper finished!
+2022-06-22 17:08:29.0510 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 5732bd75-7f58-47f1-b0b5-4618a7d6877a in SdkWrapper finished!
+2022-06-22 17:08:29.1048 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:08:29.1188 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:08:29.1572 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:08:29.2264 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:08:29.2264 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:08:29.2264 DEBUG [97] Into get document validity from sdk for document 51a874ad-98c0-47c6-97f2-c56db8861d76!
+2022-06-22 17:08:29.2382 DEBUG [97] Finished call from sdk to get document validity 51a874ad-98c0-47c6-97f2-c56db8861d76!
+2022-06-22 17:08:29.2382 DEBUG [91] Registered document load event listener:1
+2022-06-22 17:08:29.2382 INFO [91] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document 51a874ad-98c0-47c6-97f2-c56db8861d76 in SdkWrapper started!
+2022-06-22 17:08:29.2622 INFO [91] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document 51a874ad-98c0-47c6-97f2-c56db8861d76 in SdkWrapper finished!
+2022-06-22 17:08:30.1687 DEBUG [124] Registered document load event listener:1
+2022-06-22 17:08:30.1687 INFO [124] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 2af1b8c4-588b-4d2e-ae9a-3b111da60eb3 in SdkWrapper started!
+2022-06-22 17:08:30.1687 INFO [124] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 2af1b8c4-588b-4d2e-ae9a-3b111da60eb3 in SdkWrapper finished!
+2022-06-22 17:08:30.1920 DEBUG [115] Registered document load event listener:1
+2022-06-22 17:08:30.1920 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:08:30.1920 INFO [115] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 2af1b8c4-588b-4d2e-ae9a-3b111da60eb3 in SdkWrapper started!
+2022-06-22 17:08:30.1920 INFO [131] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 2af1b8c4-588b-4d2e-ae9a-3b111da60eb3 in SdkWrapper started!
+2022-06-22 17:08:30.1920 INFO [115] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 2af1b8c4-588b-4d2e-ae9a-3b111da60eb3 in SdkWrapper finished!
+2022-06-22 17:08:30.1920 INFO [131] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 2af1b8c4-588b-4d2e-ae9a-3b111da60eb3 in SdkWrapper finished!
+2022-06-22 17:08:30.2387 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:08:30.2387 DEBUG [30] Into get document validity from sdk for document 51a874ad-98c0-47c6-97f2-c56db8861d76!
+2022-06-22 17:08:30.2387 DEBUG [30] Finished call from sdk to get document validity 51a874ad-98c0-47c6-97f2-c56db8861d76!
+2022-06-22 17:08:30.6321 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:09:50.2469 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:09:50.7709 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:09:50.7709 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:09:50.8108 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:00.1037 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:10:01.5573 DEBUG [131] Registered document load event listener:1
+2022-06-22 17:10:01.6717 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:10:01.9590 DEBUG [124] Registered document load event listener:1
+2022-06-22 17:10:04.1680 DEBUG [30] Registered document load event listener:1
+2022-06-22 17:10:04.5113 DEBUG [135] Registered document load event listener:1
+2022-06-22 17:10:05.3272 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:10:05.7341 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:10:05.8937 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:10:06.2098 DEBUG [124] Registered document load event listener:1
+2022-06-22 17:10:07.1141 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:07.2751 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:10:07.7630 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:10:08.1191 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:10:08.8247 DEBUG [129] Registered document load event listener:1
+2022-06-22 17:10:08.9768 DEBUG [135] Registered document load event listener:1
+2022-06-22 17:10:10.2328 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:10.2328 INFO [94] SessionID: 30m1ofwrbt0z4waizkam35yg Start getting field templates from SSI Server!
+2022-06-22 17:10:10.2417 INFO [94] SessionID: 30m1ofwrbt0z4waizkam35yg Finished getting field templates from SSI Server!
+2022-06-22 17:10:10.2417 INFO [94] SessionID: 30m1ofwrbt0z4waizkam35yg Start setting field templates in SDKWrapper!
+2022-06-22 17:10:10.2417 INFO [94] SessionID: 30m1ofwrbt0z4waizkam35yg Finished setting field templates in SDKWrapper!
+2022-06-22 17:10:10.5281 DEBUG [135] SignalR connected: 38b128ec-7909-42f8-922d-138ee1a3c32d
+2022-06-22 17:10:10.5410 DEBUG [93] Adding SignalR connection SessionId:30m1ofwrbt0z4waizkam35yg ConnectionId:38b128ec-7909-42f8-922d-138ee1a3c32d
+2022-06-22 17:10:10.5410 DEBUG [93] ...session already exists, new connection mapped
+2022-06-22 17:10:11.1615 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:11.2343 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:10:13.5078 DEBUG [135] Registered document load event listener:1
+2022-06-22 17:10:13.9452 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:10:15.1277 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:15.1277 INFO [101] PRF GetBatch #1 (Start batch loading)
+2022-06-22 17:10:15.2061 INFO [101] PRF LoadBatchInSdk #1
+2022-06-22 17:10:15.2061 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Started Loading batch with Id = 883a0103-c450-45af-ab3e-0d6d78b0b364.
+2022-06-22 17:10:15.2061 INFO [101] PRF LoadBatchInSdk #2
+2022-06-22 17:10:15.2061 INFO [101] PRF LoadBatchInSdk #3
+2022-06-22 17:10:15.2061 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg trying to get batch templates from SSI Server!
+2022-06-22 17:10:15.2061 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 17:10:15.2061 INFO [101] PRF LoadBatchInSdk #4
+2022-06-22 17:10:15.2061 INFO [101] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 17:10:15.2061 INFO [101] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 17:10:15.2061 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchDetails.
+2022-06-22 17:10:15.2323 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchDetails.
+2022-06-22 17:10:15.2483 INFO [101] PRF LoadBatchInSdk #6
+2022-06-22 17:10:15.2613 INFO [101] PRF LoadBatchInSdk #6a
+2022-06-22 17:10:15.2613 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchInSdk.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchInSdk.
+2022-06-22 17:10:15.2764 INFO [101] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 15.0902 ms
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  GetBatchMetadata from server.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  GetBatchMetadata from server.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  SetBatchMetadata in Wrapper.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeSettings from server.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeSettings from server.
+2022-06-22 17:10:15.2764 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 17:10:15.3695 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeSettings in Wrapper.
+2022-06-22 17:10:15.3695 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeInfo from server.
+2022-06-22 17:10:15.3695 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeInfo from server.
+2022-06-22 17:10:15.3695 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 17:10:15.3695 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeInfo in Wrapper.
+2022-06-22 17:10:15.3695 INFO [101] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 98.884 ms
+2022-06-22 17:10:15.3695 INFO [101] PRF LoadBatchFirstDocument #1
+2022-06-22 17:10:15.3695 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetDocumentFormData from server.
+2022-06-22 17:10:15.3896 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetDocumentFormData from server.
+2022-06-22 17:10:15.3896 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetDocumentFormData in Wrapper.
+2022-06-22 17:10:15.4088 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetDocumentFormData in Wrapper.
+2022-06-22 17:10:15.4088 INFO [101] PRF LoadBatchFirstDocument #2 (Set document form data) - 32.5225 ms
+2022-06-22 17:10:15.4088 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageImage from server.
+2022-06-22 17:10:15.4088 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageImage from server.
+2022-06-22 17:10:15.4088 INFO [101] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 117116) - 7.7685 ms
+2022-06-22 17:10:15.4088 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageOcrData from server.
+2022-06-22 17:10:15.4088 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageOcrData from server.
+2022-06-22 17:10:15.4088 INFO [101] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 74301) - 1.9639 ms
+2022-06-22 17:10:15.4088 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:10:15.5283 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetPageImageAndData in Wrapper.
+2022-06-22 17:10:15.5283 INFO [101] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 108.7356 ms
+2022-06-22 17:10:15.5283 INFO [101] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 1 times) - 118.468 ms
+2022-06-22 17:10:15.5283 INFO [101] PRF LoadBatchInSdk #9
+2022-06-22 17:10:15.5283 INFO [101] PRF LoadBatchInSdk #10
+2022-06-22 17:10:15.5283 INFO [129] SessionID: 30m1ofwrbt0z4waizkam35yg, Finished Loading batch with Id = 883a0103-c450-45af-ab3e-0d6d78b0b364.
+2022-06-22 17:10:15.5501 INFO [101] PRF LoadBatchInSdk #11
+2022-06-22 17:10:15.5501 INFO [101] PRF GetBatch #2
+2022-06-22 17:10:15.5501 INFO [101] PRF GetBatch #3
+2022-06-22 17:10:15.5501 DEBUG [101] Into get document validity from sdk for document 2136a67c-e6ae-4f59-bef8-7ceeaa5c4c11!
+2022-06-22 17:10:15.5501 DEBUG [101] Finished call from sdk to get document validity 2136a67c-e6ae-4f59-bef8-7ceeaa5c4c11!
+2022-06-22 17:10:15.5730 INFO [101] PRF GetBatch #4 (End batch loading) - 443.3911 ms
+2022-06-22 17:10:15.5820 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:10:15.5820 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:10:15.6194 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:15.6194 INFO [125] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page b5634165-7876-4952-a706-35d01131aa6a in SdkWrapper started!
+2022-06-22 17:10:15.6194 INFO [125] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page b5634165-7876-4952-a706-35d01131aa6a in SdkWrapper finished!
+2022-06-22 17:10:15.6565 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:10:15.6565 INFO [97] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page b5634165-7876-4952-a706-35d01131aa6a in SdkWrapper started!
+2022-06-22 17:10:15.6565 DEBUG [127] Registered document load event listener:1
+2022-06-22 17:10:15.6565 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page b5634165-7876-4952-a706-35d01131aa6a in SdkWrapper started!
+2022-06-22 17:10:15.6634 INFO [97] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page b5634165-7876-4952-a706-35d01131aa6a in SdkWrapper finished!
+2022-06-22 17:10:15.6634 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page b5634165-7876-4952-a706-35d01131aa6a in SdkWrapper finished!
+2022-06-22 17:10:15.7103 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:15.7383 DEBUG [108] Registered document load event listener:1
+2022-06-22 17:10:15.7876 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:15.8216 DEBUG [95] Registered document load event listener:1
+2022-06-22 17:10:15.8216 DEBUG [97] Registered document load event listener:1
+2022-06-22 17:10:15.8216 DEBUG [97] Into get document validity from sdk for document 2136a67c-e6ae-4f59-bef8-7ceeaa5c4c11!
+2022-06-22 17:10:15.8326 DEBUG [97] Finished call from sdk to get document validity 2136a67c-e6ae-4f59-bef8-7ceeaa5c4c11!
+2022-06-22 17:10:15.8326 DEBUG [127] Registered document load event listener:1
+2022-06-22 17:10:15.8326 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document 2136a67c-e6ae-4f59-bef8-7ceeaa5c4c11 in SdkWrapper started!
+2022-06-22 17:10:15.8565 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document 2136a67c-e6ae-4f59-bef8-7ceeaa5c4c11 in SdkWrapper finished!
+2022-06-22 17:10:20.5278 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:10:21.8718 DEBUG [101] SignalR connection timed out: a8becc66-fa23-4b09-b962-7cc84c35f693
+2022-06-22 17:10:30.1873 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:30.2277 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Entered state of returning batch!
+2022-06-22 17:10:30.2277 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing data in SdkWrapper started!
+2022-06-22 17:10:30.2371 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing data successfully in SdkWrapper finished!
+2022-06-22 17:10:30.2371 DEBUG [101] Documents validity collection changed - count:0. Notifying...
+2022-06-22 17:10:30.2371 DEBUG [101] Document count changed:
+2022-06-22 17:10:30.2371 ERROR [101] Document count handler:False  Count:0
+2022-06-22 17:10:30.2371 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Return batch in SSI Server started!
+2022-06-22 17:10:30.2892 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing Field templates in SdkWrapper started!
+2022-06-22 17:10:30.2892 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing Field templates in SdkWrapper finished!
+2022-06-22 17:10:30.2892 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Return batch in SSI Server finished!
+2022-06-22 17:10:31.6616 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:31.7001 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:10:31.7127 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:10:31.8065 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:38.6679 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:10:39.9354 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:10:40.6127 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:10:40.9522 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:43.0586 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:10:43.4153 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:10:44.1014 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:10:44.3458 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:44.6171 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:44.8165 DEBUG [108] Registered document load event listener:1
+2022-06-22 17:10:45.0250 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:10:45.2853 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:45.3611 DEBUG [127] Registered document load event listener:1
+2022-06-22 17:10:45.5316 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:10:45.9432 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:10:46.1177 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:46.4921 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:10:46.7335 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:47.0454 DEBUG [129] Registered document load event listener:1
+2022-06-22 17:10:47.3734 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:10:47.5579 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:47.7484 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:10:48.1278 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:48.2877 DEBUG [127] Registered document load event listener:1
+2022-06-22 17:10:48.6158 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:10:48.8871 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:10:49.1407 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:10:49.3065 DEBUG [89] Registered document load event listener:1
+2022-06-22 17:10:49.6444 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:10:49.9277 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:50.6107 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:10:50.6107 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Start getting field templates from SSI Server!
+2022-06-22 17:10:50.6237 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Finished getting field templates from SSI Server!
+2022-06-22 17:10:50.6237 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Start setting field templates in SDKWrapper!
+2022-06-22 17:10:50.6277 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Finished setting field templates in SDKWrapper!
+2022-06-22 17:10:50.9196 DEBUG [132] SignalR connected: c7343872-f09a-4035-9a47-addfb361ec4a
+2022-06-22 17:10:50.9266 DEBUG [102] Adding SignalR connection SessionId:30m1ofwrbt0z4waizkam35yg ConnectionId:c7343872-f09a-4035-9a47-addfb361ec4a
+2022-06-22 17:10:50.9266 DEBUG [102] ...session already exists, new connection mapped
+2022-06-22 17:10:52.0929 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:10:52.1737 DEBUG [95] Registered document load event listener:1
+2022-06-22 17:10:55.3523 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:10:55.3523 INFO [93] PRF GetBatch #1 (Start batch loading)
+2022-06-22 17:10:55.4354 INFO [93] PRF LoadBatchInSdk #1
+2022-06-22 17:10:55.4354 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Started Loading batch with Id = 1115b640-49b1-4b8a-b24e-7f61be366939.
+2022-06-22 17:10:55.4354 INFO [93] PRF LoadBatchInSdk #2
+2022-06-22 17:10:55.4410 INFO [93] PRF LoadBatchInSdk #3
+2022-06-22 17:10:55.4410 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg trying to get batch templates from SSI Server!
+2022-06-22 17:10:55.4410 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 17:10:55.4410 INFO [93] PRF LoadBatchInSdk #4
+2022-06-22 17:10:55.4410 INFO [93] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 17:10:55.4410 INFO [93] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 17:10:55.4410 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchDetails.
+2022-06-22 17:10:55.4598 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchDetails.
+2022-06-22 17:10:55.4768 INFO [93] PRF LoadBatchInSdk #6
+2022-06-22 17:10:55.4904 INFO [93] PRF LoadBatchInSdk #6a
+2022-06-22 17:10:55.4904 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchInSdk.
+2022-06-22 17:10:55.5063 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchInSdk.
+2022-06-22 17:10:55.5063 INFO [93] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 15.9575 ms
+2022-06-22 17:10:55.5063 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  GetBatchMetadata from server.
+2022-06-22 17:10:55.5063 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  GetBatchMetadata from server.
+2022-06-22 17:10:55.5063 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  SetBatchMetadata in Wrapper.
+2022-06-22 17:10:55.5063 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 17:10:55.5063 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeSettings from server.
+2022-06-22 17:10:55.5233 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeSettings from server.
+2022-06-22 17:10:55.5233 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 17:10:55.5802 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeSettings in Wrapper.
+2022-06-22 17:10:55.5802 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeInfo from server.
+2022-06-22 17:10:55.5862 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeInfo from server.
+2022-06-22 17:10:55.5862 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 17:10:55.5862 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeInfo in Wrapper.
+2022-06-22 17:10:55.5862 INFO [93] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 83.3263 ms
+2022-06-22 17:10:55.5862 INFO [93] PRF LoadBatchFirstDocument #1
+2022-06-22 17:10:55.5862 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetDocumentFormData from server.
+2022-06-22 17:10:55.6008 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetDocumentFormData from server.
+2022-06-22 17:10:55.6008 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetDocumentFormData in Wrapper.
+2022-06-22 17:10:55.6227 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetDocumentFormData in Wrapper.
+2022-06-22 17:10:55.6227 INFO [93] PRF LoadBatchFirstDocument #2 (Set document form data) - 33.0238 ms
+2022-06-22 17:10:55.6227 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageImage from server.
+2022-06-22 17:10:55.6317 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageImage from server.
+2022-06-22 17:10:55.6317 INFO [93] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 115915) - 9.0365 ms
+2022-06-22 17:10:55.6317 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageOcrData from server.
+2022-06-22 17:10:55.6471 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageOcrData from server.
+2022-06-22 17:10:55.6471 INFO [93] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 71048) - 15.3901 ms
+2022-06-22 17:10:55.6471 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:10:55.7496 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetPageImageAndData in Wrapper.
+2022-06-22 17:10:55.7496 INFO [93] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 102.5161 ms
+2022-06-22 17:10:55.7496 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageImage from server.
+2022-06-22 17:10:55.7535 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageImage from server.
+2022-06-22 17:10:55.7535 INFO [93] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 60537) - 3.8757 ms
+2022-06-22 17:10:55.7535 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageOcrData from server.
+2022-06-22 17:10:55.7535 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageOcrData from server.
+2022-06-22 17:10:55.7535 INFO [93] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 24412) - 13.9695 ms
+2022-06-22 17:10:55.7685 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:10:55.8360 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetPageImageAndData in Wrapper.
+2022-06-22 17:10:55.8360 INFO [93] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 67.5481 ms
+2022-06-22 17:10:55.8360 INFO [93] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 2 times) - 213.3358 ms
+2022-06-22 17:10:55.8360 INFO [93] PRF LoadBatchInSdk #9
+2022-06-22 17:10:55.8360 INFO [93] PRF LoadBatchInSdk #10
+2022-06-22 17:10:55.8360 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg, Finished Loading batch with Id = 1115b640-49b1-4b8a-b24e-7f61be366939.
+2022-06-22 17:10:55.8529 INFO [93] PRF LoadBatchInSdk #11
+2022-06-22 17:10:55.8529 INFO [93] PRF GetBatch #2
+2022-06-22 17:10:55.8529 INFO [93] PRF GetBatch #3
+2022-06-22 17:10:55.8529 DEBUG [93] Into get document validity from sdk for document e4c16860-b780-49b5-8170-20ea904750e7!
+2022-06-22 17:10:55.8529 DEBUG [93] Finished call from sdk to get document validity e4c16860-b780-49b5-8170-20ea904750e7!
+2022-06-22 17:10:55.8529 INFO [93] PRF GetBatch #4 (End batch loading) - 506.1337 ms
+2022-06-22 17:10:55.8704 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:55.8704 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:55.9330 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:55.9330 INFO [125] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page c494bef6-0aaf-4102-bcac-4151a5cbcd15 in SdkWrapper started!
+2022-06-22 17:10:55.9330 INFO [125] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page c494bef6-0aaf-4102-bcac-4151a5cbcd15 in SdkWrapper finished!
+2022-06-22 17:10:55.9783 DEBUG [127] Registered document load event listener:1
+2022-06-22 17:10:55.9783 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page c494bef6-0aaf-4102-bcac-4151a5cbcd15 in SdkWrapper started!
+2022-06-22 17:10:55.9783 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:55.9783 INFO [100] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page c494bef6-0aaf-4102-bcac-4151a5cbcd15 in SdkWrapper started!
+2022-06-22 17:10:55.9783 INFO [127] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page c494bef6-0aaf-4102-bcac-4151a5cbcd15 in SdkWrapper finished!
+2022-06-22 17:10:56.0013 INFO [100] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page c494bef6-0aaf-4102-bcac-4151a5cbcd15 in SdkWrapper finished!
+2022-06-22 17:10:56.0302 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:10:56.0402 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:10:56.0688 DEBUG [95] Registered document load event listener:1
+2022-06-22 17:10:56.1306 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:10:56.1306 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:56.1306 DEBUG [100] Into get document validity from sdk for document e4c16860-b780-49b5-8170-20ea904750e7!
+2022-06-22 17:10:56.1306 DEBUG [100] Finished call from sdk to get document validity e4c16860-b780-49b5-8170-20ea904750e7!
+2022-06-22 17:10:56.1485 DEBUG [129] Registered document load event listener:1
+2022-06-22 17:10:56.1485 INFO [129] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document e4c16860-b780-49b5-8170-20ea904750e7 in SdkWrapper started!
+2022-06-22 17:10:56.1615 INFO [129] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document e4c16860-b780-49b5-8170-20ea904750e7 in SdkWrapper finished!
+2022-06-22 17:10:57.3530 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:10:57.3530 INFO [94] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page d4077b55-d1f1-4408-a858-cd93bad6db68 in SdkWrapper started!
+2022-06-22 17:10:57.3530 INFO [94] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page d4077b55-d1f1-4408-a858-cd93bad6db68 in SdkWrapper finished!
+2022-06-22 17:10:57.3820 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:10:57.3820 INFO [102] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page d4077b55-d1f1-4408-a858-cd93bad6db68 in SdkWrapper started!
+2022-06-22 17:10:57.3820 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:10:57.3820 INFO [100] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page d4077b55-d1f1-4408-a858-cd93bad6db68 in SdkWrapper started!
+2022-06-22 17:10:57.3820 INFO [102] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page d4077b55-d1f1-4408-a858-cd93bad6db68 in SdkWrapper finished!
+2022-06-22 17:10:57.3820 INFO [100] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page d4077b55-d1f1-4408-a858-cd93bad6db68 in SdkWrapper finished!
+2022-06-22 17:10:57.4368 DEBUG [136] Registered document load event listener:1
+2022-06-22 17:10:57.4368 DEBUG [136] Into get document validity from sdk for document e4c16860-b780-49b5-8170-20ea904750e7!
+2022-06-22 17:10:57.4448 DEBUG [136] Finished call from sdk to get document validity e4c16860-b780-49b5-8170-20ea904750e7!
+2022-06-22 17:11:00.7905 DEBUG [93] Registered document load event listener:1
+2022-06-22 17:11:00.8235 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Entered state of returning batch!
+2022-06-22 17:11:00.8235 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing data in SdkWrapper started!
+2022-06-22 17:11:00.8235 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing data successfully in SdkWrapper finished!
+2022-06-22 17:11:00.8235 DEBUG [93] Documents validity collection changed - count:0. Notifying...
+2022-06-22 17:11:00.8235 DEBUG [93] Document count changed:
+2022-06-22 17:11:00.8235 ERROR [93] Document count handler:False  Count:0
+2022-06-22 17:11:00.8235 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Return batch in SSI Server started!
+2022-06-22 17:11:00.8424 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing Field templates in SdkWrapper started!
+2022-06-22 17:11:00.8424 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing Field templates in SdkWrapper finished!
+2022-06-22 17:11:00.8465 INFO [93] SessionID: 30m1ofwrbt0z4waizkam35yg Return batch in SSI Server finished!
+2022-06-22 17:11:01.5447 DEBUG [129] Registered document load event listener:1
+2022-06-22 17:11:01.9758 DEBUG [136] SignalR connection timed out: 38b128ec-7909-42f8-922d-138ee1a3c32d
+2022-06-22 17:11:02.0690 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:11:02.0690 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:11:02.1567 DEBUG [129] Registered document load event listener:1
+2022-06-22 17:11:08.3333 DEBUG [102] Registered document load event listener:1
+2022-06-22 17:11:09.2312 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:11:09.3559 DEBUG [100] Registered document load event listener:1
+2022-06-22 17:11:09.7917 DEBUG [94] Registered document load event listener:1
+2022-06-22 17:11:11.8822 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:11:12.1710 DEBUG [108] Registered document load event listener:1
+2022-06-22 17:11:19.6586 DEBUG [92] Registered document load event listener:1
+2022-06-22 17:11:19.8092 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:11:21.3522 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:11:21.3522 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg Start getting field templates from SSI Server!
+2022-06-22 17:11:21.3657 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg Finished getting field templates from SSI Server!
+2022-06-22 17:11:21.3657 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg Start setting field templates in SDKWrapper!
+2022-06-22 17:11:21.3657 INFO [104] SessionID: 30m1ofwrbt0z4waizkam35yg Finished setting field templates in SDKWrapper!
+2022-06-22 17:11:21.6895 DEBUG [108] SignalR connected: 839ba7a3-9855-4edc-8616-bc082b2ab69a
+2022-06-22 17:11:21.6935 DEBUG [101] Adding SignalR connection SessionId:30m1ofwrbt0z4waizkam35yg ConnectionId:839ba7a3-9855-4edc-8616-bc082b2ab69a
+2022-06-22 17:11:21.6935 DEBUG [101] ...session already exists, new connection mapped
+2022-06-22 17:11:22.6357 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:11:22.7022 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:11:24.6144 DEBUG [126] Registered document load event listener:1
+2022-06-22 17:11:24.6144 INFO [126] PRF GetBatch #1 (Start batch loading)
+2022-06-22 17:11:24.7055 INFO [126] PRF LoadBatchInSdk #1
+2022-06-22 17:11:24.7055 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Started Loading batch with Id = fff3227a-4493-4617-bf57-3f6d1364c870.
+2022-06-22 17:11:24.7055 INFO [126] PRF LoadBatchInSdk #2
+2022-06-22 17:11:24.7800 INFO [126] PRF LoadBatchInSdk #3
+2022-06-22 17:11:24.7800 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg trying to get batch templates from SSI Server!
+2022-06-22 17:11:24.7859 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg GetBatchTemplates: ServerErrorCode.RegionTemplatesEmpty
+2022-06-22 17:11:24.7859 INFO [126] PRF LoadBatchInSdk #4
+2022-06-22 17:11:24.7859 INFO [126] PRF LoadBatchInSdk #5 - Update Batch Mappings - Begin
+2022-06-22 17:11:24.7859 INFO [126] PRF LoadBatchInSdk #5.1 - Update Batch Mappings - End
+2022-06-22 17:11:24.7859 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchDetails.
+2022-06-22 17:11:24.8070 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchDetails.
+2022-06-22 17:11:24.8070 INFO [126] PRF LoadBatchInSdk #6
+2022-06-22 17:11:24.8070 INFO [126] PRF LoadBatchInSdk #6a
+2022-06-22 17:11:24.8070 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchInSdk.
+2022-06-22 17:11:24.8193 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchInSdk.
+2022-06-22 17:11:24.8193 INFO [126] PRF LoadBatchInSdk #7 (Set batch info in SDK) - 8.3183 ms
+2022-06-22 17:11:24.8193 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  GetBatchMetadata from server.
+2022-06-22 17:11:24.8193 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  GetBatchMetadata from server.
+2022-06-22 17:11:24.8193 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start  SetBatchMetadata in Wrapper.
+2022-06-22 17:11:24.8193 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Finish  SetBatchMetadata in Wrapper.
+2022-06-22 17:11:24.8193 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeSettings from server.
+2022-06-22 17:11:24.8355 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeSettings from server.
+2022-06-22 17:11:24.8355 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeSettings in Wrapper.
+2022-06-22 17:11:24.9270 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeSettings in Wrapper.
+2022-06-22 17:11:24.9270 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetBatchTypeInfo from server.
+2022-06-22 17:11:24.9270 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetBatchTypeInfo from server.
+2022-06-22 17:11:24.9270 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetBatchTypeInfo in Wrapper.
+2022-06-22 17:11:24.9270 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetBatchTypeInfo in Wrapper.
+2022-06-22 17:11:24.9270 INFO [126] PRF LoadBatchInSdk #8 (Set batch metadata, batch type settings, batch type details in SDK) - 116.3064 ms
+2022-06-22 17:11:24.9270 INFO [126] PRF LoadBatchFirstDocument #1
+2022-06-22 17:11:24.9270 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetDocumentFormData from server.
+2022-06-22 17:11:24.9430 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetDocumentFormData from server.
+2022-06-22 17:11:24.9430 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetDocumentFormData in Wrapper.
+2022-06-22 17:11:24.9621 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetDocumentFormData in Wrapper.
+2022-06-22 17:11:24.9621 INFO [126] PRF LoadBatchFirstDocument #2 (Set document form data) - 26.3979 ms
+2022-06-22 17:11:24.9621 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageImage from server.
+2022-06-22 17:11:24.9760 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageImage from server.
+2022-06-22 17:11:24.9760 INFO [126] PRF SetPageImageAndDataInSdk #1 (GetPageImage: 120742) - 12.9497 ms
+2022-06-22 17:11:24.9760 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start GetPageOcrData from server.
+2022-06-22 17:11:24.9877 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End GetPageOcrData from server.
+2022-06-22 17:11:24.9877 INFO [126] PRF SetPageImageAndDataInSdk #2 (GetPageOcrData: 71965) - 11.6706 ms
+2022-06-22 17:11:24.9877 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, Start SetPageImageAndData in Wrapper.
+2022-06-22 17:11:25.0933 INFO [126] SessionID: 30m1ofwrbt0z4waizkam35yg, End SetPageImageAndData in Wrapper.
+2022-06-22 17:11:25.0933 INFO [126] PRF SetPageImageAndDataInSdk #3 (SetPageImageAndDataInSdk) - 105.6012 ms
+2022-06-22 17:11:25.0933 INFO [126] PRF LoadBatchFirstDocument #3 (SetPageImageAndDataInSdk called 1 times) - 131.2225 ms
+2022-06-22 17:11:25.0933 INFO [126] PRF LoadBatchInSdk #9
+2022-06-22 17:11:25.0933 INFO [126] PRF LoadBatchInSdk #10
+2022-06-22 17:11:25.0973 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg, Finished Loading batch with Id = fff3227a-4493-4617-bf57-3f6d1364c870.
+2022-06-22 17:11:25.0973 INFO [126] PRF LoadBatchInSdk #11
+2022-06-22 17:11:25.0973 INFO [126] PRF GetBatch #2
+2022-06-22 17:11:25.1133 INFO [126] PRF GetBatch #3
+2022-06-22 17:11:25.1133 DEBUG [126] Into get document validity from sdk for document f3a8fa62-1179-4d75-9106-7aa699ef316d!
+2022-06-22 17:11:25.1133 DEBUG [126] Finished call from sdk to get document validity f3a8fa62-1179-4d75-9106-7aa699ef316d!
+2022-06-22 17:11:25.1300 INFO [126] PRF GetBatch #4 (End batch loading) - 512.239 ms
+2022-06-22 17:11:25.1300 DEBUG [125] Registered document load event listener:1
+2022-06-22 17:11:25.1300 DEBUG [96] Registered document load event listener:1
+2022-06-22 17:11:25.1898 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:11:25.1898 INFO [90] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 3d62fe58-a54b-4832-8ad7-823f86636b3e in SdkWrapper started!
+2022-06-22 17:11:25.1898 INFO [90] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 3d62fe58-a54b-4832-8ad7-823f86636b3e in SdkWrapper finished!
+2022-06-22 17:11:25.2215 DEBUG [134] Registered document load event listener:1
+2022-06-22 17:11:25.2215 DEBUG [98] Registered document load event listener:1
+2022-06-22 17:11:25.2215 INFO [98] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 3d62fe58-a54b-4832-8ad7-823f86636b3e in SdkWrapper started!
+2022-06-22 17:11:25.2215 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 3d62fe58-a54b-4832-8ad7-823f86636b3e in SdkWrapper started!
+2022-06-22 17:11:25.2215 INFO [98] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 3d62fe58-a54b-4832-8ad7-823f86636b3e in SdkWrapper finished!
+2022-06-22 17:11:25.2574 INFO [134] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active page 3d62fe58-a54b-4832-8ad7-823f86636b3e in SdkWrapper finished!
+2022-06-22 17:11:25.3033 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:11:25.3033 DEBUG [90] Registered document load event listener:1
+2022-06-22 17:11:25.3480 DEBUG [129] Registered document load event listener:1
+2022-06-22 17:11:25.3789 DEBUG [127] Registered document load event listener:1
+2022-06-22 17:11:25.3789 DEBUG [108] Registered document load event listener:1
+2022-06-22 17:11:25.3789 DEBUG [108] Into get document validity from sdk for document f3a8fa62-1179-4d75-9106-7aa699ef316d!
+2022-06-22 17:11:25.3789 DEBUG [108] Finished call from sdk to get document validity f3a8fa62-1179-4d75-9106-7aa699ef316d!
+2022-06-22 17:11:25.3986 DEBUG [132] Registered document load event listener:1
+2022-06-22 17:11:25.3986 INFO [132] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document f3a8fa62-1179-4d75-9106-7aa699ef316d in SdkWrapper started!
+2022-06-22 17:11:25.4105 INFO [132] SessionID: 30m1ofwrbt0z4waizkam35yg Setting active document f3a8fa62-1179-4d75-9106-7aa699ef316d in SdkWrapper finished!
+2022-06-22 17:11:32.0255 DEBUG [92] SignalR connection timed out: c7343872-f09a-4035-9a47-addfb361ec4a
+2022-06-22 17:11:33.2485 DEBUG [104] Registered document load event listener:1
+2022-06-22 17:11:33.6180 DEBUG [101] Registered document load event listener:1
+2022-06-22 17:11:33.6671 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Entered state of returning batch!
+2022-06-22 17:11:33.6671 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing data in SdkWrapper started!
+2022-06-22 17:11:33.6810 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing data successfully in SdkWrapper finished!
+2022-06-22 17:11:33.6810 DEBUG [101] Documents validity collection changed - count:0. Notifying...
+2022-06-22 17:11:33.6810 DEBUG [101] Document count changed:
+2022-06-22 17:11:33.6810 ERROR [101] Document count handler:False  Count:0
+2022-06-22 17:11:33.6810 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Return batch in SSI Server started!
+2022-06-22 17:11:33.7304 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing Field templates in SdkWrapper started!
+2022-06-22 17:11:33.7304 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Clearing Field templates in SdkWrapper finished!
+2022-06-22 17:11:33.7304 INFO [101] SessionID: 30m1ofwrbt0z4waizkam35yg Return batch in SSI Server finished!
+2022-06-22 17:12:07.0762 DEBUG [129] SignalR connection timed out: 839ba7a3-9855-4edc-8616-bc082b2ab69a

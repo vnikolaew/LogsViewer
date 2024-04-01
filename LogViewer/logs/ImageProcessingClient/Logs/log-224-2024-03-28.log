@@ -1,0 +1,46 @@
+2024-03-28 15:52:01.4414 [224-1] INFO |  =========== New log started at: 3/28/2024 3:52:01 PM ===========  
+2024-03-28 15:52:01.4698 [224-1] DEBUG | Command line arguments: -w, -ml, c1d06566-11d0-4d15-998c-c7efd9bf677e, -pt, 092dca56-3224-4f9a-9a8d-fdcf5907c545 
+2024-03-28 15:52:01.5184 [224-1] INFO |  ===== ancoraDocs Image Processing Client - version 1.9.33.11220 =====  
+2024-03-28 15:52:01.5184 [224-1] INFO | Worker Mode 
+2024-03-28 15:52:01.5184 [224-1] INFO | Loading settings 
+2024-03-28 15:52:01.5184 [224-1] INFO | Connecting to server: Ip = 127.0.0.1, Port = 12543 
+2024-03-28 15:52:02.0550 [224-1] INFO | SDK Init - Start 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: Smart OCR SDK - Version: 9.3.23.11200, Branch: version-9.3, User: Nuri, Compiled at: Nov 20 2023, 15:13:17 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: Calling OCR Document init for language: English 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: Loading external primary recognition engine... 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: Failed loading of requested primary external engine: 1, Engine name: LT, Fail reason: External engine plugin not initialized. 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: Initiated fall back to other external engines... 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: Successful fall back to engine: 5, Engine name: TESS LSTM 
+2024-03-28 15:52:02.0550 [224-1] DEBUG | SDK: External primary engine loaded. Engine code: 5, Engine name: TESS LSTM 
+2024-03-28 15:52:02.0966 [224-1] DEBUG | SDK: Init Success 
+2024-03-28 15:52:02.4549 [224-1] DEBUG | SDK: Loading user dictionary... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Init PDF loader plugin 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Init secondary external recognizer 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Try to init advanced secondary recognition engine plugin... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Loading external secondary recognition engine... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Failed loading of requested secondary external engine: 2, Engine name: TESS, Fail reason: External engine plugin not initialized. 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Initiated fall back to other external secondary engines... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Try to init basic secondary recognition engine plugin... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Secondary OCR language: eng 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Secondary external recognizer successfully initialized 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Init barcode recognizer... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Requested barcode engine type: 1001, Barcode Engine Name: AUTO_PERF 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Barcode recognizer successfully initialized 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Selected barcode engine: 1, Barcode Engine Name: ZBAR 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: Init ICR engine... 
+2024-03-28 15:52:02.4569 [224-1] DEBUG | SDK: ICR engine successfully initialized 
+2024-03-28 15:52:02.4569 [224-1] INFO | SDK Init - End 
+2024-03-28 15:52:02.4569 [224-1] INFO | Connected to the server. Starting the client... 
+2024-03-28 15:52:02.4569 [224-1] INFO | Client successfully started 
+2024-03-28 15:52:02.4569 [224-4] INFO | Performing authentication as user: admin 
+2024-03-28 15:52:02.7884 [224-4] INFO | User Session ID: 668ab76d-72e1-41e0-a61a-b0a8231b89b4 
+2024-03-28 15:52:02.7884 [224-4] INFO | Waiting for next file to process... 
+2024-03-28 15:52:22.8135 [224-4] ERROR | Exception occurred while signaling process heartbeat : System.IO.FileNotFoundException: Unable to find the specified file.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.MemoryMappedFiles.MemoryMappedFile.OpenCore(String mapName, HandleInheritability inheritability, Int32 desiredAccessRights, Boolean createOrOpen)
+   at System.IO.MemoryMappedFiles.MemoryMappedFile.OpenExisting(String mapName, MemoryMappedFileRights desiredAccessRights, HandleInheritability inheritability)
+   at SsiServerCommonUtils.IpcLockTracker.SignalProcessHeartBeat()
+   at SsiImageProcessingClient.ImageProcessingClient.DoClientWork() 
+2024-03-28 15:52:22.8165 [224-4] INFO | No input file available for image processing, perform retry. 
+2024-03-28 15:52:22.8165 [224-1] INFO | Client finished 
+2024-03-28 15:52:23.5467 [224-1] INFO | There will be a connection retry in 120 seconds... 

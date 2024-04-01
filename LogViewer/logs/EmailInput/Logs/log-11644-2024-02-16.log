@@ -1,0 +1,29 @@
+2024-02-16 01:33:46.8716 [11644-1] INFO |  =========== New log started at: 2/16/2024 1:33:46 AM ===========  
+2024-02-16 01:33:46.9028 [11644-1] DEBUG | Command line arguments:  
+2024-02-16 01:33:46.9028 [11644-1] INFO | The application is started as a service 
+2024-02-16 01:33:46.9028 [11644-1] INFO | Set Current Directory: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\ 
+2024-02-16 01:33:46.9341 [11644-6] INFO | Connecting to the Application Server... 
+2024-02-16 01:33:48.9549 [11644-6] ERROR | SsiClient..ctor Exception: System.Net.Sockets.SocketException (0x80004005): No connection could be made because the target machine actively refused it 127.0.0.1:12543
+   at System.Net.Sockets.TcpClient.Connect(String hostname, Int32 port)
+   at SsiServerCommunication.Clients.SsiTcpClientSession..ctor(String ip, Int32 port, SsiTcpClientSettings settings)
+   at SsiEmailInputClient.SsiCommunication.SsiClient.Connect()
+   at SsiEmailInputClient.SsiCommunication.SsiClient..ctor(Logger log, Boolean sendClientInfo) 
+2024-02-16 01:33:48.9549 [11644-6] INFO | There will be a connection retry in 120 seconds... 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve args.Name: SsiServerDto.XmlSerializers, Version=1.9.33.10050, Culture=neutral, PublicKeyToken=null 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strAssemblyName: SsiServerDto.XmlSerializers 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strBaseDirectory: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\ 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strRelativeAssemblyPath: OAuthExtension\SsiServerDto.XmlSerializers.dll 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strFullAssemblyPath: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\OAuthExtension\SsiServerDto.XmlSerializers.dll 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve bFileExists: False 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve args.Name: SsiServerDto.XmlSerializers 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strAssemblyName: SsiServerDto.XmlSerializers 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strBaseDirectory: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\ 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strRelativeAssemblyPath: OAuthExtension\SsiServerDto.XmlSerializers.dll 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve strFullAssemblyPath: C:\Program Files (x86)\Ancora\ancoraDocs Automated Clients\OAuthExtension\SsiServerDto.XmlSerializers.dll 
+2024-02-16 01:35:49.4426 [11644-6] INFO | AssemblyResolve bFileExists: False 
+2024-02-16 01:35:49.4426 [11644-6] DEBUG | Successfully connected to the Application Server. 
+2024-02-16 01:35:49.4426 [11644-6] INFO | Reading settings from Application Server... 
+2024-02-16 01:35:49.4583 [11644-6] ERROR | EmailInputClient.Run Exception: System.ArgumentNullException: Array cannot be null.
+Parameter name: bytes
+   at System.Text.Encoding.GetString(Byte[] bytes)
+   at SsiEmailInputClient.EmailInputClient.Run() 
