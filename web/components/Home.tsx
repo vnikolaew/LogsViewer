@@ -13,14 +13,13 @@ import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
 import { LogsUpdate, ServiceLogsResponse, SubscribeToLogsResponse } from "@/providers/types.d";
 import { useLogsStore } from "@/stores/logsStore";
 import type { LogsEntry } from "@/stores/logsStore";
-import Sidebar from "@/components/Sidebar";
 // @ts-ignore
 import { UilArrowDown, UilSearch, UilTimes, UilCopy } from "@iconscout/react-unicons";
 import { useMarkContext } from "@/providers/MarksProvider";
 import Mark from "mark.js";
-import { useThrottle } from "@uidotdev/usehooks";
+import { useThrottle, useCopyToClipboard } from "@uidotdev/usehooks";
 import { getServices } from "@/api";
-import ClickEvent = JQuery.ClickEvent;
+import Sidebar from "@/components/sidebar";
 
 export interface HomeProps {
 
@@ -60,13 +59,14 @@ const Home = ({}: HomeProps) => {
 
    const selectedLogs = useMemo<LogsEntry>(() => {
          if (selectedLogFile) {
-            return {
+            const logs = {
                logs: selectedLogFile.logs ?? [],
                logFileName: selectedLogFile.fileName,
                serviceName: selectedLogFile.serviceName,
                newFilePosition: 0,
                subscriptionId: ``,
             };
+            return logs;
 
          } else return entries[selectedServiceName];
       },
@@ -167,6 +167,7 @@ const Home = ({}: HomeProps) => {
    const handleScrollDown: MouseEventHandler = (event) => {
       logsSectionRef.current?.scrollTo({ behavior: `smooth`, top: logsSectionRef.current?.scrollHeight });
    };
+   const [_, copy] = useCopyToClipboard();
 
    const handleSectionScroll: UIEventHandler = (event) => {
       event.preventDefault();
@@ -185,15 +186,13 @@ const Home = ({}: HomeProps) => {
       event.preventDefault();
       hubConnection.invoke<ServiceLogsResponse>(HUB_METHODS.GetAllLogs, selectedServiceName)
          .then(res => {
-            console.log({ res });
+            // console.log({ res });
          });
 
-   }
+   };
 
    const handleCopyFileNameToClipboard: MouseEventHandler<HTMLDivElement> = (event) => {
-      navigator
-         .clipboard
-         .writeText(selectedLogs.logFileName.trim())
+      copy(selectedLogs.logFileName.trim())
          .then(_ => {
             setCopyToClipboardMessage(`Copied!`);
             setTimeout(() => setCopyToClipboardMessage(`Copy to clipboard`), 1_000);
@@ -229,13 +228,13 @@ const Home = ({}: HomeProps) => {
                      ))}
                   </select>
                   <button aria-label={`Subscribe`}
-                          disabled={Object.keys(entries).some(s => s === selectedServiceName)}
+                          disabled={Object.keys(entries).some(s => s === selectedServiceName) || subscribedServices.has(selectedServiceName)}
                           onClick={handleSubscribe}
                           className={`px-3 btn btn-primary btn-sm disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-primary disabled:text-white shadow-md py-0.5 rounded-md text-white`}>
                      Subscribe
                   </button>
                   <button
-                     disabled={!Object.keys(entries).some(s => s === selectedServiceName)}
+                     disabled={!Object.keys(entries).some(s => s === selectedServiceName) || !subscribedServices.has(selectedServiceName)}
                      aria-label={`Unsubscribe`}
                      onClick={handleUnsubscribe}
                      className={`px-3 btn btn-sm btn-active btn-error disabled:cursor-not-allowed disabled:opacity-60 disabled:bg-error disabled:text-white shadow-md py-0.5 rounded-md text-white`}>
@@ -280,7 +279,7 @@ const Home = ({}: HomeProps) => {
                         <div
                            className={`border-[1px] flex items-center rounded-lg py-[2px] px-3 badge badge-primary badge-outline badge-md`}>
                         <span>
-                           {selectedLogs.logFileName.trim()}
+                           {tree?.flatMap(_ => _.logFiles ?? [])?.find(f => f.fileName === selectedLogs.logFileName.trim())?.fileName ?? selectedLogs.logFileName.trim()}
                         </span>
                         </div>
                         <div onClick={handleCopyFileNameToClipboard}

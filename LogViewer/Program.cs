@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using LogViewer;
 using LogViewer.Hubs;
 using LogViewer.Infrastructure;
 using LogViewer.Models;
@@ -7,66 +6,49 @@ using LogViewer.Services;
 using LogViewer.Services.Parsing;
 using Microsoft.AspNetCore.Mvc;
 
-var builder = WebApplication.CreateBuilder(args);
-
-builder.Services
-    .AddHostedService<LogsNotifier>()
-    .AddEndpointsApiExplorer()
-    .AddConfiguredCors()
-    .AddLogConfigurations(builder.Configuration)
-    .AddSwaggerGen()
-    .AddSingleton<ILogsParser<LogLine>, SsiLogsParser>()
-    .AddControllers();
-
-builder.Services.Configure<JsonOptions>(opts =>
-    opts.JsonSerializerOptions.Converters.Insert(0, new JsonStringEnumConverter()));
-
-builder.Services.AddSignalR().AddJsonProtocol(opts =>
+public class Program
 {
-    opts.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-});
+    public static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+        builder.Services
+            .AddHostedService<LogsNotifier>()
+            .AddEndpointsApiExplorer()
+            .AddConfiguredCors()
+            .AddLogConfigurations(builder.Configuration)
+            .AddSwaggerGen()
+            .AddSingleton<ILogsParser<LogLine>, SsiLogsParser>()
+            .AddControllers();
+
+        builder.Services.Configure<JsonOptions>(opts =>
+            opts.JsonSerializerOptions.Converters.Insert(0, new JsonStringEnumConverter()));
+
+        builder.Services.AddSignalR().AddJsonProtocol(opts =>
+        {
+            opts.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
+
+        var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app
-        .UseSwagger()
-        .UseSwaggerUI();
-}
+        if (app.Environment.IsDevelopment())
+        {
+            app
+                .UseSwagger()
+                .UseSwaggerUI();
+        }
 
-app.UseHttpsRedirection()
-    .UseCors();
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseHttpsRedirection();
+        }
 
-string[] summaries =
-[
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-];
+        app.UseCors();
 
-app.MapDefaultControllerRoute();
-app.MapHub<LogsHub>(LogsHub.Endpoint);
-app.MapGet("/weatherforecast", () =>
-    {
-        var forecast = Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                (
-                    DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    Random.Shared.Next(-20, 55),
-                    summaries[Random.Shared.Next(summaries.Length)]
-                ))
-            .ToArray();
-        return forecast;
-    })
-    .WithName("GetWeatherForecast")
-    .WithOpenApi();
 
-app.Run();
-
-namespace LogViewer
-{
-    record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-    {
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+        app.MapDefaultControllerRoute();
+        app.MapHub<LogsHub>(LogsHub.Endpoint);
+        app.Run();
     }
 }
