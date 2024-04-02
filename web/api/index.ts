@@ -1,7 +1,9 @@
 import { LogFileInfo, ServiceLogTree } from "@/providers/types";
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
+
 export async function getLogsTree() {
-   return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/tree`, {
+   return await fetch(`${API_URL}/logs/tree`, {
       headers: {
          Accept: `application/json`,
       },
@@ -12,7 +14,7 @@ export async function getLogsTree() {
 
 
 export async function getFileLogInfo(serviceName: string, fileName: string) {
-   return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/${serviceName}/${fileName}`, {
+   return await fetch(`${API_URL}/logs/${serviceName}/${fileName}`, {
       headers: {
          Accept: `application/json`,
       },
@@ -22,7 +24,7 @@ export async function getFileLogInfo(serviceName: string, fileName: string) {
 }
 
 export async function getLogFiles(serviceName: string, offset: number, limit: number) {
-   return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/${serviceName}/files?offset=${offset}&limit=${limit}`,
+   return await fetch(`${API_URL}/logs/${serviceName}/files?offset=${offset}&limit=${limit}`,
       {
          headers: {
             Accept: `application/json`,
@@ -33,7 +35,7 @@ export async function getLogFiles(serviceName: string, offset: number, limit: nu
 }
 
 export async function getServices() {
-   return await fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/services`, {
+   return await fetch(`${API_URL}/logs/services`, {
       headers: {
          Accept: `application/json`,
       },

@@ -1,5 +1,4 @@
-﻿using LogViewer.Services.Parsing;
-using LogViewer.Settings;
+﻿using LogViewer.Settings;
 using Microsoft.Extensions.Options;
 
 namespace LogViewer.Infrastructure;
@@ -21,11 +20,15 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddOptionsWithValidation<TOptions>(
         this IServiceCollection services,
-        IConfiguration configuration) where TOptions : class
+        IConfiguration configuration,
+        Func<TOptions, object>? bindProperty = default) where TOptions : class
     {
         services
             .AddOptions<TOptions>()
-            .Configure(opts => { configuration.GetSection(typeof(TOptions).Name).Bind(opts); })
+            .Configure(opts =>
+            {
+                configuration.GetSection(typeof(TOptions).Name).Bind(bindProperty?.Invoke(opts) ?? opts);
+            })
             .ValidateDataAnnotations()
             .ValidateOnStart();
 
@@ -36,15 +39,7 @@ public static class ServiceCollectionExtensions
 
     public static IServiceCollection AddLogConfigurations(
         this IServiceCollection services, IConfiguration configuration)
-    {
-        services
-            .AddOptions<LogConfigurations>()
-            .Configure(opts => { configuration.GetSection(nameof(LogConfigurations)).Bind(opts.Configurations); })
-            .ValidateDataAnnotations()
-            .ValidateOnStart();
-
-        services.AddSingleton<LogConfigurations>(sp =>
-            sp.GetRequiredService<IOptions<LogConfigurations>>().Value);
-        return services;
-    }
+        => services
+            .AddOptionsWithValidation<LogConfigurations>(
+                configuration, c => c.Configurations);
 }
