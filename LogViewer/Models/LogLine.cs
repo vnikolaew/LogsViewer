@@ -1,5 +1,10 @@
 ﻿namespace LogViewer.Models;
 
+public interface ILogLine
+{
+    public string RawContent { get; }
+}
+
 public record LogLine(
     long FileIndex,
     DateTime Timestamp,
@@ -7,12 +12,12 @@ public record LogLine(
     int ThreadId,
     LogLevel LogLevel,
     string Message,
-    string RawContent)
+    string RawContent) : ILogLine
 {
     public int ContentLength => RawContent.Length;
 };
 
-public enum LogLevel : sbyte 
+public enum LogLevel : sbyte
 {
     Info = 0,
     Debug = 1,

@@ -2,6 +2,8 @@
 using LogViewer.Hubs;
 using LogViewer.Hubs.Models;
 using LogViewer.Models;
+using LogViewer.Services.Parsing;
+using LogViewer.Settings;
 using Microsoft.AspNetCore.SignalR;
 
 namespace LogViewer.Services;
@@ -18,19 +20,22 @@ internal sealed class LogsNotifier : BackgroundService
 
     private readonly IHubContext<LogsHub, ILogsClient> _hubContext;
 
-    private readonly ILogsParser _logsParser;
+    private readonly ILogsParser<LogLine> _logsParser;
 
     private readonly ILogger<LogsNotifier> _logger;
+    
+    private readonly LogConfigurations _logConfigurations;
 
     public LogsNotifier(
         IWebHostEnvironment environment,
         IHubContext<LogsHub, ILogsClient> hubContext,
-        ILogsParser logsParser,
-        ILogger<LogsNotifier> logger)
+        ILogsParser<LogLine> logsParser,
+        ILogger<LogsNotifier> logger, LogConfigurations logConfigurations)
     {
         _hubContext = hubContext;
         _logsParser = logsParser;
         _logger = logger;
+        _logConfigurations = logConfigurations;
         _fileSystemWatcher = new FileSystemWatcher
         {
             Path = Path.Combine(environment.ContentRootPath, LogsFolder),
@@ -79,7 +84,7 @@ internal sealed class LogsNotifier : BackgroundService
                 var logLines = Encoding.UTF8.GetString(buffer)
                     .Trim()
                     .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-                logs = _logsParser.Parse(logLines).ToArray();
+                logs = _logsParser.Parse(logLines, _logConfigurations.Configurations[serviceName]).ToArray();
             }
 
             foreach (var fileLogsSubscription in subscriptions!)
@@ -109,7 +114,8 @@ internal sealed class LogsNotifier : BackgroundService
                     // Notify client they have to delete some logs by sending all file logs:
                     logs = _logsParser.Parse(Encoding.UTF8.GetString(await File.ReadAllBytesAsync(fileInfo.FullName))
                             .Trim()
-                            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries))
+                            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
+                            _logConfigurations.Configurations[serviceName])
                         .ToArray();
 
                     await _hubContext

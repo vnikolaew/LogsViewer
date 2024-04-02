@@ -5,6 +5,7 @@ import { LogFileInfo, ServiceLogTree, SubscribeToLogsResponse } from "@/provider
 import { UilListUl, UilPlus } from "@iconscout/react-unicons";
 import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
 import { cn } from "@/utils/cn";
+import { getFileLogInfo, getLogFiles } from "@/api";
 
 export interface SidebarProps {
 
@@ -20,7 +21,7 @@ const Sidebar = ({}: SidebarProps) => {
             <Fragment key={i}>
                <LogsTreeEntry key={i} tree={tree} />
                {i !== serviceLogsTree.tree.length - 1 && (
-                  <div className={`divider before:!h-[1px] after:!h-[1px] !text-gray-100 !my-0`}></div>
+                  <div className={`divider mx-auto w-3/4 before:!h-[1px] after:!h-[1px] !text-gray-100 !my-0`}></div>
                )}
             </Fragment>
          ))}
@@ -55,13 +56,7 @@ const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
       const { serviceName } = tree;
       setSelectedServiceName(serviceName);
 
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/${tree.serviceName}/${file.fileName}`, {
-         headers: {
-            Accept: `application/json`,
-         },
-         credentials: `include`,
-         mode: `cors`,
-      }).then(res => res.json())
+      getFileLogInfo(serviceName, file.fileName)
          .then(res => {
             console.log(res);
             setSelectedLogFile({ ...res.fileInfo, serviceName, logs: res.logs });
@@ -80,13 +75,7 @@ const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
    }
 
    async function handleGetMoreFiles() {
-      fetch(`${process.env.NEXT_PUBLIC_API_URL}/logs/${tree.serviceName}/files?offset=${tree.logFiles.length}&limit=10`, {
-         headers: {
-            Accept: `application/json`,
-         },
-         credentials: `include`,
-         mode: `cors`,
-      }).then(res => res.json())
+      getLogFiles(tree.serviceName, tree.logFiles.length, 10)
          .then(res => {
             console.log(res);
             addServiceLogFiles(tree.serviceName, res.files);
@@ -95,7 +84,7 @@ const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
    }
 
    return (
-      <div className="collapse !outline-none collapse-arrow bg-primary-content/30  !max-h-fit !min-h-fit !h-fit">
+      <div className="collapse !outline-none collapse-arrow bg-primary-content/0  !max-h-fit !min-h-fit !h-fit">
          <input name={`item-accordion`} className={`!h-[2rem] !min-h-[2rem]`} type="radio" />
          <div
             className="collapse-title after:!top-[1rem] !h-[2rem] !min-h-[2rem] flex items-center justify-start text-md text-left py-2 px-2 font-medium ">
@@ -110,7 +99,7 @@ const LogsTreeEntry = ({ tree }: LogsTreeEntryProps) => {
                      onClick={_ => handleClickLogFile(file)}
                      className={cn(
                         `rounded-md cursor-pointer text-xs py-1 px-2 flex items-center justify-start gap-2 transition-colors duration-200 hover:bg-gray-900`,
-                        selectedLogFile?.fileName?.endsWith(file.fileName) && `bg-red-500 hover:bg-red-400`,
+                        selectedLogFile?.fileName?.endsWith(file.fileName) && `bg-neutral-800 hover:bg-neutral-700`,
                      )}
                      key={`${file.fileName}-${i}`}>
                      <UilListUl color={`#ffffff`} size={12} />

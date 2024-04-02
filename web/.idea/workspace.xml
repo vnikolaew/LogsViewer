@@ -5,30 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42914f92-27cd-4237-9da7-6eca38d7e858" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/providers/MarksProvider.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/highlightMatchesWorker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/cn.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LogViewer/Controllers/LogsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Controllers/LogsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Hubs/LogsHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Hubs/LogsHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Hubs/Models/FileLogsSubscription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Hubs/Models/FileLogsSubscription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Hubs/Models/LogsUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Hubs/Models/LogsUpdate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Hubs/Models/SubscribeToLogsResponse.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Hubs/Models/SubscribeToLogsResponse.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/LogViewer.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/LogViewer.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Services/LogsNotifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Services/LogsNotifier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-28.log" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-28.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/logs/ExportClient/Logs/log-1844-2024-03-12.log" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/logs/ExportClient/Logs/log-1844-2024-03-12.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Navbar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/LogsHubProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/LogsHubProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/providers/types.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stores/logsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/logsStore.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,24 +41,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Victorio/RiderProjects/LogsViewer/web",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.dev.executor": "Run",
-    "ts.external.directory.path": "C:\\Users\\Victorio\\RiderProjects\\LogsViewer\\web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victorio/RiderProjects/LogsViewer/web&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Victorio\\Desktop\\Coding\\DotNet\\LogViewer\\web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -122,10 +105,22 @@
       <workItem from="1711872972568" duration="17969000" />
       <workItem from="1711948185150" duration="878000" />
       <workItem from="1711961198659" duration="15953000" />
+      <workItem from="1711999152820" duration="4246000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

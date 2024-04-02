@@ -2,7 +2,10 @@
 using System.Text;
 using LogViewer.Hubs.Models;
 using LogViewer.Infrastructure;
+using LogViewer.Models;
 using LogViewer.Services;
+using LogViewer.Services.Parsing;
+using LogViewer.Settings;
 using Microsoft.AspNetCore.SignalR;
 
 namespace LogViewer.Hubs;
@@ -20,7 +23,11 @@ public interface ILogsClient
     Task TestMethod(string value);
 }
 
-internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParser logsParser, ILogger<LogsHub> logger)
+internal sealed class LogsHub(
+    IWebHostEnvironment webHostEnvironment,
+    LogConfigurations logConfigurations,
+    ILogsParser<LogLine> logsParser,
+    ILogger<LogsHub> logger)
     : Hub<ILogsClient>
 {
     public static ConcurrentDictionary<string, ISet<FileLogsSubscription>> Subscriptions { get; set; }
@@ -115,9 +122,11 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
 
         // Send whole log file contents:
         var buffer = await File.ReadAllBytesAsync(logFileName);
-        var logs = logsParser.Parse(Encoding.UTF8.GetString(buffer)
-            .Trim()
-            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries));
+        var logs = logsParser.Parse(
+            Encoding.UTF8.GetString(buffer)
+                .Trim()
+                .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
+            logConfigurations.Configurations[serviceName]);
 
         await Clients.Caller.SendUpdates(LogsUpdate.New(
             logsSubscription.SubscriptionId,
@@ -166,7 +175,7 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
                 Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder))
             .GetDirectories()
             .Any(di => di.Name.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
-            
+
         if (serviceExists)
         {
             var lastWrittenLogFile = new DirectoryInfo(
@@ -176,12 +185,12 @@ internal sealed class LogsHub(IWebHostEnvironment webHostEnvironment, ILogsParse
             var serviceLogs = logsParser.Parse(
                 Encoding.UTF8.GetString(await File.ReadAllBytesAsync(lastWrittenLogFile))
                     .Trim()
-                    .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
-            ).ToList();
+                    .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
+                logConfigurations.Configurations[serviceName]).ToList();
 
             return ServiceLogsResponse.Success("Success", serviceName, serviceLogs);
         }
-        
+
         return ServiceLogsResponse.Failure("Failure", serviceName, []);
     }
 

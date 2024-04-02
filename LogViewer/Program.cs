@@ -1,7 +1,9 @@
 using System.Text.Json.Serialization;
 using LogViewer.Hubs;
 using LogViewer.Infrastructure;
+using LogViewer.Models;
 using LogViewer.Services;
+using LogViewer.Services.Parsing;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,8 +12,9 @@ builder.Services
     .AddHostedService<LogsNotifier>()
     .AddEndpointsApiExplorer()
     .AddConfiguredCors()
+    .AddLogConfigurations(builder.Configuration)
     .AddSwaggerGen()
-    .AddSingleton<ILogsParser, LogsParser>()
+    .AddSingleton<ILogsParser<LogLine>, SsiLogsParser>()
     .AddControllers();
 
 builder.Services.Configure<JsonOptions>(opts =>
