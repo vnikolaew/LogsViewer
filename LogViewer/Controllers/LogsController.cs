@@ -75,7 +75,9 @@ public sealed class LogsController : ControllerBase
             .GetFiles(LogFileFilter)
             .FirstOrDefault(fi => fi.Name == logFile);
 
-        if (logFileInfo is null) return BadRequest();
+        if (logFileInfo is null ||
+            !_logConfigurations.Configurations.TryGetValue(serviceName, out LogConfiguration? logConfiguration))
+            return BadRequest();
 
         return Ok(new
         {
@@ -91,7 +93,7 @@ public sealed class LogsController : ControllerBase
                 Encoding.UTF8.GetString(await System.IO.File.ReadAllBytesAsync(logFileInfo.FullName))
                     .Trim()
                     .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
-                , _logConfigurations.Configurations[serviceName]).ToList()
+                , logConfiguration).ToList()
         });
     }
 

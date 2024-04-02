@@ -93,6 +93,17 @@ internal sealed class LogsHub(
     [HubMethodName("Subscribe")]
     public async Task<SubscribeToLogsResponse> SubscribeAsync(string serviceName)
     {
+        if (!logConfigurations.Configurations.ContainsKey(serviceName))
+        {
+            return new SubscribeToLogsResponse(
+                Guid.Empty,
+                false,
+                "Service not found",
+                serviceName,
+                Context.ConnectionId
+            );
+        }
+
         Subscriptions.TryAdd(serviceName, new HashSet<FileLogsSubscription>());
         if (Subscriptions[serviceName].Contains(new FileLogsSubscription { ConnectionId = Context.ConnectionId }))
         {
@@ -171,6 +182,11 @@ internal sealed class LogsHub(
     [HubMethodName("GetAllLogs")]
     public async Task<ServiceLogsResponse> GetAllLogsAsync(string serviceName)
     {
+        if (!logConfigurations.Configurations.ContainsKey(serviceName))
+        {
+            return ServiceLogsResponse.Failure("Service not foundl", serviceName, []);
+        }
+
         var serviceExists = new DirectoryInfo(
                 Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder))
             .GetDirectories()
