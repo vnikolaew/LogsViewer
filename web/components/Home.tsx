@@ -38,7 +38,7 @@ const Home = ({}: HomeProps) => {
       subscribedServices,
       unsubscribeFromService,
       subscribeToService,
-      services, setServices,
+      services, setServices, setUnreadLogs,
    } = useLogsStore(state => ({
       insertLogs: state.insertLogs,
       entries: state.entries,
@@ -51,6 +51,7 @@ const Home = ({}: HomeProps) => {
       subscribeToService: state.subscribeToService,
       services: state.services,
       setServices: state.setServices,
+      setUnreadLogs: state.setUnreadLogs,
    }));
 
    const selectedLogs = useSelectedLogs();
@@ -117,6 +118,7 @@ const Home = ({}: HomeProps) => {
          getServices()
             .then(({ services }) => {
                setServices(services);
+               setUnreadLogs(services.reduce((acc, curr) => ({ ...acc, [curr]: false }), {}));
                setSelectedServiceName(services[0]);
             });
       }
@@ -175,12 +177,12 @@ const Home = ({}: HomeProps) => {
 
    // @ts-ignore
    return (
-      <div className={`grid gap-8 grid-cols-9 w-full`}>
-         <div className={`col-span-2`}>
+      <div className={`grid gap-8 md:grid-cols-9 2xl:grid-cols-12 w-full`}>
+         <div className={`md:col-span-2 2xl:col-span-2`}>
             <Sidebar />
          </div>
 
-         <div className={`flex flex-col gap-4 col-span-7`}>
+         <div className={`flex flex-col gap-4 col-span-7 2xl:col-span-10`}>
             <div className={`text-sm flex items-center gap-2 text-gray-300`}>
                <h2 className={`mr-4`}>Subscribed services:</h2>
                {[...subscribedServices].map((service, i) => (
@@ -192,10 +194,10 @@ const Home = ({}: HomeProps) => {
                   <select
                      value={selectedServiceName}
                      onChange={handleServiceChange}
-                     className={`rounded-md select select-sm select-bordered select-info text-white px-3 py-1 text-sm w-[200px]`}
+                     className={`rounded-md select md:select-md 2xl:select-md select-bordered select-info text-white px-3 py-1 text-sm w-[200px] 2xl:w-[300px]`}
                      id={`service-select`} name={`service`}>
                      {services.map((service, i) => (
-                        <option key={`${service}_${i}`} value={service}>{service}</option>
+                        <option className={``} key={`${service}_${i}`} value={service}>{service}</option>
                      ))}
                   </select>
                   <button aria-label={`Subscribe`}
@@ -220,7 +222,7 @@ const Home = ({}: HomeProps) => {
                   </button>
                </div>
                <div className={`mx-12 self-center flex justify-end flex-1`}>
-                  <label className="input w-1/2 input-sm input-bordered flex items-center gap-2">
+                  <label className="input w-1/2 input-sm xl:input-md input-bordered flex items-center gap-2">
                      <input
                         onChange={e => setLogsSearchValue(e.target.value)} value={logsSearchValue} type="text"
                         className="grow" placeholder="Search logs ..." />
@@ -234,21 +236,18 @@ const Home = ({}: HomeProps) => {
                   </label>
                </div>
             </div>
-            <div className={`flex flex-col gap-2 mt-4 mr-8`}>
-               <h2 className={`text-xl`}>
-                  Logs:
-               </h2>
+            <div className={`flex flex-col gap-4 mt-4 mr-8`}>
                <h2 className={`text-md`}>
                   {showHighlightLoadingSpinner && `Loading ...`}
                </h2>
                {selectedLogs?.logFileName?.length && (
                   <div className={`flex items-center justify-between`}>
-                     <h2>
+                     <h2 className={`badge text-gray-100 badge-primary badge-md xl:badge-lg`}>
                         File Name:
                      </h2>
                      <div className={`flex items-center gap-2`}>
                         <div
-                           className={`border-[1px] flex items-center rounded-lg py-[2px] px-3 badge badge-primary badge-outline badge-md`}>
+                           className={`border-[1px] flex items-center rounded-lg py-[2px] px-3 badge badge-primary badge-outline badge-md xl:badge-lg`}>
                         <span>
                            {tree?.flatMap(_ => _.logFiles ?? [])?.find(f => f.fileName === selectedLogs.logFileName.trim())?.fileName ?? selectedLogs.logFileName.trim()}
                         </span>
@@ -263,33 +262,39 @@ const Home = ({}: HomeProps) => {
                )}
                {selectedLogs && (
                   <div className={`flex items-center justify-between`}>
-                     <h2>
+                     <h2 className={`badge text-gray-100 badge-secondary badge-md xl:badge-lg`}>
                         File last write time:
                      </h2>
                      <span
-                        className={`border-[1px] rounded-full py-[4px] text-sm px-3 badge badge-neutral badge-md`}>
+                        className={`border-[1px] rounded-full py-[4px] text-sm px-3 badge badge-neutral badge-md xl:badge-lg`}>
                      {getFormattedDate(tree?.find(t => t.serviceName === selectedServiceName)?.logFiles?.[0]?.lastWriteTime!)}
                   </span>
                   </div>
                )}
                {selectedLogs && (
                   <div className={`flex items-center justify-between`}>
-                     <h2>
+                     <h2 className={`badge badge-ghost badge-md xl:badge-lg badge-info text-gray-100`}>
                         Logs count:
                      </h2>
                      <span
-                        className={`border-[1px] rounded-full py-[4px] text-sm px-3 badge badge-secondary badge-outline badge-lg`}>
-                     {selectedLogLinesCount}
+                        className={`border-[1px] rounded-full py-[4px] text-sm px-3 badge badge-secondary badge-outline badge-lg xl:badge-lg`}>
+                     {selectedLogLinesCount} total logs
                   </span>
                   </div>
                )}
+               <div className={`w-full mt-4`}>
+                  <h2 className={`text-2xl`}>
+                     Logs
+                  </h2>
+                  <div className={`divider w-5/6 !my-0 text-gray-300`}></div>
+               </div>
                {selectedLogs?.logs && (
                   <div onScroll={handleSectionScroll}
                        ref={logsSectionRef}
                        id={`logs`}
-                       className={`flex p-3 border-b-[1px] border-neutral rounded-md relative flex-col gap-[1px] overflow-y-scroll max-h-[300px] shadow-lg mt-4`}>
+                       className={`flex p-3 border-b-[1px] border-neutral rounded-md relative flex-col gap-[1px] overflow-y-scroll max-h-[300px] xl:max-h-[500px] shadow-lg mt-4`}>
                      {selectedLogs?.logs && selectedLogs.logs.map((log, i) => (
-                        <span className={`text-sm text-gray-300`} key={i}>{log.rawContent}</span>
+                        <span className={`text-sm xl:text-base text-gray-300`} key={i}>{log.rawContent}</span>
                      ))}
                      {showScrollDownButton && selectedLogs && (
                         <div className={`sticky text-right text-white bottom-8 right-12 z-10 mr-8`}>

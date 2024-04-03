@@ -1,3 +1,4 @@
+import Footer from "@/components/footer";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -5,8 +6,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-   title: "A Logs Viewer",
-   description: "An intuitive Logs Viewer UI",
+   title: "Logs Viewer UI",
+   description: "An intuitive Logs Viewer / Inspector UI",
 };
 
 export default function RootLayout({
@@ -18,6 +19,7 @@ export default function RootLayout({
       <html data-theme={`dark`} lang="en">
       <body className={inter.className}>
       {children}
+      <Footer />
       </body>
       </html>
    );

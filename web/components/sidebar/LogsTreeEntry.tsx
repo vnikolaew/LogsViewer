@@ -1,10 +1,10 @@
-import { LogFileInfo, ServiceLogTree, SubscribeToLogsResponse } from "@/providers/types";
+import { LogFileInfo, LogsUpdate, ServiceLogTree, SubscribeToLogsResponse } from "@/providers/types";
 import { useLogsStore } from "@/stores/logsStore";
 import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
 import { getFileLogInfo, getLogFiles } from "@/api";
 // @ts-ignore
 import { UilListUl, UilPlus } from "@iconscout/react-unicons";
-import React, { Fragment, useCallback, useState } from "react";
+import React, { Fragment, useCallback, useEffect, useMemo, useState } from "react";
 import { sleep } from "@/utils/sleep";
 import { cn } from "@/utils/cn";
 
@@ -22,6 +22,7 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
       addServiceLogFiles,
       setSelectedLogFile,
       serviceLogsTree,
+      unreadLogs
    } = useLogsStore(state => ({
       setSelectedServiceName: state.setSelectedServiceName,
       subscribedServices: state.subscribedServices,
@@ -30,12 +31,16 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
       setSelectedLogFile: state.setSelectedLogFile,
       selectedLogFile: state.selectedLogFile,
       serviceLogsTree: state.serviceLogsTree,
+      unreadLogs: state.unreadLogs,
    }));
+   const hasUnreadLogs = useMemo(() => unreadLogs[tree.serviceName] === true, [tree.serviceName, unreadLogs]);
+   
    const hubConnection = useHubConnection();
    const [loadMoreLoading, setLoadMoreLoading] = useState(false);
    const isFileSelected = useCallback((file : LogFileInfo) => {
       return selectedLogFile?.fileName?.endsWith(file.fileName);
    }, [selectedLogFile?.fileName]);
+
 
    function handleClickLogFile(file: LogFileInfo) {
       const { serviceName } = tree;
@@ -75,8 +80,13 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
       <Fragment>
          <li>
             <details>
-               <summary>
-                  {tree.serviceName}
+               <summary className={`flex items-center !justify-between`}>
+                  <div className={`flex items-center gap-4`}>
+                     {tree.serviceName}
+                     {hasUnreadLogs && (
+                        <div className={`badge badge-warning badge-xs`}></div>
+                     )}
+                  </div>
                </summary>
                <ul className={`flex flex-col`}>
                   {tree.logFiles.map((file, i) => (

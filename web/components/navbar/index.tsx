@@ -15,7 +15,6 @@ export interface NavbarProps {
 }
 
 const Navbar = ({}: NavbarProps) => {
-   const hubConnection = useHubConnection();
    const {
       setTree, tree,
       subscribeToService,
@@ -77,7 +76,7 @@ const Navbar = ({}: NavbarProps) => {
 
    return (
       <nav className={``}>
-         <div className={`navbar flex px-12 py-4 !pt-6 !pb-3 gap-8 items-center justify-between`}>
+         <div className={`navbar bg-base-200 flex px-12 py-4 !pt-6 !pb-3 gap-8 items-center justify-between`}>
             <div className={`flex items-center gap-4`}>
                <h1 className={`text-center text-2xl`}>
                   Log Viewer UI
@@ -133,10 +132,10 @@ const Navbar = ({}: NavbarProps) => {
                   )}
                   {(!filteredEntries.length && globalSearch?.length) ? (
                      <ul
-                        className={`dropdown-content w-full p-4 max-h-[300px] overflow-y-scroll !rounded-md  bg-base-100 text-white z-[100] `}>
-                        <li className={`text-gray-300 w-full rounded-sm px-2 py-1 flex items-center hover:bg-base-300 duration-100 transition-colors`}>
+                        className={`dropdown-content w-full p-4 max-h-[300px] !rounded-md  bg-base-100 text-white z-[100] `}>
+                        <li className={`text-gray-300 w-full rounded-sm px-2 py-1 flex items-center `}>
                            <a className={`text-left text-sm`}>
-                              No results
+                              No results found
                            </a>
                         </li>
                      </ul>

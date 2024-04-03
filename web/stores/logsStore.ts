@@ -12,6 +12,9 @@ export interface SelectedLogFileInfo extends LogFileInfo {
    serviceName: string;
 }
 
+export interface UnreadLogs extends Record<string, boolean> {
+}
+
 export interface ServiceLogEntries {
 
    serviceLogsTree: { tree: ServiceLogTree[] };
@@ -32,6 +35,11 @@ export interface ServiceLogEntries {
    services: string[],
    setServices: (services: string[]) => void,
 
+   unreadLogs: UnreadLogs;
+   setUnreadLogs: (logs: UnreadLogs) => void;
+   markLogAsRead: (serviceName: string) => void;
+   markLogAsUnread: (serviceName: string) => void;
+
    insertLogs: (newLogs: LogsUpdate) => void;
    deleteAllLogs: (serviceName: string) => void;
    changeLogFilePosition: (serviceName: string, newPosition: number) => void;
@@ -41,10 +49,31 @@ export interface ServiceLogEntries {
 export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    entries: {},
    services: [],
+   unreadLogs: {},
+   markLogAsRead: (serviceName: string) => set((state) =>
+      produce(state, draft => {
+         if (serviceName in draft.unreadLogs) {
+            draft.unreadLogs[serviceName] = false;
+         }
+         return draft;
+      })),
+   markLogAsUnread: (serviceName: string) => set((state) =>
+      produce(state, draft => {
+         if (serviceName in draft.unreadLogs) {
+            draft.unreadLogs[serviceName] = true;
+         }
+         return draft;
+      })),
+   setUnreadLogs: (logs: UnreadLogs) => set((state) =>
+      produce(state, draft => {
+         draft.unreadLogs = logs;
+         return draft;
+      })),
    selectedLogFile: null!,
-   setSelectedLogFile: (logFile:  SelectedLogFileInfo) => set((state) =>
+   setSelectedLogFile: (logFile: SelectedLogFileInfo) => set((state) =>
       produce(state, draft => {
          draft.selectedLogFile = logFile;
+         draft.unreadLogs[logFile.serviceName] = false;
          return draft;
       })),
    setServices: services => set((state) =>
@@ -68,6 +97,7 @@ export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    setSelectedServiceName: (service: string) => set((state) =>
       produce(state, draft => {
          draft.selectedServiceName = service;
+         draft.unreadLogs[service] = false;
          return draft;
       })),
    setTree: (tree: ServiceLogTree[]) => set((state) => {

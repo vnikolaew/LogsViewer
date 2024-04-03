@@ -65,6 +65,15 @@ public static class ServiceCollectionExtensions
                 bindProperty: c => c,
                 configure: c =>
                 {
+                    // Use base format when concrete one is not specified:
+                    if (c.BaseFormat is { } baseFormat)
+                    {
+                        foreach (var logConfiguration in c.Services.Values.Where(c => c.LogFormat is null))
+                        {
+                            logConfiguration.LogFormat = baseFormat;
+                        }
+                    }
+                    
                     c.BaseFolder = c
                         .BaseFolder
                         .Replace("{AppRoot}", environment.ContentRootPath);

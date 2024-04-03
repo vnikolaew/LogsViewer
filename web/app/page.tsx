@@ -8,7 +8,7 @@ export default function Page() {
       <HubConnectionProvider>
          <MarksProvider>
             <Navbar />
-            <main className="flex min-h-screen flex-col items-start justify-start p-4">
+            <main className="flex min-h-[80vh] flex-col items-start justify-start p-4 mt-4">
                <Home />
             </main>
          </MarksProvider>

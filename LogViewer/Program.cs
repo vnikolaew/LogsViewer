@@ -33,11 +33,14 @@ var app = builder.Build();
     {
         app
             .UseSwagger()
-            .UseSwaggerUI()
-            .UseHttpsRedirection();
+            .UseSwaggerUI();
     }
 
-    app.UseCors();
+    app
+        .UsePathBase(string.Empty)
+        .UseHttpsRedirection()
+        .UseCors()
+        .UseRouting();
     app.MapDefaultControllerRoute();
     app.MapHub<LogsHub>(LogsHub.Endpoint);
     app.Run();

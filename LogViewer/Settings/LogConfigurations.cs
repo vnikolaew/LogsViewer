@@ -5,6 +5,8 @@ namespace LogViewer.Settings;
 public sealed class LogConfigurations
 {
     public string BaseFolder { get; set; } = default!;
+    
+    public string? BaseFormat { get; set; } = default;
 
     public Dictionary<string, LogConfiguration> Services { get; set; } = new();
 

@@ -35,7 +35,6 @@ const initializeHub = () => {
    });
 
    hubConnection.on(HUB_METHODS.SendUpdates, (value: LogsUpdate) => {
-      console.log({ value });
    });
 };
 

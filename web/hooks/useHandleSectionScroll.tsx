@@ -1,6 +1,6 @@
 import { UIEventHandler, useRef, useState } from "react";
 
-export function useHandleSectionScroll<TElement extends HTMLElement>() {
+export function useHandleSectionScroll<TElement extends HTMLElement>(threshold?: number) {
    const logsSectionRef = useRef<TElement>(null!);
    const [showScrollDownButton, setShowScrollDownButton] = useState(true);
 
@@ -10,7 +10,7 @@ export function useHandleSectionScroll<TElement extends HTMLElement>() {
       const { scrollTop, scrollHeight, clientHeight } = logsSectionRef.current!;
 
       // Adjust the threshold as needed
-      const THRESHOLD = 10; // You can adjust this value to define how close to the bottom is considered "scroll end"
+      const THRESHOLD = threshold ?? 10; // You can adjust this value to define how close to the bottom is considered "scroll end"
 
       const isScrollAtEnd = scrollHeight - scrollTop <= clientHeight + THRESHOLD;
       if (isScrollAtEnd) setShowScrollDownButton(false);
