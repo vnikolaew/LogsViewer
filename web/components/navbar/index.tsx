@@ -8,6 +8,7 @@ import { cn } from "@/utils/cn";
 import { useThrottle } from "@uidotdev/usehooks";
 import { LogFileInfo, ServiceLogTree } from "@/providers/types";
 import { useHubConnection } from "@/providers/LogsHubProvider";
+import { useFilteredEntries } from "@/hooks/useFilteredEntries";
 
 export interface NavbarProps {
 
@@ -20,7 +21,6 @@ const Navbar = ({}: NavbarProps) => {
       subscribeToService,
       setSelectedServiceName,
       setSelectedLogFile,
-      entries,
    } = useLogsStore(state => ({
       setTree: state.setTree,
       tree: state.serviceLogsTree,
@@ -33,18 +33,7 @@ const Navbar = ({}: NavbarProps) => {
    const [globalSearch, setGlobalSearch] = useState(`auto`);
    const throttledSearchValue = useThrottle(globalSearch, 500);
 
-   const filteredEntries = useMemo(() => {
-      if (!throttledSearchValue.length) return [];
-      const parts = throttledSearchValue.split("/");
-      if (parts.length === 2) {
-         return tree?.tree?.filter(t =>
-            t.serviceName.toLowerCase().includes(parts[0].toLowerCase().trim())
-            && t.logFiles.some(f => f.fileName.toLowerCase().includes(parts[1].toLowerCase().trim()))) ?? [];
-      }
-
-      return tree?.tree?.filter(t =>
-         t.serviceName.toLowerCase().includes(throttledSearchValue.toLowerCase().trim())) ?? [];
-   }, [throttledSearchValue, tree?.tree]);
+   const filteredEntries = useFilteredEntries(throttledSearchValue);
 
    const [isSearchInputFocused, setIsSearchInputFocused] = useState(false);
    const searchResultsDropdownOpen = useMemo(() => {
@@ -52,13 +41,11 @@ const Navbar = ({}: NavbarProps) => {
    }, [filteredEntries?.length, isSearchInputFocused, throttledSearchValue?.length]);
 
    useEffect(() => {
-      console.log(tree?.tree?.length);
       if (tree?.tree?.length) return;
 
       getLogsTree()
-         .then(root => {
-            setTree(root.tree);
-         }).catch(console.error);
+         .then(root => setTree(root.tree))
+         .catch(console.error);
    }, [setTree]);
 
    async function handleToggleLogTree() {
@@ -131,7 +118,6 @@ const Navbar = ({}: NavbarProps) => {
                               {tree.logFiles.map((file, i) => (
                                  <li onClick={e => {
                                     e.persist();
-                                    console.log({ e });
                                     handleSelectLogFile(tree, file);
                                  }} key={i}
                                      className={`text-white rounded-sm w-fit px-2 py-1 flex flex-col items-center hover:bg-base-300 cursor-pointer duration-100 transition-colors`}>
@@ -145,9 +131,18 @@ const Navbar = ({}: NavbarProps) => {
                         ))}
                      </ul>
                   )}
+                  {(!filteredEntries.length && globalSearch?.length) ? (
+                     <ul
+                        className={`dropdown-content w-full p-4 max-h-[300px] overflow-y-scroll !rounded-md  bg-base-100 text-white z-[100] `}>
+                        <li className={`text-gray-300 w-full rounded-sm px-2 py-1 flex items-center hover:bg-base-300 duration-100 transition-colors`}>
+                           <a className={`text-left text-sm`}>
+                              No results
+                           </a>
+                        </li>
+                     </ul>
+                  ) : null}
                </div>
                <div className={`dropdown absolute !w-32 -bottom-6 bg-red-500`}>
-                  {/*<summary className={`display-none bg-transparent text-transparent`}></summary>*/}
                </div>
             </div>
          </div>

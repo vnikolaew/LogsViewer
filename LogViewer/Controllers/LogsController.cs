@@ -25,38 +25,37 @@ public sealed class LogsController : ControllerBase
 
     private const char NormalizedPathDirSeparator = '/';
 
-    public LogsController(IHostEnvironment environment, ILogsParser<LogLine> logsParser,
+    public LogsController(
+        IHostEnvironment environment,
+        ILogsParser<LogLine> logsParser,
         LogConfigurations logConfigurations)
     {
         _logsParser = logsParser;
         _logConfigurations = logConfigurations;
-        _rootLogsFolder = Path.Combine(environment.ContentRootPath, RootLogsFolder);
+        _rootLogsFolder = logConfigurations.BaseFolder;
     }
 
 
     [HttpGet("services")]
     public IActionResult GetServices()
     {
-        var serviceNames = new DirectoryInfo(_rootLogsFolder)
-            .GetDirectories("*")
-            .Where(di => di.GetDirectories().Any(d => d.Name.Trim() == LogsFolder))
-            .Select(di => di.Name.Trim())
-            .ToList();
-
-        return Ok(new { Services = serviceNames });
+        return Ok(new { Services = _logConfigurations.ServiceNames });
     }
 
     [HttpGet("{serviceName}/{logFile}")]
     public async Task<IActionResult> GetLogFile(string serviceName, string logFile)
     {
-        var logFileInfo = new DirectoryInfo(
-                Path.Combine(_rootLogsFolder, serviceName, LogsFolder))
+        if (!_logConfigurations.Services.TryGetValue(serviceName, out var logConfiguration))
+        {
+            return BadRequest();
+        }
+
+        var logFileInfo = _logConfigurations
+            .GetServiceLogBaseDirectoryInfo(serviceName)!
             .GetFiles(LogFileFilter)
             .FirstOrDefault(fi => fi.Name == logFile);
 
-        if (logFileInfo is null ||
-            !_logConfigurations.Configurations.TryGetValue(serviceName, out LogConfiguration? logConfiguration))
-            return BadRequest();
+        if (logFileInfo is null) return BadRequest();
 
         return Ok(new
         {
@@ -80,7 +79,8 @@ public sealed class LogsController : ControllerBase
     public async Task<IActionResult> GetLogFiles(
         string serviceName, [FromQuery] int offset, [FromQuery] int limit)
     {
-        var allLogFiles = new DirectoryInfo(Path.Combine(_rootLogsFolder, serviceName, LogsFolder))
+        var allLogFiles = _logConfigurations
+            .GetServiceLogBaseDirectoryInfo(serviceName)!
             .GetFiles(LogFileFilter);
 
         var serviceLogFiles = allLogFiles
@@ -92,7 +92,7 @@ public sealed class LogsController : ControllerBase
                 LastWriteTime = fi.LastWriteTimeUtc,
                 FileSize = fi.Length,
                 FileName = fi.Name,
-                FileRelativePath = Path.Combine(RootLogsFolder, serviceName, LogsFolder, fi.Name)
+                FileRelativePath = Path.Combine(_logConfigurations.Services[serviceName].LogsFolder!, fi.Name)
                     .Replace(Path.DirectorySeparatorChar, NormalizedPathDirSeparator)
             });
 
@@ -102,15 +102,19 @@ public sealed class LogsController : ControllerBase
     [HttpGet("tree")]
     public async Task<IActionResult> GetLogsTree()
     {
-        var serviceLogTrees = new DirectoryInfo(_rootLogsFolder)
-            .GetDirectories()
-            .Select(di => new ServiceLogTree
+        var serviceLogTrees = _logConfigurations
+            .Services
+            .Select(s => new ServiceLogTree
             {
-                ServiceName = di.Name.Trim(),
-                FolderRelativePath = Path.Combine(LogsFolder, di.Name)
+                ServiceName = s.Key.Trim(),
+                FolderRelativePath = Path.Combine(RootLogsFolder, s.Value.LogsFolder!)
                     .Replace(Path.DirectorySeparatorChar, NormalizedPathDirSeparator),
-                TotalLogFilesCount = di.GetDirectories(RootLogsFolder)[0].GetFiles(LogFileFilter).Length,
-                LogFiles = di.GetDirectories(LogsFolder)[0]
+                TotalLogFilesCount = _logConfigurations
+                    .GetServiceLogBaseDirectoryInfo(s.Key)!
+                    .GetFiles(LogFileFilter)
+                    .Length,
+                LogFiles = _logConfigurations
+                    .GetServiceLogBaseDirectoryInfo(s.Key)!
                     .GetFiles(LogFileFilter)
                     .OrderByDescending(fi => fi.LastWriteTimeUtc)
                     .Take(10)
@@ -119,7 +123,7 @@ public sealed class LogsController : ControllerBase
                         LastWriteTime = fi.LastWriteTimeUtc,
                         FileSize = fi.Length,
                         FileName = fi.Name,
-                        FileRelativePath = Path.Combine(RootLogsFolder, di.Name, LogsFolder, fi.Name)
+                        FileRelativePath = Path.Combine(RootLogsFolder, s.Value.LogsFolder!, fi.Name)
                             .Replace(Path.DirectorySeparatorChar, NormalizedPathDirSeparator),
                     }).ToList()
             })
@@ -136,7 +140,7 @@ public sealed class LogsController : ControllerBase
         StringBuilder fileLinesFromStream = new();
         List<long> streamPositions = [];
 
-        var serviceLogsFolder = Path.Combine(_rootLogsFolder, logFolder, LogsFolder);
+        var serviceLogsFolder = _logConfigurations.GetServiceLogBaseFolder(logFolder);
         if (!Directory.Exists(serviceLogsFolder))
             return BadRequest(new { Message = $"Folder '{serviceLogsFolder}' does not exist!" });
 
@@ -156,7 +160,7 @@ public sealed class LogsController : ControllerBase
         var parsedLines = _logsParser.Parse(fileLinesFromStream
                 .ToString()
                 .Trim()
-                .Split(Environment.NewLine), _logConfigurations.Configurations[logFolder])
+                .Split(Environment.NewLine), _logConfigurations.Services[logFolder])
             .Select((log, i) => log with { FileIndex = i + 1 })
             .ToList();
 

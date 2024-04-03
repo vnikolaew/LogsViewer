@@ -84,7 +84,7 @@ internal sealed class LogsNotifier : BackgroundService
                 var logLines = Encoding.UTF8.GetString(buffer)
                     .Trim()
                     .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
-                logs = _logsParser.Parse(logLines, _logConfigurations.Configurations[serviceName]).ToArray();
+                logs = _logsParser.Parse(logLines, _logConfigurations.Services[serviceName]).ToArray();
             }
 
             foreach (var fileLogsSubscription in subscriptions!)
@@ -115,7 +115,7 @@ internal sealed class LogsNotifier : BackgroundService
                     logs = _logsParser.Parse(Encoding.UTF8.GetString(await File.ReadAllBytesAsync(fileInfo.FullName))
                             .Trim()
                             .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
-                            _logConfigurations.Configurations[serviceName])
+                            _logConfigurations.Services[serviceName])
                         .ToArray();
 
                     await _hubContext

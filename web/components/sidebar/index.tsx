@@ -1,7 +1,6 @@
 "use client";
-import React, { Fragment, useState } from "react";
+import React, {  } from "react";
 import { useLogsStore } from "@/stores/logsStore";
-import { useHubConnection } from "@/providers/LogsHubProvider";
 import { LogsTreeEntry } from "@/components/sidebar/LogsTreeEntry";
 
 export interface SidebarProps {

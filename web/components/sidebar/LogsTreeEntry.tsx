@@ -34,8 +34,8 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
    const hubConnection = useHubConnection();
    const [loadMoreLoading, setLoadMoreLoading] = useState(false);
    const isFileSelected = useCallback((file : LogFileInfo) => {
-      return selectedLogFile.fileName.endsWith(file.fileName);
-   }, [selectedLogFile.fileName]);
+      return selectedLogFile?.fileName?.endsWith(file.fileName);
+   }, [selectedLogFile?.fileName]);
 
    function handleClickLogFile(file: LogFileInfo) {
       const { serviceName } = tree;
@@ -70,8 +70,6 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
          .catch(console.error)
          .finally(() => setLoadMoreLoading(false));
    }
-
-   console.log({ selectedLogFile });
 
    return (
       <Fragment>

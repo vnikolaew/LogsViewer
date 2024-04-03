@@ -2,9 +2,9 @@ version: "3.9"
 
 services:
    web:
-      build:
-         context: ./web
-         dockerfile: Dockerfile
+      container_name: web
+      image: vnikolaew/log-viewer.web:1.0.0
+      pull_policy: always
       networks:
          default:
       environment:
@@ -20,17 +20,21 @@ services:
       pull_policy: always
       container_name: server
       environment:
-         - ASPNETCORE_URLS=http://+:80;https://+:443
+         - ASPNETCORE_URLS=http://+:80
          - ASPNETCORE_ENVIRONMENT=Production
       networks:
          default:
+      volumes:
+         - logs:/app/logs
       expose:
          - "80"
-         - "443"
+         # - "443"
       ports:
          - "80:80"
-         - "443:443"
+         # - "443:443"
       restart: on-failure
 
+volumes:
+   logs:
 networks:
    default:

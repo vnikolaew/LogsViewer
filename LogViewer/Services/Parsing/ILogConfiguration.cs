@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace LogViewer.Services.Parsing;
 
@@ -16,4 +17,6 @@ public class LogConfiguration : ILogConfiguration
     
     [Required(ErrorMessage = "Log format is required.")]
     public string LogFormat { get; set;  }
+    
+    public string? LogsFolder { get; set;  }
 }

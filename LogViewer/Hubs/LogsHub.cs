@@ -46,8 +46,10 @@ internal sealed class LogsHub(
         long filePosition,
         CancellationToken cancellationToken)
     {
+        LogConfiguration logConfiguration = default!;
         var success = Subscriptions
-            .TryGetValue(serviceName, out var subscriptions);
+                          .TryGetValue(serviceName, out var subscriptions)
+                      && logConfigurations.Services.TryGetValue(serviceName, out logConfiguration);
 
         if (!success)
         {
@@ -69,8 +71,9 @@ internal sealed class LogsHub(
             return;
         }
 
+
         var logFileName = new DirectoryInfo(
-                Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder, serviceName, "Logs"))
+                Path.Combine(logConfigurations.BaseFolder, logConfiguration!.LogsFolder!))
             .GetLastWrittenFileName(LogFilesFilter);
 
         var logFileSize = logFileName.GetFileSize();
@@ -93,7 +96,7 @@ internal sealed class LogsHub(
     [HubMethodName("Subscribe")]
     public async Task<SubscribeToLogsResponse> SubscribeAsync(string serviceName)
     {
-        if (!logConfigurations.Configurations.ContainsKey(serviceName))
+        if (!logConfigurations.Services.ContainsKey(serviceName))
         {
             return new SubscribeToLogsResponse(
                 Guid.Empty,
@@ -118,7 +121,7 @@ internal sealed class LogsHub(
         }
 
         var logFileName = new DirectoryInfo(
-                Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder, serviceName, "Logs"))
+                Path.Combine(logConfigurations.BaseFolder, logConfigurations.Services[serviceName].LogsFolder!))
             .GetLastWrittenFileName(LogFilesFilter);
 
         var logsSubscription = new FileLogsSubscription
@@ -137,7 +140,7 @@ internal sealed class LogsHub(
             Encoding.UTF8.GetString(buffer)
                 .Trim()
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
-            logConfigurations.Configurations[serviceName]);
+            logConfigurations.Services[serviceName]);
 
         await Clients.Caller.SendUpdates(LogsUpdate.New(
             logsSubscription.SubscriptionId,
@@ -167,12 +170,11 @@ internal sealed class LogsHub(
                 "Could not unsubscribe", serviceName, Context.ConnectionId);
         }
 
-        var existingSubscription =
-            Subscriptions[serviceName].FirstOrDefault(s => s.ConnectionId == Context.ConnectionId)!;
+        var existingSubscription = Subscriptions[serviceName]
+            .FirstOrDefault(s => s.ConnectionId == Context.ConnectionId)!;
         Subscriptions[serviceName].Remove(existingSubscription);
 
         await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"{serviceName}_logs", CancellationToken.None);
-
         return new UnsubscribeToLogsResponse(
             existingSubscription.SubscriptionId,
             true,
@@ -182,27 +184,25 @@ internal sealed class LogsHub(
     [HubMethodName("GetAllLogs")]
     public async Task<ServiceLogsResponse> GetAllLogsAsync(string serviceName)
     {
-        if (!logConfigurations.Configurations.ContainsKey(serviceName))
+        if (!logConfigurations.Services.TryGetValue(serviceName, out var logConfiguration))
         {
             return ServiceLogsResponse.Failure("Service not foundl", serviceName, []);
         }
 
-        var serviceExists = new DirectoryInfo(
-                Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder))
-            .GetDirectories()
-            .Any(di => di.Name.Equals(serviceName, StringComparison.OrdinalIgnoreCase));
+        var serviceExists = Directory.Exists(
+            Path.Combine(logConfigurations.BaseFolder, logConfiguration.LogsFolder!));
 
         if (serviceExists)
         {
             var lastWrittenLogFile = new DirectoryInfo(
-                    Path.Combine(webHostEnvironment.ContentRootPath, LogsFolder, serviceName, "Logs"))
+                    Path.Combine(logConfigurations.BaseFolder, logConfiguration.LogsFolder!))
                 .GetLastWrittenFileName("*.log");
 
             var serviceLogs = logsParser.Parse(
                 Encoding.UTF8.GetString(await File.ReadAllBytesAsync(lastWrittenLogFile))
                     .Trim()
                     .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
-                logConfigurations.Configurations[serviceName]).ToList();
+                logConfigurations.Services[serviceName]).ToList();
 
             return ServiceLogsResponse.Success("Success", serviceName, serviceLogs);
         }

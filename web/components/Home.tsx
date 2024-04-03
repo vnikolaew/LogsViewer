@@ -2,17 +2,13 @@
 import React, {
    ChangeEvent,
    MouseEventHandler,
-   UIEventHandler,
    useCallback,
    useEffect,
-   useMemo,
-   useRef,
    useState,
 } from "react";
 import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
 import { LogsUpdate, ServiceLogsResponse, SubscribeToLogsResponse } from "@/providers/types.d";
 import { useLogsStore } from "@/stores/logsStore";
-import type { LogsEntry } from "@/stores/logsStore";
 // @ts-ignore
 import { UilArrowDown, UilSearch, UilTimes, UilCopy } from "@iconscout/react-unicons";
 import { useMarkContext } from "@/providers/MarksProvider";
@@ -20,6 +16,8 @@ import Mark from "mark.js";
 import { useThrottle, useCopyToClipboard } from "@uidotdev/usehooks";
 import { getServices } from "@/api";
 import Sidebar from "@/components/sidebar";
+import { useSelectedLogs, useSelectedLogsCount } from "@/hooks/useSelectedLogs";
+import { useHandleSectionScroll } from "@/hooks/useHandleSectionScroll";
 
 export interface HomeProps {
 
@@ -41,7 +39,6 @@ const Home = ({}: HomeProps) => {
       unsubscribeFromService,
       subscribeToService,
       services, setServices,
-      selectedLogFile,
    } = useLogsStore(state => ({
       insertLogs: state.insertLogs,
       entries: state.entries,
@@ -54,33 +51,19 @@ const Home = ({}: HomeProps) => {
       subscribeToService: state.subscribeToService,
       services: state.services,
       setServices: state.setServices,
-      selectedLogFile: state.selectedLogFile,
    }));
 
-   const selectedLogs = useMemo<LogsEntry>(() => {
-         if (selectedLogFile) {
-            const logs = {
-               logs: selectedLogFile.logs ?? [],
-               logFileName: selectedLogFile.fileName,
-               serviceName: selectedLogFile.serviceName,
-               newFilePosition: 0,
-               subscriptionId: ``,
-            };
-            return logs;
-
-         } else return entries[selectedServiceName];
-      },
-      [entries, selectedLogFile, selectedServiceName]);
+   const selectedLogs = useSelectedLogs();
+   const selectedLogLinesCount = useSelectedLogsCount();
 
    const [logsSearchValue, setLogsSearchValue] = useState(``);
    const searchThrottledValue = useThrottle(logsSearchValue, 750);
    const [copyToClipboardMessage, setCopyToClipboardMessage] = useState(`Copy to clipboard`);
 
-   const selectedLogLinesCount = useMemo<number>(() => selectedLogs?.logs?.length ?? 0,
-      [selectedLogs?.logs?.length]);
-
-   const logsSectionRef = useRef<HTMLDivElement | null>(null!);
-   const [showScrollDownButton, setShowScrollDownButton] = useState(true);
+   const [showScrollDownButton,
+      setShowScrollDownButton,
+      handleSectionScroll,
+      logsSectionRef] = useHandleSectionScroll<HTMLDivElement>();
 
    const getFormattedDate = useCallback((dateString: string) => {
          const date = new Date(dateString);
@@ -164,23 +147,11 @@ const Home = ({}: HomeProps) => {
          .catch(console.error);
    }
 
-   const handleScrollDown: MouseEventHandler = (event) => {
+   const handleScrollDown: MouseEventHandler = (_) => {
       logsSectionRef.current?.scrollTo({ behavior: `smooth`, top: logsSectionRef.current?.scrollHeight });
    };
+
    const [_, copy] = useCopyToClipboard();
-
-   const handleSectionScroll: UIEventHandler = (event) => {
-      event.preventDefault();
-
-      const { scrollTop, scrollHeight, clientHeight } = logsSectionRef.current!;
-
-      // Adjust the threshold as needed
-      const THRESHOLD = 10; // You can adjust this value to define how close to the bottom is considered "scroll end"
-
-      const isScrollAtEnd = scrollHeight - scrollTop <= clientHeight + THRESHOLD;
-      if (isScrollAtEnd) setShowScrollDownButton(false);
-      else if (!showScrollDownButton) setShowScrollDownButton(true);
-   };
 
    const handleGetAllLogs: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.preventDefault();
@@ -204,12 +175,12 @@ const Home = ({}: HomeProps) => {
 
    // @ts-ignore
    return (
-      <div className={`grid gap-8 grid-cols-6 w-full`}>
-         <div className={`col-span-1`}>
+      <div className={`grid gap-8 grid-cols-9 w-full`}>
+         <div className={`col-span-2`}>
             <Sidebar />
          </div>
 
-         <div className={`flex flex-col gap-4 col-span-5`}>
+         <div className={`flex flex-col gap-4 col-span-7`}>
             <div className={`text-sm flex items-center gap-2 text-gray-300`}>
                <h2 className={`mr-4`}>Subscribed services:</h2>
                {[...subscribedServices].map((service, i) => (
