@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+   web:
+      build:
+         context: ./web
+         dockerfile: Dockerfile
+      networks:
+         default:
+      environment:
+         - NEXT_PUBLIC_API_URL=http://localhost:80/api
+         - NEXT_PUBLIC_BASE_URL=http://localhost:80
+      ports:
+         - "3000:3000"
+      depends_on:
+         - server
+      restart: on-failure
+   server:
+      image: vnikolaew/log-viewer.server:1.0.0
+      pull_policy: always
+      container_name: server
+      environment:
+         - ASPNETCORE_URLS=http://+:80;https://+:443
+         - ASPNETCORE_ENVIRONMENT=Production
+      networks:
+         default:
+      expose:
+         - "80"
+         - "443"
+      ports:
+         - "80:80"
+         - "443:443"
+      restart: on-failure
+
+networks:
+   default:
