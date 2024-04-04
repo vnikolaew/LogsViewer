@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+i,mport { useMemo } from "react";
 import { LogsEntry, useLogsStore } from "@/stores/logsStore";
 
 export const useSelectedLogs = () => {
@@ -6,12 +6,10 @@ export const useSelectedLogs = () => {
       selectedLogFile,
       entries,
       selectedServiceName,
-      markLogAsRead
    } = useLogsStore(state => ({
       selectedLogFile: state.selectedLogFile,
       entries: state.entries,
       selectedServiceName: state.selectedServiceName,
-      markLogAsRead: state.markLogAsRead,
    }));
 
    const selectedLogs = useMemo<LogsEntry>(() => {

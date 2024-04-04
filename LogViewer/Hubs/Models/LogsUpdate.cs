@@ -24,11 +24,17 @@ public record LogsUpdate(
         IEnumerable<LogLine> logs,
         long oldFilePosition, long newFilePosition)
         => new(subscriptionId, serviceName, logFileName, logs, oldFilePosition, newFilePosition, LogUpdateType.NoChange);
+    
+    public static LogsUpdate NewFile(Guid subscriptionId, string serviceName, string logFileName,
+        IEnumerable<LogLine> logs,
+        long oldFilePosition, long newFilePosition)
+        => new(subscriptionId, serviceName, logFileName, logs, oldFilePosition, newFilePosition, LogUpdateType.NewFile);
 }
 
 public enum LogUpdateType : sbyte
 {
     New = 0,
     Truncate = 1,
-    NoChange = 2
+    NoChange = 2,
+    NewFile = 3
 }

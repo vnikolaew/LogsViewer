@@ -12,7 +12,13 @@ export interface SelectedLogFileInfo extends LogFileInfo {
    serviceName: string;
 }
 
-export interface UnreadLogs extends Record<string, boolean> {
+export enum LogServiceState {
+   Read,
+   Unread,
+   NewFileCreated,
+}
+
+export interface UnreadLogs extends Record<string, LogServiceState> {
 }
 
 export interface ServiceLogEntries {
@@ -39,6 +45,7 @@ export interface ServiceLogEntries {
    setUnreadLogs: (logs: UnreadLogs) => void;
    markLogAsRead: (serviceName: string) => void;
    markLogAsUnread: (serviceName: string) => void;
+   markLogWithNewFile: (serviceName: string) => void;
 
    insertLogs: (newLogs: LogsUpdate) => void;
    deleteAllLogs: (serviceName: string) => void;
@@ -53,14 +60,21 @@ export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    markLogAsRead: (serviceName: string) => set((state) =>
       produce(state, draft => {
          if (serviceName in draft.unreadLogs) {
-            draft.unreadLogs[serviceName] = false;
+            draft.unreadLogs[serviceName] = LogServiceState.Read;
          }
          return draft;
       })),
    markLogAsUnread: (serviceName: string) => set((state) =>
       produce(state, draft => {
          if (serviceName in draft.unreadLogs) {
-            draft.unreadLogs[serviceName] = true;
+            draft.unreadLogs[serviceName] = LogServiceState.Unread;
+         }
+         return draft;
+      })),
+   markLogWithNewFile: (serviceName: string) => set((state) =>
+      produce(state, draft => {
+         if (serviceName in draft.unreadLogs) {
+            draft.unreadLogs[serviceName] = LogServiceState.NewFileCreated;
          }
          return draft;
       })),
@@ -73,7 +87,7 @@ export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    setSelectedLogFile: (logFile: SelectedLogFileInfo) => set((state) =>
       produce(state, draft => {
          draft.selectedLogFile = logFile;
-         draft.unreadLogs[logFile.serviceName] = false;
+         draft.unreadLogs[logFile.serviceName] = LogServiceState.Read;
          return draft;
       })),
    setServices: services => set((state) =>
@@ -97,7 +111,7 @@ export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
    setSelectedServiceName: (service: string) => set((state) =>
       produce(state, draft => {
          draft.selectedServiceName = service;
-         draft.unreadLogs[service] = false;
+         draft.unreadLogs[service] = LogServiceState.Read;
          return draft;
       })),
    setTree: (tree: ServiceLogTree[]) => set((state) => {

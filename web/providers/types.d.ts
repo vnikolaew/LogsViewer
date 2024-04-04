@@ -37,6 +37,7 @@ export enum LogUpdateType {
    New = `New`,
    Truncate = `Truncate`,
    NoChange = `NoChange`,
+   NewFile = `NewFile`
 }
 
 export enum LogLevel {

@@ -14,7 +14,7 @@ import { UilArrowDown, UilSearch, UilTimes, UilCopy } from "@iconscout/react-uni
 import { useMarkContext } from "@/providers/MarksProvider";
 import Mark from "mark.js";
 import { useThrottle, useCopyToClipboard } from "@uidotdev/usehooks";
-import { getServices } from "@/api";
+import { api } from "@/api";
 import Sidebar from "@/components/sidebar";
 import { useSelectedLogs, useSelectedLogsCount } from "@/hooks/useSelectedLogs";
 import { useHandleSectionScroll } from "@/hooks/useHandleSectionScroll";
@@ -115,7 +115,7 @@ const Home = ({}: HomeProps) => {
 
       // Retrieve available services:
       if (!services.length) {
-         getServices()
+         api.getServices()
             .then(({ services }) => {
                setServices(services);
                setUnreadLogs(services.reduce((acc, curr) => ({ ...acc, [curr]: false }), {}));
@@ -154,25 +154,16 @@ const Home = ({}: HomeProps) => {
    };
 
    const [_, copy] = useCopyToClipboard();
-
    const handleGetAllLogs: MouseEventHandler<HTMLButtonElement> = (event) => {
       event.preventDefault();
       hubConnection.invoke<ServiceLogsResponse>(HUB_METHODS.GetAllLogs, selectedServiceName)
          .then(res => {
-            // console.log({ res });
          });
 
    };
 
    const handleCopyFileNameToClipboard: MouseEventHandler<HTMLDivElement> = (event) => {
-      copy(selectedLogs.logFileName.trim())
-         .then(_ => {
-            setCopyToClipboardMessage(`Copied!`);
-            setTimeout(() => setCopyToClipboardMessage(`Copy to clipboard`), 1_000);
-         })
-         .catch(_ => {
-            setCopyToClipboardMessage(`Error!`);
-         });
+      const _ = copy(selectedLogs.logFileName.trim())
    };
 
    // @ts-ignore

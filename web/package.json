@@ -14,6 +14,7 @@
     "@types/signalr": "^2.4.3",
     "@uidotdev/usehooks": "^2.4.1",
     "clsx": "^2.1.0",
+    "framer-motion": "^11.0.24",
     "immer": "^10.0.4",
     "next": "latest",
     "react": "latest",
