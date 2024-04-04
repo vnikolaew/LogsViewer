@@ -84,7 +84,7 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
                   <div className={`flex items-center gap-4`}>
                      {tree.serviceName}
                      {hasUnreadLogs && (
-                        <div className={`badge badge-warning badge-xs`}></div>
+                        <div className={`badge badge-warning md:!px-0 md:!w-2 md:!h-2 2xl:badge-xs`}></div>
                      )}
                   </div>
                </summary>
@@ -95,7 +95,7 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
                           key={`${file.fileName}-${i}`}>
                         <li onClick={() => handleClickLogFile(file)}
                             className={cn(`!w-fit`)} key={i}>
-                           <a className={cn(`text-sm !py-2 !px-4`,
+                           <a className={cn(`text-xs 2xl:text-sm !py-2 !px-4`,
                               isFileSelected(file) && `bg-neutral-800`,
                            )}>
                               <UilListUl color={`#ffffff`} size={12} />

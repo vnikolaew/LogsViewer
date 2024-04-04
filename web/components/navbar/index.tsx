@@ -29,7 +29,7 @@ const Navbar = ({}: NavbarProps) => {
       entries: state.entries,
    }));
 
-   const [globalSearch, setGlobalSearch] = useState(`auto`);
+   const [globalSearch, setGlobalSearch] = useState(``);
    const throttledSearchValue = useThrottle(globalSearch, 500);
 
    const filteredEntries = useFilteredEntries(throttledSearchValue);
@@ -78,7 +78,7 @@ const Navbar = ({}: NavbarProps) => {
       <nav className={``}>
          <div className={`navbar bg-base-200 flex px-12 py-4 !pt-6 !pb-3 gap-8 items-center justify-between`}>
             <div className={`flex items-center gap-4`}>
-               <h1 className={`text-center text-2xl`}>
+               <h1 className={`text-center text-xl 2xl:text-2xl`}>
                   Log Viewer UI
                </h1>
                <button
@@ -99,13 +99,13 @@ const Navbar = ({}: NavbarProps) => {
                            }, 100);
                         }}
                         onFocus={_ => setIsSearchInputFocused(true)}
-                        className="input input-md input-bordered flex items-center gap-2 w-36 md:w-80">
+                        className="input input-sm 2xl:input-md input-bordered flex items-center gap-2 w-36 md:w-80">
                         <input
                            value={globalSearch}
                            type="text" placeholder="Search anything ..."
                            onChange={e => setGlobalSearch(e.target.value)}
                            className="grow" />
-                        <UilSearch className={`text-white`} size={18} />
+                        <UilSearch className={`text-white w-3 h-3 2xl:w-4 2xl:h-4`} />
                      </label>
                   </div>
                   {!!filteredEntries?.length && (
@@ -119,7 +119,7 @@ const Navbar = ({}: NavbarProps) => {
                                     e.persist();
                                     handleSelectLogFile(tree, file);
                                  }} key={i}
-                                     className={`text-white rounded-sm w-fit px-2 py-1 flex flex-col items-center hover:bg-base-300 cursor-pointer duration-100 transition-colors`}>
+                                     className={`text-white text-xs 2xl:text-sm  rounded-sm w-fit px-2 py-1 flex flex-col items-center hover:bg-base-300 cursor-pointer duration-100 transition-colors`}>
                                     <a className={``}>
                                        {`${tree.serviceName} / ${file.fileName}`}
                                     </a>

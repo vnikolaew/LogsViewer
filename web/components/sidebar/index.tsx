@@ -35,10 +35,10 @@ const Sidebar = ({}: SidebarProps) => {
    return (
       <div className={`border-r-[1px] border-neutral-500 shadow-md rounded-md`}>
          <div className={`my-4`}>
-            <div className={`text-2xl text-white px-8`}>Services</div>
+            <div className={`2xl:text-2xl text-lg text-white px-8`}>Services</div>
             <div className={`divider !my-0 ml-8 w-3/4`}></div>
          </div>
-         <ul className={`menu menu-lg bg-base-300/50 rounded-lg w-full `}>
+         <ul className={`menu menu-md 2xl:menu-lg bg-base-300/50 rounded-lg w-full `}>
             {serviceLogsTree?.tree && serviceLogsTree.tree.map((tree, i) => (
                <LogsTreeEntry key={i} tree={tree} index={i} />
             ))}

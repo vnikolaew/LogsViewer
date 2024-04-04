@@ -11,8 +11,6 @@ namespace LogViewer.Controllers;
 [Route("api/[controller]")]
 public sealed class LogsController : ControllerBase
 {
-    private readonly string _rootLogsFolder;
-
     private readonly ILogsParser<LogLine> _logsParser;
 
     private readonly LogConfigurations _logConfigurations;
@@ -32,15 +30,12 @@ public sealed class LogsController : ControllerBase
     {
         _logsParser = logsParser;
         _logConfigurations = logConfigurations;
-        _rootLogsFolder = logConfigurations.BaseFolder;
     }
 
 
     [HttpGet("services")]
     public IActionResult GetServices()
-    {
-        return Ok(new { Services = _logConfigurations.ServiceNames });
-    }
+        => Ok(new { Services = _logConfigurations.ServiceNames });
 
     [HttpGet("{serviceName}/{logFile}")]
     public async Task<IActionResult> GetLogFile(string serviceName, string logFile)
@@ -70,14 +65,19 @@ public sealed class LogsController : ControllerBase
             Logs = _logsParser.Parse(
                 Encoding.UTF8.GetString(await System.IO.File.ReadAllBytesAsync(logFileInfo.FullName))
                     .Trim()
-                    .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)
-                , logConfiguration).ToList()
+                    .Split(
+                        Environment.NewLine,
+                        StringSplitOptions.RemoveEmptyEntries),
+                logConfiguration)
+                .ToList()
         });
     }
 
     [HttpGet("{serviceName}/files")]
     public async Task<IActionResult> GetLogFiles(
-        string serviceName, [FromQuery] int offset, [FromQuery] int limit)
+        string serviceName,
+        [FromQuery] int offset,
+        [FromQuery] int limit)
     {
         var allLogFiles = _logConfigurations
             .GetServiceLogBaseDirectoryInfo(serviceName)!
