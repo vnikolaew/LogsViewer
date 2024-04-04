@@ -3,11 +3,10 @@ import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { useLogsStore } from "@/stores/logsStore";
 //@ts-ignore
 import { UilCloudDatabaseTree, UilSearch } from "@iconscout/react-unicons";
-import { getFileLogInfo, getLogsTree } from "@/api";
+import {api} from "@/api";
 import { cn } from "@/utils/cn";
 import { useThrottle } from "@uidotdev/usehooks";
 import { LogFileInfo, ServiceLogTree } from "@/providers/types";
-import { useHubConnection } from "@/providers/LogsHubProvider";
 import { useFilteredEntries } from "@/hooks/useFilteredEntries";
 
 export interface NavbarProps {
@@ -42,7 +41,7 @@ const Navbar = ({}: NavbarProps) => {
    useEffect(() => {
       if (tree?.tree?.length) return;
 
-      getLogsTree()
+      api.getLogsTree()
          .then(root => setTree(root.tree))
          .catch(console.error);
    }, [setTree]);
@@ -50,7 +49,7 @@ const Navbar = ({}: NavbarProps) => {
    async function handleToggleLogTree() {
       if (tree?.tree?.length) setTree([]);
       else {
-         await getLogsTree()
+         await api.getLogsTree()
             .then(root => {
                console.log(`Response: `, root);
                setTree(root.tree);
@@ -63,7 +62,7 @@ const Navbar = ({}: NavbarProps) => {
       subscribeToService(serviceName);
       setSelectedServiceName(serviceName);
 
-      getFileLogInfo(serviceName, file.fileName)
+      api.getFileLogInfo(serviceName, file.fileName)
          .then(res => {
             console.log(res);
             setSelectedLogFile({ ...res.fileInfo, serviceName, logs: res.logs });

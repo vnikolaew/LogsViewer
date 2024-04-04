@@ -23,7 +23,7 @@ internal sealed class LogsNotifier : BackgroundService
     private readonly ILogsParser<LogLine> _logsParser;
 
     private readonly ILogger<LogsNotifier> _logger;
-    
+
     private readonly LogConfigurations _logConfigurations;
 
     public LogsNotifier(
@@ -42,10 +42,46 @@ internal sealed class LogsNotifier : BackgroundService
             Filter = "*.log",
             EnableRaisingEvents = true,
             IncludeSubdirectories = true,
-            NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastAccess | NotifyFilters.LastWrite
+            NotifyFilter = NotifyFilters.FileName | NotifyFilters.LastAccess | NotifyFilters.LastWrite |
+                           NotifyFilters.CreationTime | NotifyFilters.DirectoryName
         };
 
         _fileSystemWatcher.Changed += (_, args) => OnFileChanged(args);
+        _fileSystemWatcher.Created += (_, args) => OnFileCreated(args);
+    }
+
+    private async Task OnFileCreated(FileSystemEventArgs args)
+    {
+        var fileInfo = new FileInfo(args.FullPath);
+        var serviceName = fileInfo.Directory!.Parent!.Name.Trim();
+
+        // Get service name by folder;
+        var success = LogsHub.Subscriptions
+            .TryGetValue(
+                serviceName,
+                out var subscriptions);
+        if (!success) return;
+
+        foreach (var fileLogsSubscription in subscriptions!)
+        {
+            var connectionId = fileLogsSubscription.ConnectionId;
+            var connectionFilePosition = fileLogsSubscription.CurrentFilePosition;
+            var subscriptionId = fileLogsSubscription.SubscriptionId;
+
+            await _hubContext
+                .Clients
+                .Client(connectionId)
+                .SendUpdates(
+                    LogsUpdate.NewFile(
+                        subscriptionId,
+                        serviceName,
+                        fileInfo.Name,
+                        [],
+                        connectionFilePosition,
+                        connectionFilePosition
+                    ),
+                    CancellationToken.None);
+        }
     }
 
     private async Task OnFileChanged(FileSystemEventArgs args)
@@ -113,8 +149,8 @@ internal sealed class LogsNotifier : BackgroundService
                 {
                     // Notify client they have to delete some logs by sending all file logs:
                     logs = _logsParser.Parse(Encoding.UTF8.GetString(await File.ReadAllBytesAsync(fileInfo.FullName))
-                            .Trim()
-                            .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
+                                .Trim()
+                                .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries),
                             _logConfigurations.Services[serviceName])
                         .ToArray();
 

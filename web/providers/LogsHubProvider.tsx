@@ -12,6 +12,7 @@ import { LogsUpdate } from "@/providers/types";
 const hubConnection = new HubConnectionBuilder()
    .withUrl(`${process.env.NEXT_PUBLIC_BASE_URL!}/logs`!, {
       withCredentials: true,
+      logMessageContent: true,
       transport:
          HttpTransportType.ServerSentEvents |
          HttpTransportType.WebSockets |
