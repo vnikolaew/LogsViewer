@@ -86,13 +86,13 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
                <summary
                   onClick={_ => setSubmenuOpen(!submenuOpen)}
                   className={`flex items-center !justify-between`}>
-                  <div className={`flex items-center gap-4`}>
+                  <div className={`flex items-center gap-4 text-sm 2xl:text-md`}>
                      {tree.serviceName}
                      {logServiceState === LogServiceState.Unread && (
-                        <div className={`badge badge-warning badge-xs`}></div>
+                        <div className={`badge badge-warning !mx-0 !px-0 !w-2 !h-2 2xl:badge-xs`}></div>
                      )}
                      {logServiceState === LogServiceState.NewFileCreated && (
-                        <div className={`badge badge-success badge-xs`}></div>
+                        <div className={`badge badge-success !mx-0 !px-0 !w-2 !h-2 2xl:badge-xs`}></div>
                      )}
                   </div>
                </summary>
@@ -110,10 +110,10 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
                                 key={`${file.fileName}-${i}`}>
                               <li onClick={() => handleClickLogFile(file)}
                                   className={cn(`!w-fit`)} key={i}>
-                                 <a className={cn(`text-sm !py-2 !px-4`,
+                                 <a className={cn(`text-xs 2xl:text-sm !py-2 !px-4`,
                                     isFileSelected(file) && `bg-neutral-800`,
                                  )}>
-                                    <UilListUl color={Colors.WHITE} size={12} />
+                                    <UilListUl className={`text-neutral-500 `} size={12} />
                                     {file.fileName}
                                  </a>
                               </li>

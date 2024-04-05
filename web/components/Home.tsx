@@ -1,8 +1,6 @@
 "use client";
 import React, {
    ChangeEvent,
-   MouseEventHandler,
-   useCallback,
    useEffect,
    useState,
 } from "react";
@@ -10,13 +8,13 @@ import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
 import { LogsUpdate, SubscribeToLogsResponse } from "@/providers/types.d";
 import { useLogsStore } from "@/stores/logsStore";
 // @ts-ignore
-import { UilSearch, UilTimes, UilCopy } from "@iconscout/react-unicons";
+import { UilSearch, UilTimes } from "@iconscout/react-unicons";
 import { useMarkContext } from "@/providers/MarksProvider";
 import Mark from "mark.js";
-import { useThrottle, useCopyToClipboard } from "@uidotdev/usehooks";
-import { getServices } from "@/api";
+import { useThrottle, } from "@uidotdev/usehooks";
+import { api } from "@/api";
 import Sidebar from "@/components/sidebar";
-import { useSelectedLogs, useSelectedLogsCount } from "@/hooks/useSelectedLogs";
+import { useSelectedLogs } from "@/hooks/useSelectedLogs";
 import LogsSection from "@/components/home/LogsSection";
 import FileLogInfoSection from "@/components/home/FileLogInfoSection";
 
@@ -91,7 +89,7 @@ const Home = ({}: HomeProps) => {
 
       // Retrieve available services:
       if (!services.length) {
-         getServices()
+         api.getServices()
             .then(({ services }) => {
                setServices(services);
                setUnreadLogs(services.reduce((acc, curr) => ({ ...acc, [curr]: false }), {}));
@@ -133,7 +131,7 @@ const Home = ({}: HomeProps) => {
          </div>
 
          <div className={`flex flex-col gap-4 col-span-7 2xl:col-span-10`}>
-            <div className={`text-xs 2xl:text-sm flex items-center gap-2 text-gray-300`}>
+            <div className={`text-xs 2xl:text-sm flex items-center gap-2 text-neutral-400`}>
                <h2 className={`mr-4`}>Subscribed services:</h2>
                {[...subscribedServices].map((service, i) => (
                   <div className={`badge-sm 2xl:badge-md badge badge-neutral`} key={i}>{service}</div>
@@ -144,7 +142,7 @@ const Home = ({}: HomeProps) => {
                   <select
                      value={selectedServiceName}
                      onChange={handleServiceChange}
-                     className={`rounded-md select text-xs md:select-sm 2xl:select-md select-bordered select-info text-white px-3 2xl:text-sm w-[200px] 2xl:w-[300px]`}
+                     className={`rounded-md select text-xs md:select-sm 2xl:select-md select-bordered select-info text-base-content px-3 2xl:text-sm w-[200px] 2xl:w-[300px]`}
                      id={`service-select`}
                      name={`service`}>
                      {services.map((service, i) => (
@@ -173,9 +171,9 @@ const Home = ({}: HomeProps) => {
                      {searchThrottledValue.length ? (
                         <UilTimes
                            onClick={(_: any) => setLogsSearchValue(``)}
-                           className={`cursor-pointer text-white w-3 h-3`} size={20} />
+                           className={`cursor-pointer text-base-content w-3 h-3`} size={20} />
                      ) : (
-                        <UilSearch className={`text-white w-3 h-3 2xl:w-4 2xl:h-4`} />
+                        <UilSearch className={`text-base-content w-3 h-3 2xl:w-4 2xl:h-4`} />
                      )}
                   </label>
                </div>

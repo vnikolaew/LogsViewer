@@ -1,14 +1,23 @@
 import React, { PropsWithChildren } from "react";
 import { HubConnectionProvider } from "./LogsHubProvider";
 import { MarksProvider } from "./MarksProvider";
+import ThemeProvider, { Themes } from "./ThemeProvider";
+import CookiesProvider from "./CookiesProvider";
+import { cookies } from "next/headers";
 
-const Providers = ({children}:PropsWithChildren) => {
+const Providers = async ({ children }: PropsWithChildren) => {
+   const theme = cookies().get(`theme`)?.value ?? Themes.DARK;
+
    return (
-      <HubConnectionProvider>
-         <MarksProvider>
-         {children}
-         </MarksProvider>
-      </HubConnectionProvider>
+      <CookiesProvider>
+         <ThemeProvider theme={theme}>
+            <HubConnectionProvider>
+               <MarksProvider>
+                  {children}
+               </MarksProvider>
+            </HubConnectionProvider>
+         </ThemeProvider>
+      </CookiesProvider>
    );
 };
 

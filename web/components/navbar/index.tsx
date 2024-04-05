@@ -2,18 +2,23 @@
 import React, { Fragment, useEffect, useMemo, useState } from "react";
 import { useLogsStore } from "@/stores/logsStore";
 //@ts-ignore
-import { UilCloudDatabaseTree, UilSearch } from "@iconscout/react-unicons";
-import {api} from "@/api";
+import { UilCloudDatabaseTree, UilSearch, UilBrightness, UilMoon } from "@iconscout/react-unicons";
+import { api } from "@/api";
 import { cn } from "@/utils/cn";
 import { useThrottle } from "@uidotdev/usehooks";
 import { LogFileInfo, ServiceLogTree } from "@/providers/types";
 import { useFilteredEntries } from "@/hooks/useFilteredEntries";
+import { Themes, useThemeContext } from "@/providers/ThemeProvider";
+import { useCookies } from "react-cookie";
 
 export interface NavbarProps {
 
 }
 
 const Navbar = ({}: NavbarProps) => {
+   const [_, setCookie] = useCookies([`theme`]);
+   const [theme, setTheme] = useThemeContext();
+
    const {
       setTree, tree,
       subscribeToService,
@@ -73,11 +78,17 @@ const Navbar = ({}: NavbarProps) => {
          });
    };
 
+   const handleChangeTheme = () => {
+      const newTheme = theme === Themes.DARK ? Themes.LIGHT : Themes.DARK;
+      setTheme(newTheme);
+      setCookie(`theme`, newTheme, { httpOnly: false, sameSite: `strict`, secure: false });
+   };
+
    return (
       <nav className={``}>
          <div className={`navbar bg-base-200 flex px-12 py-4 !pt-6 !pb-3 gap-8 items-center justify-between`}>
             <div className={`flex items-center gap-4`}>
-               <h1 className={`text-center text-xl 2xl:text-2xl`}>
+               <h1 className={`text-center text-xl 2xl:text-2xl text-base-content`}>
                   Log Viewer UI
                </h1>
                <button
@@ -103,8 +114,8 @@ const Navbar = ({}: NavbarProps) => {
                            value={globalSearch}
                            type="text" placeholder="Search anything ..."
                            onChange={e => setGlobalSearch(e.target.value)}
-                           className="grow" />
-                        <UilSearch className={`text-white w-3 h-3 2xl:w-4 2xl:h-4`} />
+                           className="grow text-base-content" />
+                        <UilSearch className={`text-base-content w-3 h-3 2xl:w-4 2xl:h-4`} />
                      </label>
                   </div>
                   {!!filteredEntries?.length && (
@@ -139,6 +150,13 @@ const Navbar = ({}: NavbarProps) => {
                         </li>
                      </ul>
                   ) : null}
+               </div>
+               <div
+                  data-tip={`Change theme`}
+                  onClick={handleChangeTheme} className={`ml-4 cursor-pointer tooltip tooltip-bottom before:!text-xxs before:!py-0`}>
+                  <button className={`btn btn-circle btn-sm`}>
+                     {theme === Themes.DARK ? <UilBrightness size={18} /> : <UilMoon size={18} />}
+                  </button>
                </div>
                <div className={`dropdown absolute !w-32 -bottom-6 bg-red-500`}>
                </div>

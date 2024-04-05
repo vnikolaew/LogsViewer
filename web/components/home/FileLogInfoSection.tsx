@@ -76,7 +76,7 @@ const FileLogInfoSection = () => {
          )}
          {selectedLogs && (
             <div className={`flex items-center justify-between`}>
-               <h2 className={`badge badge-ghost badge-md xl:badge-md  badge-info text-gray-100 2xl:badge-lg`}>
+               <h2 className={`badge badge-ghost badge-md xl:badge-md  badge-info text-base-content 2xl:badge-lg`}>
                   Logs count:
                </h2>
                <span

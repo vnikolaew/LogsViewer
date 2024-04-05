@@ -25,7 +25,7 @@ const LogsSection = () => {
            id={`logs`}
            className={`flex p-3 border-b-[1px] border-neutral rounded-md relative flex-col gap-[1px] overflow-y-scroll max-h-[300px] xl:max-h-[500px] shadow-lg mt-4`}>
          {selectedLogs?.logs && selectedLogs.logs.map((log, i) => (
-            <span className={`text-xs 2xl:text-base text-gray-300`} key={i}>{log.rawContent}</span>
+            <span className={`text-xs 2xl:text-base text-base-content`} key={i}>{log.rawContent}</span>
          ))}
          {showScrollDownButton && selectedLogs && (
             <div className={`sticky text-right text-white bottom-8 right-12 z-10 mr-8`}>
@@ -45,7 +45,7 @@ const LogsSection = () => {
 LogsSection.Title = () => {
    return (
       <div className={`w-full mt-4`}>
-         <h2 className={`text-2xl`}>
+         <h2 className={`text-xl 2xl:text-2xl`}>
             Logs
          </h2>
          <div className={`divider w-5/6 !my-0 text-gray-300`}></div>

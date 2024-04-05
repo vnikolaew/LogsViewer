@@ -1,4 +1,4 @@
-i,mport { useMemo } from "react";
+import { useMemo } from "react";
 import { LogsEntry, useLogsStore } from "@/stores/logsStore";
 
 export const useSelectedLogs = () => {
