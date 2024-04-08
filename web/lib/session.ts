@@ -2,7 +2,7 @@ import { User, getServerSession, Session } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import { AdapterUser } from "next-auth/adapters";
 
-export const session = async ({ session, token, ...rest }: | {
+export const session = async ({ session, token,user, ...rest }: | {
    session: Session
    token: JWT
    user: AdapterUser
@@ -10,7 +10,10 @@ export const session = async ({ session, token, ...rest }: | {
    newSession: any
    trigger: "update"
 }) => {
-   (session.user as any).id = token.id;
+   if (session && session.user) {
+      //@ts-ignore
+      (session.user as any).id = token.id;
+   }
    return session;
 };
 

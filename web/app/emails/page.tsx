@@ -16,7 +16,7 @@ const Page = () => {
          <h2>
             E-mails Page
          </h2>
-         <p>
+         <p className={`text-xs`}>
             {render(<Email />, { pretty: true, plainText: true })}
          </p>
          <button onClick={handleSendMail} className={`btn btn-sm btn-ghost`}>Send mail</button>

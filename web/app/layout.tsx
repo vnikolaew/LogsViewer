@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import Providers from "@/providers";
 import Navbar from "@/components/navbar";
 import { nextFont as font } from "@/fonts";
+import FooterTwo from "@/components/footer/FooterTwo";
 
 
 export const metadata: Metadata = {
@@ -22,7 +23,7 @@ export default function RootLayout({
       <Providers>
          <Navbar />
          {children}
-         <Footer />
+         <FooterTwo />
       </Providers>
       </body>
       </html>

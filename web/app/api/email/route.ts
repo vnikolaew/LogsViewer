@@ -12,10 +12,12 @@ const mailerSend = new MailerSend({
 export async function POST(request: NextRequest) {
    const emailHtml = render(React.createElement(Email, {}));
 
+   const recipients =  [new Recipient(`victorio.nikolaev25@gmail.com`)];
    const emailParams = new EmailParams()
-      .setFrom(new Sender(`info@trial-neqvygm99xwl0p7w.mlsender.net`))
-      .setTo( [new Recipient(`victorio.nikolaev25@gmail.com`)])
-      .setSubject(`Test mail`)
+      .setFrom(new Sender(process.env.MAILERSEND_API_SENDER_MAIL!))
+      .setTo(recipients)
+      .setCc(recipients)
+      .setSubject(`Test mail at ${new Date().toISOString()}`)
       .setHtml(emailHtml)
 
    const response = await mailerSend.email.send(emailParams)

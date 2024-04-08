@@ -1,13 +1,11 @@
 "use client";
-import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import React, { Fragment, Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useLogsStore } from "@/stores/logsStore";
 //@ts-ignore
 import {
    UilCloudDatabaseTree,
    UilSearch,
-   UilBrightness,
-   UilMoon,
-   UilMailbox
+   UilMailbox,
 //@ts-ignore
 } from "@iconscout/react-unicons";
 import { api } from "@/api";
@@ -15,21 +13,18 @@ import { cn } from "@/utils/cn";
 import { useThrottle } from "@uidotdev/usehooks";
 import { LogFileInfo, ServiceLogTree } from "@/providers/types";
 import { useFilteredEntries } from "@/hooks/useFilteredEntries";
-import { useThemeContext } from "@/providers/ThemeProvider";
-import { useCookies } from "react-cookie";
-import { Themes } from "@/utils/constants";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import { useOnClickOutside } from "next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside";
 import Link from "next/link";
+import ThemeSwitch from "@/components/navbar/ThemeSwitch";
+import { Auth } from "@/components/common";
 
 export interface NavbarProps {
 
 }
 
 const Navbar = ({}: NavbarProps) => {
-   const [_, setCookie] = useCookies([`theme`]);
-   const [theme, setTheme] = useThemeContext();
    const session = useSession();
    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -95,11 +90,6 @@ const Navbar = ({}: NavbarProps) => {
          });
    };
 
-   const handleChangeTheme = () => {
-      const newTheme = theme === Themes.DARK ? Themes.LIGHT : Themes.DARK;
-      setTheme(newTheme);
-      setCookie(`theme`, newTheme, { httpOnly: false, sameSite: `strict`, secure: false });
-   };
 
    const handleSignOut = async () => {
       setIsDropdownOpen(false);
@@ -113,12 +103,14 @@ const Navbar = ({}: NavbarProps) => {
                <h1 className={`text-center text-xl 2xl:text-2xl text-base-content`}>
                   Log Viewer UI
                </h1>
-               <button
-                  onClick={handleToggleLogTree}
-                  className={`btn btn-sm btn-link !items-end !pb-1`}>
-                  <UilCloudDatabaseTree className={`text-primary`} size={18} />
-                  {tree?.tree?.length ? `Hide log tree` : `Show log tree`}
-               </button>
+               <Auth>
+                  <button
+                     onClick={handleToggleLogTree}
+                     className={`btn btn-sm btn-link !items-end !pb-1`}>
+                     <UilCloudDatabaseTree className={`text-primary`} size={18} />
+                     {tree?.tree?.length ? `Hide log tree` : `Show log tree`}
+                  </button>
+               </Auth>
                <Link href={`/emails`}>
                   <button
                      onClick={handleToggleLogTree}
@@ -129,66 +121,66 @@ const Navbar = ({}: NavbarProps) => {
                </Link>
             </div>
             <div className={`flex-none relative flex items-center`}>
-               <div className={cn(`dropdown`, searchResultsDropdownOpen && `dropdown-open`)}>
-                  <div role={"button"} tabIndex={0} className="form-control ">
-                  <label
-                        onBlur={(e) => {
-                           e.persist();
-                           setTimeout(() => {
-                              setIsSearchInputFocused(false);
-                           }, 100);
-                        }}
-                        onFocus={_ => setIsSearchInputFocused(true)}
-                        className="input input-sm 2xl:input-md input-bordered flex items-center gap-2 w-36 md:w-80">
-                        <input
-                           value={globalSearch}
-                           type="text" placeholder="Search anything ..."
-                           onChange={e => setGlobalSearch(e.target.value)}
-                           className="grow text-base-content" />
-                        <UilSearch className={`text-base-content w-3 h-3 2xl:w-4 2xl:h-4`} />
-                     </label>
+               <Auth>
+                  <div className={cn(`dropdown`, searchResultsDropdownOpen && `dropdown-open`)}>
+                     <div role={"button"} tabIndex={0} className="form-control ">
+                        <label
+                           onBlur={(e) => {
+                              e.persist();
+                              setTimeout(() => {
+                                 setIsSearchInputFocused(false);
+                              }, 100);
+                           }}
+                           onFocus={_ => setIsSearchInputFocused(true)}
+                           className="input input-sm 2xl:input-md input-bordered flex items-center gap-2 w-36 md:w-80">
+                           <input
+                              value={globalSearch}
+                              type="text" placeholder="Search anything ..."
+                              onChange={e => setGlobalSearch(e.target.value)}
+                              className="grow text-base-content" />
+                           <UilSearch className={`text-base-content w-3 h-3 2xl:w-4 2xl:h-4`} />
+                        </label>
+                     </div>
+                     {!!filteredEntries?.length && (
+                        <ul
+                           onClick={console.log}
+                           className={`dropdown-content p-4 max-h-[300px] overflow-y-scroll !rounded-md  bg-base-100 text-white z-[100] `}>
+                           {filteredEntries.map((tree, i) => (
+                              <Fragment key={i}>
+                                 {tree.logFiles.map((file, i) => (
+                                    <li onClick={e => {
+                                       e.persist();
+                                       handleSelectLogFile(tree, file);
+                                    }} key={i}
+                                        className={`text-white text-xs 2xl:text-sm  rounded-sm w-fit px-2 py-1 flex flex-col items-center hover:bg-base-300 cursor-pointer duration-100 transition-colors`}>
+                                       <a className={``}>
+                                          {`${tree.serviceName} / ${file.fileName}`}
+                                       </a>
+                                       <div className={`divider divider-neutral !my-0`}></div>
+                                    </li>
+                                 ))}
+                              </Fragment>
+                           ))}
+                        </ul>
+                     )}
+                     {(!filteredEntries.length && globalSearch?.length) ? (
+                        <ul
+                           className={`dropdown-content w-full p-4 max-h-[300px] !rounded-md  bg-base-100 text-white z-[100] `}>
+                           <li className={`text-gray-300 w-full rounded-sm px-2 py-1 flex items-center `}>
+                              <a className={`text-left text-sm`}>
+                                 No results found
+                              </a>
+                           </li>
+                        </ul>
+                     ) : null}
                   </div>
-                  {!!filteredEntries?.length && (
-                     <ul
-                        onClick={console.log}
-                        className={`dropdown-content p-4 max-h-[300px] overflow-y-scroll !rounded-md  bg-base-100 text-white z-[100] `}>
-                        {filteredEntries.map((tree, i) => (
-                           <Fragment key={i}>
-                              {tree.logFiles.map((file, i) => (
-                                 <li onClick={e => {
-                                    e.persist();
-                                    handleSelectLogFile(tree, file);
-                                 }} key={i}
-                                     className={`text-white text-xs 2xl:text-sm  rounded-sm w-fit px-2 py-1 flex flex-col items-center hover:bg-base-300 cursor-pointer duration-100 transition-colors`}>
-                                    <a className={``}>
-                                       {`${tree.serviceName} / ${file.fileName}`}
-                                    </a>
-                                    <div className={`divider divider-neutral !my-0`}></div>
-                                 </li>
-                              ))}
-                           </Fragment>
-                        ))}
-                     </ul>
-                  )}
-                  {(!filteredEntries.length && globalSearch?.length) ? (
-                     <ul
-                        className={`dropdown-content w-full p-4 max-h-[300px] !rounded-md  bg-base-100 text-white z-[100] `}>
-                        <li className={`text-gray-300 w-full rounded-sm px-2 py-1 flex items-center `}>
-                           <a className={`text-left text-sm`}>
-                              No results found
-                           </a>
-                        </li>
-                     </ul>
-                  ) : null}
-               </div>
-               <div
-                  data-tip={`Change theme`}
-                  onClick={handleChangeTheme}
-                  className={`ml-4 cursor-pointer tooltip tooltip-bottom before:!text-xxs before:!py-0`}>
-                  <button className={`btn btn-circle btn-sm`}>
-                     {theme === Themes.DARK ? <UilBrightness size={18} /> : <UilMoon size={18} />}
-                  </button>
-               </div>
+               </Auth>
+               <ThemeSwitch />
+               {!session?.data && (
+                  <Link href={`/signin`}>
+                     <button className={`btn btn-sm btn-ghost`}>Sign In</button>
+                  </Link>
+               )}
                <div className={`dropdown absolute !w-32 -bottom-6 bg-red-500`}>
                </div>
                {session?.data?.user?.image && (

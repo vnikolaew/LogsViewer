@@ -5,43 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42914f92-27cd-4237-9da7-6eca38d7e858" name="Changes" comment="Adding client-side theming.">
-      <change afterPath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-29.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/[service]/[log]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/[service]/layout.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/[service]/page.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/home/UserInfo.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/home/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/fonts.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/prisma.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/session.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/providers/SessionProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Controllers/LogsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Controllers/LogsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Services/LogsNotifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Services/LogsNotifier.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-28.log" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-28.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/signin/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/signin/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/common/Auth.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/common/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/footer/FooterTwo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/navbar/ThemeSwitch.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/signin/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/ai/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/ai/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/email/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/email/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/users/route.ts" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/users/route.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/emails/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/emails/page.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Home.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/home/UserInfo.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/home/UserInfo.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sidebar/LogsTreeEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sidebar/LogsTreeEntry.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sidebar/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/CookiesProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/CookiesProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/ThemeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/ThemeProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stores/logsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/logsStore.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/sleep.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/sleep.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/session.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/session.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +40,12 @@
       </list>
     </option>
   </component>
-  <component name="FormatOnSaveOptions">
-    <option name="myRunOnSave" value="false" />
-    <option name="myAllFileTypesSelected" value="true" />
-    <option name="mySelectedFileTypes">
-      <set />
-    </option>
-  </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -95,32 +76,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victorio/Desktop/Coding/DotNet/LogViewer/web/app&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;npm.build.executor&quot;: &quot;Run&quot;,
-    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Victorio\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Victorio\\Desktop\\Coding\\DotNet\\LogViewer\\web\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "misc",
+    "last_opened_file_path": "C:/Users/Victorio/RiderProjects/LogsViewer/web/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.build.executor": "Run",
+    "npm.dev.executor": "Run",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\Victorio\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "ts.external.directory.path": "C:\\Users\\Victorio\\RiderProjects\\LogsViewer\\web\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;sqlite&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "sqlite"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -132,6 +113,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Victorio\RiderProjects\LogsViewer\web\public" />
       <recent name="C:\Users\Victorio\Desktop\Coding\DotNet\LogViewer\web\app" />
       <recent name="C:\Users\Victorio\Desktop\Coding\DotNet\LogViewer\web" />
     </key>
