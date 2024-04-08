@@ -1,15 +1,27 @@
 "use client";
-import React, { Fragment, useEffect, useMemo, useState } from "react";
+import React, { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useLogsStore } from "@/stores/logsStore";
 //@ts-ignore
-import { UilCloudDatabaseTree, UilSearch, UilBrightness, UilMoon } from "@iconscout/react-unicons";
+import {
+   UilCloudDatabaseTree,
+   UilSearch,
+   UilBrightness,
+   UilMoon,
+   UilMailbox
+//@ts-ignore
+} from "@iconscout/react-unicons";
 import { api } from "@/api";
 import { cn } from "@/utils/cn";
 import { useThrottle } from "@uidotdev/usehooks";
 import { LogFileInfo, ServiceLogTree } from "@/providers/types";
 import { useFilteredEntries } from "@/hooks/useFilteredEntries";
-import { Themes, useThemeContext } from "@/providers/ThemeProvider";
+import { useThemeContext } from "@/providers/ThemeProvider";
 import { useCookies } from "react-cookie";
+import { Themes } from "@/utils/constants";
+import { signOut, useSession } from "next-auth/react";
+import Image from "next/image";
+import { useOnClickOutside } from "next/dist/client/components/react-dev-overlay/internal/hooks/use-on-click-outside";
+import Link from "next/link";
 
 export interface NavbarProps {
 
@@ -18,6 +30,11 @@ export interface NavbarProps {
 const Navbar = ({}: NavbarProps) => {
    const [_, setCookie] = useCookies([`theme`]);
    const [theme, setTheme] = useThemeContext();
+   const session = useSession();
+   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+   const dropdownRef = useRef<HTMLUListElement>(null!);
+   useOnClickOutside(dropdownRef.current!, _ => setIsDropdownOpen(false));
 
    const {
       setTree, tree,
@@ -84,6 +101,11 @@ const Navbar = ({}: NavbarProps) => {
       setCookie(`theme`, newTheme, { httpOnly: false, sameSite: `strict`, secure: false });
    };
 
+   const handleSignOut = async () => {
+      setIsDropdownOpen(false);
+      await signOut();
+   };
+
    return (
       <nav className={``}>
          <div className={`navbar bg-base-200 flex px-12 py-4 !pt-6 !pb-3 gap-8 items-center justify-between`}>
@@ -97,11 +119,19 @@ const Navbar = ({}: NavbarProps) => {
                   <UilCloudDatabaseTree className={`text-primary`} size={18} />
                   {tree?.tree?.length ? `Hide log tree` : `Show log tree`}
                </button>
+               <Link href={`/emails`}>
+                  <button
+                     onClick={handleToggleLogTree}
+                     className={`btn btn-sm btn-link !items-end !pb-1`}>
+                     <UilMailbox className={`text-primary`} size={18} />
+                     E-mails
+                  </button>
+               </Link>
             </div>
-            <div className={`flex-none relative`}>
+            <div className={`flex-none relative flex items-center`}>
                <div className={cn(`dropdown`, searchResultsDropdownOpen && `dropdown-open`)}>
                   <div role={"button"} tabIndex={0} className="form-control ">
-                     <label
+                  <label
                         onBlur={(e) => {
                            e.persist();
                            setTimeout(() => {
@@ -153,13 +183,45 @@ const Navbar = ({}: NavbarProps) => {
                </div>
                <div
                   data-tip={`Change theme`}
-                  onClick={handleChangeTheme} className={`ml-4 cursor-pointer tooltip tooltip-bottom before:!text-xxs before:!py-0`}>
+                  onClick={handleChangeTheme}
+                  className={`ml-4 cursor-pointer tooltip tooltip-bottom before:!text-xxs before:!py-0`}>
                   <button className={`btn btn-circle btn-sm`}>
                      {theme === Themes.DARK ? <UilBrightness size={18} /> : <UilMoon size={18} />}
                   </button>
                </div>
                <div className={`dropdown absolute !w-32 -bottom-6 bg-red-500`}>
                </div>
+               {session?.data?.user?.image && (
+                  <div className={cn(
+                     `dropdown relative dropdown-bottom`,
+                     isDropdownOpen && `dropdown-open`)}>
+                     <div onClick={_ => setIsDropdownOpen(true)} tabIndex={0} role={"button"}
+                          className={`avatar !h-fit ml-2 cursor-pointer`}>
+                        <div className={`w-8 h-8 rounded-full`}>
+                           {session.data.user?.image && (
+                              <Image className={`shadow-md`} height={48} width={48}
+                                     src={session.data.user?.image!.trim()}
+                                     alt={`User profile picture`} />
+                           )}
+                        </div>
+                     </div>
+                     <ul
+                        ref={dropdownRef}
+                        className={`dropdown-content bg-base-200 absolute flex flex-col !border-base-content !border-opacity-20 !border-[.5px] !-translate-x-[calc(100%-40px)] !rounded-lg menu !w-fit py-4 px-6 z-10 text-base-content gap-2`}
+                        tabIndex={0}>
+                        <li className={`text-nowrap text-center`}>You&apos;re logged in as <br /> <span
+                           style={{ all: `unset`, fontWeight: `bold` }}
+                           className={``}>{session!.data.user!.name}</span></li>
+                        <li className={`text-nowrap mt-2`}>
+                           <button
+                              onClick={handleSignOut}
+                              className={`btn btn-sm btn-error text-white !font-normal !shadow-md`}>
+                              Sign out
+                           </button>
+                        </li>
+                     </ul>
+                  </div>
+               )}
             </div>
          </div>
          <div className={`divider divider-base-100 !my-0 !py-0 !h-fit`}></div>

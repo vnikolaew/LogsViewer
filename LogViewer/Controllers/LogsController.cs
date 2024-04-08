@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Net;
+using System.Text;
 using LogViewer.Models;
 using LogViewer.Services.Parsing;
 using LogViewer.Settings;
@@ -23,9 +24,7 @@ public sealed class LogsController : ControllerBase
 
     private const char NormalizedPathDirSeparator = '/';
 
-    public LogsController(
-        IHostEnvironment environment,
-        ILogsParser<LogLine> logsParser,
+    public LogsController(ILogsParser<LogLine> logsParser,
         LogConfigurations logConfigurations)
     {
         _logsParser = logsParser;
@@ -50,7 +49,9 @@ public sealed class LogsController : ControllerBase
             .GetFiles(LogFileFilter)
             .FirstOrDefault(fi => fi.Name == logFile);
 
-        if (logFileInfo is null) return BadRequest();
+        if (logFileInfo is null)
+            return Problem($"A file with the name {logFile} doesn't exist.", "",
+                statusCode: (int?)HttpStatusCode.NotFound, title: "File not found.");
 
         return Ok(new
         {
@@ -63,12 +64,12 @@ public sealed class LogsController : ControllerBase
                     .Replace(Path.DirectorySeparatorChar, NormalizedPathDirSeparator)
             },
             Logs = _logsParser.Parse(
-                Encoding.UTF8.GetString(await System.IO.File.ReadAllBytesAsync(logFileInfo.FullName))
-                    .Trim()
-                    .Split(
-                        Environment.NewLine,
-                        StringSplitOptions.RemoveEmptyEntries),
-                logConfiguration)
+                    Encoding.UTF8.GetString(await System.IO.File.ReadAllBytesAsync(logFileInfo.FullName))
+                        .Trim()
+                        .Split(
+                            Environment.NewLine,
+                            StringSplitOptions.RemoveEmptyEntries),
+                    logConfiguration)
                 .ToList()
         });
     }

@@ -7,6 +7,7 @@ import React, {
    useContext,
    useState,
 } from "react";
+import { Themes } from "@/utils/constants";
 
 export interface ThemeProviderProps extends PropsWithChildren {
    theme?: string
@@ -16,10 +17,6 @@ const ThemeContext = createContext<[string, Dispatch<SetStateAction<string>>]>(n
 
 export const useThemeContext = () => useContext(ThemeContext);
 
-export const Themes = {
-   DARK: `dark`,
-   LIGHT: `light`,
-} as const;
 
 const ThemeProvider = ({ children, theme }: ThemeProviderProps) => {
    const [appTheme, setTheme] = useState(() => theme ?? Themes.LIGHT);

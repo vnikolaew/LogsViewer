@@ -19,7 +19,7 @@ export const api = {
          },
          credentials: `include`,
          mode: `cors`,
-      }).then(res => res.json());
+      }).then(res => res.json() as Promise<LogFileInfo>);
    },
    async getLogFiles(serviceName: string, offset: number, limit: number) {
       return await fetch(`${API_URL}/logs/${serviceName}/files?offset=${offset}&limit=${limit}`,

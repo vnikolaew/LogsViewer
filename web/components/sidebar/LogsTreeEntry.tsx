@@ -9,6 +9,7 @@ import { sleep } from "@/utils/sleep";
 import { cn } from "@/utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { Colors } from "@/utils/constants";
+import { useRouter } from "next/navigation";
 
 export interface LogsTreeEntryProps {
    tree: ServiceLogTree;
@@ -37,6 +38,7 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
    }));
    const logServiceState = useMemo<LogServiceState>(() => unreadLogs[tree.serviceName], [tree.serviceName, unreadLogs]);
    const [submenuOpen, setSubmenuOpen] = useState(false);
+   const router = useRouter()
 
    const hubConnection = useHubConnection();
    const [loadMoreLoading, setLoadMoreLoading] = useState(false);
@@ -49,22 +51,7 @@ export const LogsTreeEntry = ({ tree, index }: LogsTreeEntryProps) => {
       const { serviceName } = tree;
       setSelectedServiceName(serviceName);
 
-      api.getFileLogInfo(serviceName, file.fileName)
-         .then(res => {
-            console.log(res);
-            setSelectedLogFile({ ...res.fileInfo, serviceName, logs: res.logs });
-         })
-         .catch(console.error);
-
-      if (!subscribedServices.has(serviceName)) {
-         hubConnection
-            .invoke<SubscribeToLogsResponse>(HUB_METHODS.Subscribe, serviceName.trim())
-            .then(console.log)
-            .catch(console.error);
-
-         subscribeToService(serviceName);
-      }
-
+      router.push(`/${serviceName}/${file.fileName}`)
    }
 
    async function handleGetMoreFiles() {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace LogViewer.Services;
 
-internal sealed class LogsNotifier : BackgroundService
+internal sealed class LogsNotifier : BackgroundService, IHostedLifecycleService
 {
     private const string LogsFolder = "logs";
 
@@ -207,5 +207,27 @@ internal sealed class LogsNotifier : BackgroundService
         {
             _manualReset.Set();
         }
+    }
+
+    public Task StartedAsync(CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("A log from {Name} ", nameof(LogsNotifier));
+        return Task.CompletedTask;
+    }
+
+    public Task StartingAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
+    }
+
+    public Task StoppedAsync(CancellationToken cancellationToken)
+    {
+        _logger.LogInformation("A log from {Name} ", nameof(LogsNotifier));
+        return Task.CompletedTask;
+    }
+
+    public Task StoppingAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 }

@@ -6,15 +6,13 @@ import { HUB_METHODS, useHubConnection } from "@/providers/LogsHubProvider";
 import { LogsUpdate, LogUpdateType } from "@/providers/types.d";
 // @ts-ignore
 import { UilSync } from "@iconscout/react-unicons";
-import {api} from "@/api";
+import { api } from "@/api";
 
 export interface SidebarProps {
 
 }
 
 const Sidebar = ({}: SidebarProps) => {
-   const serviceLogsTree = useLogsStore(
-      state => state.serviceLogsTree);
    const hubConnection = useHubConnection();
    const {
       markLogAsUnread,
@@ -22,29 +20,32 @@ const Sidebar = ({}: SidebarProps) => {
       setServices,
       setUnreadLogs,
       setTree,
+      serviceLogsTree,
    } = useLogsStore(state => ({
       setUnreadLogs: state.setUnreadLogs,
       markLogAsUnread: state.markLogAsUnread,
       markLogWithNewFile: state.markLogWithNewFile,
       setServices: state.setServices,
       setTree: state.setTree,
+      serviceLogsTree: state.serviceLogsTree,
    }));
 
    useEffect(() => {
-      hubConnection.on(HUB_METHODS.SendUpdates, ({
-                                                    oldFilePosition,
-                                                    serviceName,
-                                                    newFilePosition,
-                                                    updateType,
-                                                 }: LogsUpdate) => {
-         if (updateType === LogUpdateType.NoChange) return;
-         if (updateType === LogUpdateType.New && oldFilePosition < newFilePosition && oldFilePosition !== 0) {
-            markLogAsUnread(serviceName);
-         }
-         if (updateType === LogUpdateType.NewFile) {
-            markLogWithNewFile(serviceName);
-         }
-      });
+      hubConnection.on(HUB_METHODS.SendUpdates,
+         ({
+             oldFilePosition,
+             serviceName,
+             newFilePosition,
+             updateType,
+          }: LogsUpdate) => {
+            if (updateType === LogUpdateType.NoChange) return;
+            if (updateType === LogUpdateType.New && oldFilePosition < newFilePosition && oldFilePosition !== 0) {
+               markLogAsUnread(serviceName);
+            }
+            if (updateType === LogUpdateType.NewFile) {
+               markLogWithNewFile(serviceName);
+            }
+         });
 
    }, []);
 

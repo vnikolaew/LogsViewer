@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { LogFileInfo, LogsUpdate, LogUpdateType, ServiceLogTree } from "@/providers/types.d";
 import { enableMapSet, produce } from "immer";
 import { devtools } from "zustand/middleware";
+import zukeeper from "zukeeper";
 
 enableMapSet();
 
@@ -15,45 +16,48 @@ export interface SelectedLogFileInfo extends LogFileInfo {
 export enum LogServiceState {
    Read,
    Unread,
-   NewFileCreated,
+   NewFileCreated
 }
 
 export interface UnreadLogs extends Record<string, LogServiceState> {
 }
 
-export interface ServiceLogEntries {
 
+export interface ServiceLogEntriesState {
    serviceLogsTree: { tree: ServiceLogTree[] };
-   setTree: (tree: ServiceLogTree[]) => void;
-   addServiceLogFiles: (serviceName: string, files: LogFileInfo[]) => void;
-
    selectedServiceName: string;
-   setSelectedServiceName: (service: string) => void;
-
    selectedLogFile: SelectedLogFileInfo;
-   setSelectedLogFile: (logFile: SelectedLogFileInfo) => void;
-
    subscribedServices: Set<string>,
-   subscribeToService: (service: string) => void;
-   unsubscribeFromService: (service: string) => void;
-
    entries: Record<string, LogsEntry>;
    services: string[],
+   unreadLogs: UnreadLogs;
+}
+
+export interface ServiceLogEntriesActions {
+   setTree: (tree: ServiceLogTree[]) => void;
+   addServiceLogFiles: (serviceName: string, files: LogFileInfo[]) => void;
+   setSelectedLogFile: (logFile: SelectedLogFileInfo) => void;
+
+   subscribeToService: (service: string) => void;
+   unsubscribeFromService: (service: string) => void;
    setServices: (services: string[]) => void,
 
-   unreadLogs: UnreadLogs;
+   setSelectedServiceName: (service: string) => void;
    setUnreadLogs: (logs: UnreadLogs) => void;
+
    markLogAsRead: (serviceName: string) => void;
    markLogAsUnread: (serviceName: string) => void;
    markLogWithNewFile: (serviceName: string) => void;
+   insertLogs: (logsUpdate: LogsUpdate) => void;
 
-   insertLogs: (newLogs: LogsUpdate) => void;
    deleteAllLogs: (serviceName: string) => void;
    changeLogFilePosition: (serviceName: string, newPosition: number) => void;
    changeLogFileName: (serviceName: string, newFileName: string) => void;
 }
 
-export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
+export type ServiceLogEntries = ServiceLogEntriesState & ServiceLogEntriesActions
+
+export const useLogsStore = create<ServiceLogEntries>(zukeeper(devtools<ServiceLogEntries>((set) => ({
    entries: {},
    services: [],
    unreadLogs: {},
@@ -183,4 +187,6 @@ export const useLogsStore = create(devtools<ServiceLogEntries>((set) => ({
          return draft;
       });
    }),
-})));
+}))));
+
+window.store = useLogsStore;

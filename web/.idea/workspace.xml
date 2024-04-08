@@ -4,26 +4,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42914f92-27cd-4237-9da7-6eca38d7e858" name="Changes" comment="Changes to UI elements / components, adding a footer, changes to styling, adding options for specifying a base log format.">
+    <list default="true" id="42914f92-27cd-4237-9da7-6eca38d7e858" name="Changes" comment="Adding client-side theming.">
       <change afterPath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-29.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/providers/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../LogViewer/Hubs/Models/LogsUpdate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Hubs/Models/LogsUpdate.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/prettier.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[service]/[log]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[service]/layout.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/[service]/page.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/auth/[...nextauth]/route.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/home/UserInfo.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/home/index.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/fonts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/prisma.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/session.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/providers/SessionProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogViewer.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../LogViewer/Controllers/LogsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Controllers/LogsController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LogViewer/Services/LogsNotifier.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/Services/LogsNotifier.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-28.log" beforeDir="false" afterPath="$PROJECT_DIR$/../LogViewer/logs/DataCaptureClient/Logs/log-5912-2024-03-28.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.env.development" beforeDir="false" afterPath="$PROJECT_DIR$/.env.development" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/index.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Home.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/navbar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/navbar/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/sidebar/LogsTreeEntry.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sidebar/LogsTreeEntry.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/sidebar/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/sidebar/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/LogsHubProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/LogsHubProvider.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/providers/types.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/providers/types.d.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/CookiesProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/CookiesProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/ThemeProvider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/ThemeProvider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/providers/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/providers/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/stores/logsStore.ts" beforeDir="false" afterPath="$PROJECT_DIR$/stores/logsStore.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/constants.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/sleep.ts" beforeDir="false" afterPath="$PROJECT_DIR$/utils/sleep.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +57,13 @@
       </list>
     </option>
   </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="false" />
+    <option name="myAllFileTypesSelected" value="true" />
+    <option name="mySelectedFileTypes">
+      <set />
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
@@ -48,13 +73,14 @@
     &quot;assignee&quot;: &quot;vnikolaew&quot;
   }
 }</component>
-  <component name="GitToolBoxStore">
-    <option name="projectConfigVersion" value="5" />
-  </component>
+  <component name="GitHubPullRequestState">{
+  &quot;prStates&quot;: []
+}</component>
+  <component name="GitLabMergeRequestsSettings">{}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/vnikolaew/LogsViewer.git&quot;,
-    &quot;accountId&quot;: &quot;4cbb61b5-b169-4378-9a84-e073452fe3d7&quot;
+    &quot;accountId&quot;: &quot;2fb58bdd-f5ed-48b4-aff4-73471a70a374&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
@@ -69,26 +95,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Victorio/RiderProjects/LogsViewer/web",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.build.executor": "Run",
-    "npm.dev.executor": "Run",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "ts.external.directory.path": "C:\\Users\\Victorio\\RiderProjects\\LogsViewer\\web\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Victorio/Desktop/Coding/DotNet/LogViewer/web/app&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.build.executor&quot;: &quot;Run&quot;,
+    &quot;npm.dev.executor&quot;: &quot;Run&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\Victorio\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Victorio\\Desktop\\Coding\\DotNet\\LogViewer\\web\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;sqlite&quot;
+    ]
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
@@ -140,7 +172,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-WS-241.14494.235" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-WS-241.14494.180" />
       </set>
     </attachedChunks>
   </component>
@@ -159,11 +191,19 @@
       <workItem from="1712035489190" duration="600000" />
       <workItem from="1712089105320" duration="587000" />
       <workItem from="1712121966510" duration="7462000" />
-      <workItem from="1712143460868" duration="121000" />
-      <workItem from="1712223328835" duration="9000" />
-      <workItem from="1712223345196" duration="46000" />
-      <workItem from="1712223400236" duration="112000" />
-      <workItem from="1712223536749" duration="7392000" />
+      <workItem from="1712250272654" duration="520000" />
+      <workItem from="1712263869000" duration="681000" />
+      <workItem from="1712294809796" duration="3000" />
+      <workItem from="1712299646638" duration="4422000" />
+      <workItem from="1712346950422" duration="3102000" />
+      <workItem from="1712382139686" duration="1867000" />
+      <workItem from="1712435012050" duration="1879000" />
+      <workItem from="1712479873535" duration="1187000" />
+      <workItem from="1712481112248" duration="1915000" />
+      <workItem from="1712483057184" duration="360000" />
+      <workItem from="1712483445382" duration="4148000" />
+      <workItem from="1712493804146" duration="365000" />
+      <workItem from="1712494245543" duration="13367000" />
     </task>
     <task id="LOCAL-00001" summary="Separating out Controller models into a separate folder.">
       <option name="closed" value="true" />
@@ -173,13 +213,13 @@
       <option name="project" value="LOCAL" />
       <updated>1712089294881</updated>
     </task>
-    <task id="LOCAL-00002" summary="Changes to UI elements / components, adding a footer, changes to styling, adding options for specifying a base log format.">
+    <task id="LOCAL-00002" summary="Adding client-side theming.">
       <option name="closed" value="true" />
-      <created>1712143575261</created>
+      <created>1712304974823</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1712143575261</updated>
+      <updated>1712304974823</updated>
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
@@ -201,7 +241,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Adding a `File Logs` tree, and more features ..." />
     <MESSAGE value="Making Docker related changes." />
-    <MESSAGE value="Changes to UI elements / components, adding a footer, changes to styling, adding options for specifying a base log format." />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to UI elements / components, adding a footer, changes to styling, adding options for specifying a base log format." />
+    <MESSAGE value="Separating components." />
+    <MESSAGE value="Adding client-side theming." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding client-side theming." />
   </component>
 </project>
